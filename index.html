@@ -1,202 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Portfolio Website">
-    <meta name="author" content="Simarpreet Singh">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
-    <link rel="shortcut icon" href="images/logo3.png" type="image/x-icon" >
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Portfolio Website" />
+    <meta name="author" content="Simarpreet Singh" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="images/logo3.png" type="image/x-icon" />
 
     <title>Simarpreet Singh's Portfolio</title>
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
 
-    <link rel="stylesheet" type="text/css" href="css/fullpage.min.css">
+    <link rel="stylesheet" type="text/css" href="css/fullpage.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css" />
 
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/animate.css" />
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
 
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/responsive.css" />
 
     <!-- Icons import using font awesome latest kit -->
     <!-- <script src="https://kit.fontawesome.com/7b87b4eff7.js" crossorigin="anonymous"></script> -->
+  </head>
 
-    </head>
-    
-    <body>
-    
+  <body>
     <div id="video">
-        <div class="preloader">
-            <div class="preloader-bounce">
-                <span></span>
-                <span></span>
-                <span></span>
+      <div class="preloader">
+        <div class="preloader-bounce">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <header id="header">
+        <div class="container-fluid">
+          <div class="navbar">
+            <a href="#" id="logo" title="Simarpreet Singh"> </a>
+            <div class="navigation-row">
+              <nav id="navigation">
+                <button type="button" class="navbar-toggle">
+                  <i class="fa fa-bars"></i>
+                </button>
+                <div class="nav-box navbar-collapse">
+                  <ul class="navigation-menu nav navbar-nav navbars" id="nav">
+                    <li data-menuanchor="slide01" class="active">
+                      <a href="#slide01">Home</a>
+                    </li>
+                    <li data-menuanchor="slide02">
+                      <a href="#slide02">About Me</a>
+                    </li>
+                    <li data-menuanchor="slide03">
+                      <a href="#slide03">Work Experience</a>
+                    </li>
+                    <li data-menuanchor="slide04">
+                      <a href="#slide04">My Skills</a>
+                    </li>
+                    <li data-menuanchor="slide05">
+                      <a href="#slide05">My Work</a>
+                    </li>
+                    <li data-menuanchor="slide06">
+                      <a href="#slide06">Community</a>
+                    </li>
+                    <li data-menuanchor="slide07">
+                      <a href="#slide07">Contact Me</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
             </div>
+          </div>
+        </div>
+      </header>
+
+      <video autoplay muted loop id="myVideo">
+        <source src="images/video-bg.mp4" type="video/mp4" />
+      </video>
+
+      <div id="fullpage" class="fullpage-default">
+        <div class="section animated-row" data-section="slide01">
+          <div class="section-inner">
+            <div class="welcome-box">
+              <span class="welcome-first animate" data-animate="fadeInUp"
+                >Hello, welcome to</span
+              >
+              <h1 class="welcome-title animate" data-animate="fadeInUp">
+                my portfolio
+              </h1>
+              <p class="animate" data-animate="fadeInUp">
+                Open Source | Hackathons | Community
+              </p>
+              <div
+                class="scroll-down next-section animate data-animate=fadeInUp"
+              >
+                <img src="images/mouse-scroll.png" alt="" /><span
+                  >Scroll Down</span
+                >
+              </div>
+            </div>
+          </div>
         </div>
 
-        <header id="header">
-            <div class="container-fluid">
-                <div class="navbar">
-                    <a href="#" id="logo" title="Simarpreet Singh">
-                    </a>
-                    <div class="navigation-row">
-                        <nav id="navigation">
-                            <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
-                            <div class="nav-box navbar-collapse">
-                                <ul class="navigation-menu nav navbar-nav navbars" id="nav">
-                                    <li data-menuanchor="slide01" class="active"><a href="#slide01">Home</a></li>
-                                    <li data-menuanchor="slide02"><a href="#slide02">About Me</a></li>
-                                    <li data-menuanchor="slide03"><a href="#slide03">Work Experience</a></li>
-                                    <li data-menuanchor="slide04"><a href="#slide04">My Skills</a></li>
-                                    <li data-menuanchor="slide05"><a href="#slide05">My Work</a></li>
-                                    <li data-menuanchor="slide06"><a href="#slide06">Community</a></li>
-                                    <li data-menuanchor="slide07"><a href="#slide07">Contact Me</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <video autoplay muted loop id="myVideo">
-          <source src="images/video-bg.mp4" type="video/mp4">
-        </video>
-
-        <div id="fullpage" class="fullpage-default">
-
-            <div class="section animated-row" data-section="slide01">
-                <div class="section-inner">
-                    <div class="welcome-box">
-                    <span class="welcome-first animate" data-animate="fadeInUp">Hello, welcome to</span>
-                    <h1 class="welcome-title animate" data-animate="fadeInUp">my portfolio</h1>
-                    <p class="animate" data-animate="fadeInUp">Open Source | Hackathons | Community</p>
-                    <div class="scroll-down next-section animate data-animate=fadeInUp"><img src="images/mouse-scroll.png" alt=""><span>Scroll Down</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section animated-row" data-section="slide02">
-                <div class="section-inner">
-                    <div class="about-section">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8 wide-col-laptop">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="about-contentbox">
-                                            <div class="animate" data-animate="fadeInUp">
-                                                <span>About Me</span>
-                                                <h2>Who am i?</h2>
-                                                <p>Hello! I am Simarpreet Singh, working as Lead Developer relations for Tezos in India, a 24 year old graduate, completed my bachlor's degree in Computer Science.
-                                                    I love helping people take their next steps who are new to open source and hackathons. I am fun to work with and extremely curious.
-                                                    I turn out of the box ideas into useful projects. I keep learning new things. I love to listen to person's experience and stories.
-                                                    Building Web3Panjab Community and W3Event Gallery
-                                                </p>
-                                                <!-- <a class="status pt-5" href="frontendresume.pdf" target="_blank"> -->
-                                                    <h5>Looking for Full-time opportunities as Developer Relations engineer </h5> 
-                                                    <!-- <h6>Frontend Developer</h6>
+        <div class="section animated-row" data-section="slide02">
+          <div class="section-inner">
+            <div class="about-section">
+              <div class="row justify-content-center">
+                <div class="col-lg-8 wide-col-laptop">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="about-contentbox">
+                        <div class="animate" data-animate="fadeInUp">
+                          <span>About Me</span>
+                          <h2>Who am i?</h2>
+                          <p>
+                            Hello! I am Simarpreet Singh, working as Lead
+                            Developer relations for Tezos in India, a 24 year
+                            old graduate, completed my bachlor's degree in
+                            Computer Science. I love helping people take their
+                            next steps who are new to open source and
+                            hackathons. I am fun to work with and extremely
+                            curious. I turn out of the box ideas into useful
+                            projects. I keep learning new things. I love to
+                            listen to person's experience and stories. Building
+                            Web3Panjab Community and W3Event Gallery
+                          </p>
+                          <!-- <a class="status pt-5" href="frontendresume.pdf" target="_blank"> -->
+                          <h5>
+                            Looking for Full-time opportunities as Developer
+                            Relations engineer
+                          </h5>
+                          <!-- <h6>Frontend Developer</h6>
                                                     </a>
                                                     <a href="frontendresume.pdf" target="_blank" class="arrow-link status">
                                                     Frontend Resume</a> -->
-                                                    <a class="status pt-5" href="devrelresume.pdf" target="_blank">
-
-                                                        <h6>Here's my resume</h6>
-                                                        </a>
-                                                        <!-- <a href="devrelresume.pdf" target="_blank" class="arrow-link status">
+                          <a
+                            class="status pt-5"
+                            href="devrelresume.pdf"
+                            target="_blank"
+                          >
+                            <h6>Here's my resume</h6>
+                          </a>
+                          <!-- <a href="devrelresume.pdf" target="_blank" class="arrow-link status">
                                                         Devrel Resume</a> -->
-                                            </div>
-                                            <div class="facts-list owl-carousel">
-                                                <div class="item animate" data-animate="fadeInUp">
-                                                    <div class="counter-box">
-                                                        <i class="fa fa-trophy counter-icon" aria-hidden="true"></i><span class="count-number">10+</span> Hackathons Judge
-                                                    </div>
-                                                </div>
-                                                <div class="item animate" data-animate="fadeInUp">
-                                                    <div class="counter-box">
-                                                        <i class="fa fa-graduation-cap counter-icon" aria-hidden="true"></i><span class="count-number">25+</span> Hackathon mentoring
-                                                    </div>
-                                                </div>
-                                                <div class="item animate" data-animate="fadeInUp">
-                                                    <div class="counter-box">
-                                                        <i class="fa fa-code-fork counter-icon" aria-hidden="true"></i><span class="count-number">100+</span> Events & sessions
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <figure class="about-img animate" data-animate="fadeInUp"><img src="images/profilepic.jpg" class="rounded" alt=""></figure>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="section animated-row" data-section="slide03">
-                <div class="section-inner">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>Work Experience</span>
-                                <h2>Work experience & Internships </h2>
+                        <div class="facts-list owl-carousel">
+                          <div class="item animate" data-animate="fadeInUp">
+                            <div class="counter-box">
+                              <i
+                                class="fa fa-trophy counter-icon"
+                                aria-hidden="true"
+                              ></i
+                              ><span class="count-number">10+</span> Hackathons
+                              Judge
                             </div>
-                            <div class="services-section">
-                                <div class="services-list owl-carousel">
+                          </div>
+                          <div class="item animate" data-animate="fadeInUp">
+                            <div class="counter-box">
+                              <i
+                                class="fa fa-graduation-cap counter-icon"
+                                aria-hidden="true"
+                              ></i
+                              ><span class="count-number">25+</span> Hackathon
+                              mentoring
+                            </div>
+                          </div>
+                          <div class="item animate" data-animate="fadeInUp">
+                            <div class="counter-box">
+                              <i
+                                class="fa fa-code-fork counter-icon"
+                                aria-hidden="true"
+                              ></i
+                              ><span class="count-number">100+</span> Events &
+                              sessions
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <figure class="about-img animate" data-animate="fadeInUp">
+                        <img
+                          src="images/profilepic.jpg"
+                          class="rounded"
+                          alt=""
+                        />
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><img src="images/tezosindia.jpg" class="rounded-circle" alt="profile 1"></span>
-                                            <h3>Tezos India</h3>
-                                            <p>As the Lead Developer Relations for Tezos India, I have championed blockchain adoption by building vibrant developer communities and fostering hands-on learning. Over the past two years, I have hosted 100+ workshops, hackathons, and events, empowering developers to build with Tezos L1 and Etherlink L2. My initiatives include setting up 15+ college clubs, partnering with 60+ hackathons, and training 100+ developers through fellowship programs.  <br> Remote, New Delhi,  1-Oct-2022 - Present
-                                            </p>
-                                        </div>
-                                    </div>
+        <div class="section animated-row" data-section="slide03">
+          <div class="section-inner">
+            <div class="row justify-content-center">
+              <div class="col-md-8 wide-col-laptop">
+                <div class="title-block animate" data-animate="fadeInUp">
+                  <span>Work Experience</span>
+                  <h2>Work experience & Internships</h2>
+                </div>
+                <div class="services-section">
+                  <div class="services-list owl-carousel">
+                    <div class="item animate" data-animate="fadeInUp">
+                      <div class="service-box">
+                        <span class="service-icon"
+                          ><img
+                            src="images/tezosindia.jpg"
+                            class="rounded-circle"
+                            alt="profile 1"
+                        /></span>
+                        <h3>Tezos India</h3>
+                        <p>
+                          As the Lead Developer Relations for Tezos India, I
+                          have championed blockchain adoption by building
+                          vibrant developer communities and fostering hands-on
+                          learning. Over the past two years, I have hosted 100+
+                          workshops, hackathons, and events, empowering
+                          developers to build with Tezos L1 and Etherlink L2. My
+                          initiatives include setting up 15+ college clubs,
+                          partnering with 60+ hackathons, and training 100+
+                          developers through fellowship programs. <br />
+                          Remote, New Delhi, 1-Oct-2022 - Present
+                        </p>
+                      </div>
+                    </div>
 
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><img src="images/DRDO.jpg" class="rounded-circle" alt="profile 1"></span>
-                                            <h3>Defense Research and Development Organization, DRDO, INDIA</h3>
-                                            <p>Research Trainee Intern at DRDO, MoD. Working on Secure Data Transmission using RDH and Stegnography <br> Delhi,  1-Feb - 30 May, 2022 </p>
-                                        </div>
-                                    </div>
+                    <div class="item animate" data-animate="fadeInUp">
+                      <div class="service-box">
+                        <span class="service-icon"
+                          ><img
+                            src="images/DRDO.jpg"
+                            class="rounded-circle"
+                            alt="profile 1"
+                        /></span>
+                        <h3>
+                          Defense Research and Development Organization, DRDO,
+                          INDIA
+                        </h3>
+                        <p>
+                          Research Trainee Intern at DRDO, MoD. Working on
+                          Secure Data Transmission using RDH and Stegnography
+                          <br />
+                          Delhi, 1-Feb - 30 May, 2022
+                        </p>
+                      </div>
+                    </div>
 
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><img src="images/gwocbadge.png" class="rounded-circle" alt="profile 1"></span>
-                                            <h3>Girlscript Winter of Code</h3>
-                                            <p>Contributing to Girlscript's Winter of Code 2021<br> Delhi,  1-Sept - 1-Dec, 2021 </p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><img src="images/hacknasa1.png" class="rounded-circle" alt="profile 2"></span>
-                                            <h3>NASA SPACE APPS CHALLENGE PREQUALIFIER</h3>
-                                            <p>Bagged First Prize in NASA SPACE APPS CHALLENGE Prequalifier Hackathon hosted by Space Apps challenge,<br> Delhi, 15-16 Sept, 2019 </p>
-                                        </div>
-                                    </div>
+                    <div class="item animate" data-animate="fadeInUp">
+                      <div class="service-box">
+                        <span class="service-icon"
+                          ><img
+                            src="images/gwocbadge.png"
+                            class="rounded-circle"
+                            alt="profile 1"
+                        /></span>
+                        <h3>Girlscript Winter of Code</h3>
+                        <p>
+                          Contributing to Girlscript's Winter of Code 2021<br />
+                          Delhi, 1-Sept - 1-Dec, 2021
+                        </p>
+                      </div>
+                    </div>
 
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><img src="images/scodein.jpeg" class="rounded-circle" alt="profile 2"></span>
-                                            <h3>Contributor's Hack, Student Code-In</h3>
-                                            <p>One of the Top 25 Contributors of contributors hack, an opensource program by student Code-In ,<br> 18 June- 18 August,2020</p>
-                                        </div>
-                                    </div>
+                    <div class="item animate" data-animate="fadeInUp">
+                      <div class="service-box">
+                        <span class="service-icon"
+                          ><img
+                            src="images/hacknasa1.png"
+                            class="rounded-circle"
+                            alt="profile 2"
+                        /></span>
+                        <h3>NASA SPACE APPS CHALLENGE PREQUALIFIER</h3>
+                        <p>
+                          Bagged First Prize in NASA SPACE APPS CHALLENGE
+                          Prequalifier Hackathon hosted by Space Apps
+                          challenge,<br />
+                          Delhi, 15-16 Sept, 2019
+                        </p>
+                      </div>
+                    </div>
 
-                                    <!-- <div class="item animate" data-animate="fadeInUp">
+                    <div class="item animate" data-animate="fadeInUp">
+                      <div class="service-box">
+                        <span class="service-icon"
+                          ><img
+                            src="images/scodein.jpeg"
+                            class="rounded-circle"
+                            alt="profile 2"
+                        /></span>
+                        <h3>Contributor's Hack, Student Code-In</h3>
+                        <p>
+                          One of the Top 25 Contributors of contributors hack,
+                          an opensource program by student Code-In ,<br />
+                          18 June- 18 August,2020
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- <div class="item animate" data-animate="fadeInUp">
                                         <div class="service-box">
                                             <span class="service-icon"><img src="images/hacknasa.png" class="rounded-circle" alt="profile 1"></span>
                                             <h3>NASA SPACE APPS CHALLENGE</h3>
@@ -204,179 +319,274 @@
                                         </div>
                                     </div> -->
 
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><img src="images/hackgtbit.png" class="rounded-circle" alt="profile 2"></span>
-                                            <h3>HackGTBIT</h3>
-                                            <p>Bagged Third prize in HackGTBIT hosted by HelloWorld,<br> GTBIT , 18-19 Jan 2019 </p>
-                                        </div>
-                                    </div>
-
-                                    
-                                <!--add more achievements later-->
-                                </div>
-                            </div>
-                        </div>
+                    <div class="item animate" data-animate="fadeInUp">
+                      <div class="service-box">
+                        <span class="service-icon"
+                          ><img
+                            src="images/hackgtbit.png"
+                            class="rounded-circle"
+                            alt="profile 2"
+                        /></span>
+                        <h3>HackGTBIT</h3>
+                        <p>
+                          Bagged Third prize in HackGTBIT hosted by
+                          HelloWorld,<br />
+                          GTBIT , 18-19 Jan 2019
+                        </p>
+                      </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="section animated-row" data-section="slide04">
-                <div class="section-inner">
-                    <div class="row justify-content-center">
-                        <div class="col-md-7 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>My Skills</span>
-                                <h2>What I’m good at?</h2>
-                            </div>
-                            <div class="skills-row animate" data-animate="fadeInDown">
-                                <div class="row">
-                                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                                <div class="icon-box">
-                                    <!-- <i class="fab fa-python fa-5x" aria-hidden="true"></i> -->
-                                <img class="tech-icon" alt="octave-logo" src="/images/tech/python.png">
-                                <h3>Python</h3>
-                                </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                                <div class="icon-box">
-                                <img class="tech-icon" alt="octave-logo-2px" src="/images/tech/cpp1.png">
-                                <h3>C++</h3>
-                                </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                                    <div class="icon-box">
-                                    <!-- <i class="fab fa-jsfiddle fa-5x" aria-hidden="true"></i> -->
-                                    <img class="tech-icon" alt="octave-logo-2px" src="/images/tech/java.png">
-                                    <h3>Java</h3>
-                                    </div>
-                                    </div>                                
-                                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                                <div class="icon-box">
-                                <i class="fa fa-html5 fa-5x" aria-hidden="true"></i>
-                                <h3>HTML</h3>
-                                </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                                <div class="icon-box">
-                                <i class="fa fa-css3 fa-5x" aria-hidden="true"></i>
-                                <h3>CSS</h3>
-                                </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                                <div class="icon-box">
-                                <!-- <i class="fa fa-jsfiddle fa-5x " aria-hidden="true"></i> -->
-                                <img class="tech-icon" alt="octave-logo-2px" src="/images/tech/js.png">
-                                <h3>JS</h3>
-                                </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                                    <div class="icon-box">
-                                    <i class="fab fa-react fa-5x" aria-hidden="true"></i>
-                                    <h3>React.js</h3>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                                <div class="icon-box">
-                                <i class="fa fa-git fa-5x" aria-hidden="true"></i>
-                                <h3>Git</h3>
-                                </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                                <div class="icon-box">
-                                <i class="fa fa-github fa-5x" aria-hidden="true"></i>
-                                <h3>GitHub</h3>
-                                </div>
-                                </div>
-                                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                                <div class="icon-box">
-                                 <i class="fas fa-vr-cardboard fa-5x" aria-hidden="true"></i>
-                                <h3>A.R.</h3>
-                                </div>
-                                </div>
-                                                                          
-                                </div>
-                            </div>
-                        </div>
+                    <!--add more achievements later-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section animated-row" data-section="slide04">
+          <div class="section-inner">
+            <div class="row justify-content-center">
+              <div class="col-md-7 wide-col-laptop">
+                <div class="title-block animate" data-animate="fadeInUp">
+                  <span>My Skills</span>
+                  <h2>What I’m good at?</h2>
+                </div>
+                <div class="skills-row animate" data-animate="fadeInDown">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+                      <div class="icon-box">
+                        <!-- <i class="fab fa-python fa-5x" aria-hidden="true"></i> -->
+                        <img
+                          class="tech-icon"
+                          alt="octave-logo"
+                          src="/images/tech/python.png"
+                        />
+                        <h3>Python</h3>
+                      </div>
                     </div>
+                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+                      <div class="icon-box">
+                        <img
+                          class="tech-icon"
+                          alt="octave-logo-2px"
+                          src="/images/tech/cpp1.png"
+                        />
+                        <h3>C++</h3>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+                      <div class="icon-box">
+                        <!-- <i class="fab fa-jsfiddle fa-5x" aria-hidden="true"></i> -->
+                        <img
+                          class="tech-icon"
+                          alt="octave-logo-2px"
+                          src="/images/tech/java.png"
+                        />
+                        <h3>Java</h3>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+                      <div class="icon-box">
+                        <i class="fa fa-html5 fa-5x" aria-hidden="true"></i>
+                        <h3>HTML</h3>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+                      <div class="icon-box">
+                        <i class="fa fa-css3 fa-5x" aria-hidden="true"></i>
+                        <h3>CSS</h3>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+                      <div class="icon-box">
+                        <!-- <i class="fa fa-jsfiddle fa-5x " aria-hidden="true"></i> -->
+                        <img
+                          class="tech-icon"
+                          alt="octave-logo-2px"
+                          src="/images/tech/js.png"
+                        />
+                        <h3>JS</h3>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+                      <div class="icon-box">
+                        <i class="fab fa-react fa-5x" aria-hidden="true"></i>
+                        <h3>React.js</h3>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+                      <div class="icon-box">
+                        <i class="fa fa-git fa-5x" aria-hidden="true"></i>
+                        <h3>Git</h3>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+                      <div class="icon-box">
+                        <i class="fa fa-github fa-5x" aria-hidden="true"></i>
+                        <h3>GitHub</h3>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+                      <div class="icon-box">
+                        <i
+                          class="fas fa-vr-cardboard fa-5x"
+                          aria-hidden="true"
+                        ></i>
+                        <h3>A.R.</h3>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
 
+        <div class="section animated-row" data-section="slide05">
+          <div class="section-inner">
+            <div class="row justify-content-center">
+              <div class="col-md-8 wide-col-laptop">
+                <div class="title-block animate" data-animate="fadeInUp">
+                  <span>My Work</span>
+                  <h2>what i’ve done?</h2>
+                </div>
+                <div class="gallery-section">
+                  <div class="gallery-list owl-carousel">
+                    <div class="item animate" data-animate="fadeInUp">
+                      <div class="portfolio-item">
+                        <div class="thumb">
+                          <img
+                            src="images/sources/attention.jpg"
+                            alt="profile 2"
+                          />
+                        </div>
+                        <div
+                          class="thumb-inner animate"
+                          data-animate="fadeInUp"
+                        >
+                          <h4>
+                            German to English Translator using Seq2Seq and
+                            attention model
+                          </h4>
+                          <a
+                            class="source-github"
+                            href="https://github.com/soumyajit4419/YouthIcon"
+                            target="blank"
+                          >
+                            This repo contains contribution towards tutorial for
+                            Seq2Seq and attention model implementation with
+                            german to english translator.<br />
+                            See the tutorials here</a
+                          >
+                        </div>
+                      </div>
+                    </div>
 
-            <div class="section animated-row" data-section="slide05">
-                <div class="section-inner">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>My Work</span>
-                                <h2>what i’ve done?</h2>
-                            </div>
-                            <div class="gallery-section">
-                                <div class="gallery-list owl-carousel">
+                    <div class="item animate" data-animate="fadeInUp">
+                      <div class="portfolio-item">
+                        <div class="thumb">
+                          <img src="images/sources/tweet.gif" alt="profile 1" />
+                        </div>
+                        <div
+                          class="thumb-inner animate"
+                          data-animate="fadeInUp"
+                        >
+                          <h4>Virtual Tweet Gallery</h4>
+                          <a
+                            class="source-github"
+                            href="https://web3panjab.github.io/SolanaHHDilli/"
+                            target="blank"
+                            >This is Virtual tweet Gallery, a collection of
+                            memories from people attending an event where
+                            <b>W3EventGallery Bot</b> is crawling Tweets <br />
+                            See the Website here</a
+                          >
+                        </div>
+                      </div>
+                    </div>
 
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="images/sources/attention.jpg" alt="profile 2">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>German to English Translator using Seq2Seq and attention model</h4>
-                                                <a class="source-github" href="https://github.com/soumyajit4419/YouthIcon" target="blank"> This repo contains contribution towards tutorial for Seq2Seq and attention model implementation with german to english translator.<br> See the tutorials here</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="item animate" data-animate="fadeInUp">
+                      <div class="portfolio-item">
+                        <div class="thumb">
+                          <img
+                            src="images/sources/output2.JPG"
+                            alt="profile 2"
+                          />
+                        </div>
+                        <div
+                          class="thumb-inner animate"
+                          data-animate="fadeInUp"
+                        >
+                          <h4>Shape in an Image Founder</h4>
+                          <a
+                            class="source-github"
+                            href="https://github.com/simarpreetsingh-019/openCV-Learning"
+                            target="blank"
+                          >
+                            This will detect geometrical shapes in an image
+                            <br />
+                            See the Repository here</a
+                          >
+                        </div>
+                      </div>
+                    </div>
 
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="images/sources/tweet.gif" alt="profile 1">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>Virtual Tweet Gallery</h4>
-                                                <a class="source-github" href="https://web3panjab.github.io/SolanaHHDilli/" target="blank">This is Virtual tweet Gallery, a collection of memories from people attending an event where <b>W3EventGallery Bot</b> is crawling Tweets <br> See the Website here</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="item animate" data-animate="fadeInUp">
+                      <div class="portfolio-item">
+                        <div class="thumb">
+                          <img src="images/sources/face.jpg" alt="profile 1" />
+                        </div>
+                        <div
+                          class="thumb-inner animate"
+                          data-animate="fadeInUp"
+                        >
+                          <h4>
+                            Face Detection / Face recognition using OpenCV
+                          </h4>
+                          <a
+                            class="source-github"
+                            href="https://github.com/simarpreetsingh-019/face-recognition--girlscript-jaipur-project-"
+                            target="blank"
+                          >
+                            Face detector using openCV and haar-cascade to
+                            detect Face. Added some more functionality to detect
+                            eyes also. Second part of this project include
+                            saving similar faces accordingly with name entered
+                            by user. <br />
+                            See the Repository here</a
+                          >
+                        </div>
+                      </div>
+                    </div>
 
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="images/sources/output2.JPG" alt="profile 2">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>Shape in an Image Founder</h4>
-                                                <a class="source-github" href="https://github.com/simarpreetsingh-019/openCV-Learning" target="blank"> This will detect geometrical shapes in an image <br> See the Repository here</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="item animate" data-animate="fadeInUp">
+                      <div class="portfolio-item">
+                        <div class="thumb">
+                          <img
+                            src="images/sources/pedestrian-detection.gif"
+                            alt="profile 2"
+                          />
+                        </div>
+                        <div
+                          class="thumb-inner animate"
+                          data-animate="fadeInUp"
+                        >
+                          <h4>Pedestrian identification - motion detection</h4>
+                          <a
+                            class="source-github"
+                            href="https://github.com/simarpreetsingh-019/openCV-Learning"
+                            target="blank"
+                            >This project can find out pedestrains in the video,
+                            as well as any minor movement of any one or anything
+                            in the video. <br />
+                            See the Repository here</a
+                          >
+                        </div>
+                      </div>
+                    </div>
 
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="images/sources/face.jpg" alt="profile 1">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>Face Detection / Face recognition using OpenCV</h4>
-                                                <a class="source-github" href="https://github.com/simarpreetsingh-019/face-recognition--girlscript-jaipur-project-" target="blank"> Face detector using openCV and haar-cascade to detect Face. Added some more functionality to detect eyes also. Second part of this project include saving similar faces accordingly with name entered by user.   <br> See the Repository here</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="images/sources/pedestrian-detection.gif" alt="profile 2">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>Pedestrian identification - motion detection</h4>
-                                                <a class="source-github" href="https://github.com/simarpreetsingh-019/openCV-Learning" target="blank">This project can find out pedestrains in the video, as well as any minor movement of any one or anything in the video. <br> See the Repository here</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- <div class="item animate" data-animate="fadeInUp">
+                    <!-- <div class="item animate" data-animate="fadeInUp">
                                         <div class="portfolio-item">
                                             <div class="thumb">
                                                 <img src="images/sources/Typing_tester_screen.JPG" alt="profile 3">
@@ -388,7 +598,7 @@
                                         </div>
                                     </div> -->
 
-                                    <!-- <div class="item animate" data-animate="fadeInUp">
+                    <!-- <div class="item animate" data-animate="fadeInUp">
                                         <div class="portfolio-item">
                                             <div class="thumb">
                                                 <img src="images/sources/audiobook.png" alt="profile 3">
@@ -400,7 +610,7 @@
                                         </div>
                                      </div> -->
 
-                                     <!-- <div class="item animate" data-animate="fadeInUp">
+                    <!-- <div class="item animate" data-animate="fadeInUp">
                                         <div class="portfolio-item">
                                             <div class="thumb">
                                                 <img src="images/sources/cpprepo.png" alt="profile 4">
@@ -411,75 +621,106 @@
                                             </div>
                                         </div>
                                     </div> -->
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
 
-            <div class="section animated-row" data-section="slide06">
-                <div class="section-inner">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>COMMUNITY</span>
-                                <h2>I am part of these Communities</h2>
-                            </div>
-                            <div class="col-md-8 offset-md-2">
-                                <div class="testimonials-section">
-                                    <div class="testimonials-slider owl-carousel">
-
-                                        <div class="item animate" data-animate="fadeInUp">
-                                            <div class="testimonial-item">
-                                                <div class="client-row">
-                                                    <img src="images/WEB3Panjab logo.png" class="rounded-circle" alt="profile 1">
-                                                </div>
-                                                <div class="testimonial-content">
-                                                    <h4>Founder</h4>
-                                                    <a href="https://x.com/web3panjab" target="blank"><p>"A community initiative of promoting and onboarding users to Web3 ecosystem in Punjab and North India "</p> </a>
-                                                    <!-- <p>"Helping the CPP India team with session outreach over twitter and moderating the session "</p> -->
-                                                    <span>July 16, 2022 - Present</span>
-                                                    <!-- &nbsp
+        <div class="section animated-row" data-section="slide06">
+          <div class="section-inner">
+            <div class="row justify-content-center">
+              <div class="col-md-8 wide-col-laptop">
+                <div class="title-block animate" data-animate="fadeInUp">
+                  <span>COMMUNITY</span>
+                  <h2>I am part of these Communities</h2>
+                </div>
+                <div class="col-md-8 offset-md-2">
+                  <div class="testimonials-section">
+                    <div class="testimonials-slider owl-carousel">
+                      <div class="item animate" data-animate="fadeInUp">
+                        <div class="testimonial-item">
+                          <div class="client-row">
+                            <img
+                              src="images/WEB3Panjab logo.png"
+                              class="rounded-circle"
+                              alt="profile 1"
+                            />
+                          </div>
+                          <div class="testimonial-content">
+                            <h4>Founder</h4>
+                            <a href="https://x.com/web3panjab" target="blank"
+                              ><p>
+                                "A community initiative of promoting and
+                                onboarding users to Web3 ecosystem in Punjab and
+                                North India "
+                              </p>
+                            </a>
+                            <!-- <p>"Helping the CPP India team with session outreach over twitter and moderating the session "</p> -->
+                            <span>July 16, 2022 - Present</span>
+                            <!-- &nbsp
                                                     <a href="http://www.cppindia.co.in/" target="blank"><span>CPPIndia</span> </a> -->
-                                                </div>                                           
-                                            </div>
-                                        </div>
+                          </div>
+                        </div>
+                      </div>
 
-                                        <div class="item animate" data-animate="fadeInUp">
-                                            <div class="testimonial-item">
-                                                <div class="client-row">
-                                                    <img src="images/dsclogo2.png" class="rounded-circle" alt="profile 1">
-                                                </div>
-                                                <div class="testimonial-content">
-                                                    <h4>Outreach & Logistic Head,&nbsp Competitive Programing Mentor</h4>
-                                                    <a href="https://dsc.gtbit.org/" target="blank"><p>"I have experienced quite amazing events conducted by my seniors, so I am arranging them this year for my felow juniors. DSC GTBIT"</p> </a>
-                                                    <!-- <p>"I have experienced quite amazing events conducted by my seniors, so I am arranging them this year for my felow juniors. I am the Outreach head of DSC GTBIT"</p> -->
-                                                    <span>August 2020 - Present</span>  
-                                                    <!-- &nbsp
+                      <div class="item animate" data-animate="fadeInUp">
+                        <div class="testimonial-item">
+                          <div class="client-row">
+                            <img
+                              src="images/dsclogo2.png"
+                              class="rounded-circle"
+                              alt="profile 1"
+                            />
+                          </div>
+                          <div class="testimonial-content">
+                            <h4>
+                              Outreach & Logistic Head,&nbsp Competitive
+                              Programing Mentor
+                            </h4>
+                            <a href="https://dsc.gtbit.org/" target="blank"
+                              ><p>
+                                "I have experienced quite amazing events
+                                conducted by my seniors, so I am arranging them
+                                this year for my felow juniors. DSC GTBIT"
+                              </p>
+                            </a>
+                            <!-- <p>"I have experienced quite amazing events conducted by my seniors, so I am arranging them this year for my felow juniors. I am the Outreach head of DSC GTBIT"</p> -->
+                            <span>August 2020 - Present</span>
+                            <!-- &nbsp
                                                     <a href="https://dsc.community.dev/u/m269tr/#/about" target="blank"><span>My DSC Dev profile    </span> </a> 
                                                     &nbsp
                                                     <a href="https://dsc.gtbit.org" target="blank"><span> DSC GTBIT</span> </a> -->
-                                                </div>                                           
-                                            </div>
-                                        </div>
-                                        <div class="item animate" data-animate="fadeInUp">
-                                            <div class="testimonial-item">
-                                                <div class="client-row">
-                                                    <img src="images/cppindia.jpg" class="rounded-circle" alt="profile 2">
-                                                </div>
-                                                <div class="testimonial-content">
-                                                    <h4>Moderator</h4>
-                                                    <a href="http://www.cppindia.co.in/" target="blank"><p>"Helping the CPP India team with session outreach over twitter and moderating the session "</p> </a>
-                                                    <!-- <p>"Helping the CPP India team with session outreach over twitter and moderating the session "</p> -->
-                                                    <span>June 2020 - June 2023</span>
-                                                    <!-- &nbsp
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item animate" data-animate="fadeInUp">
+                        <div class="testimonial-item">
+                          <div class="client-row">
+                            <img
+                              src="images/cppindia.jpg"
+                              class="rounded-circle"
+                              alt="profile 2"
+                            />
+                          </div>
+                          <div class="testimonial-content">
+                            <h4>Moderator</h4>
+                            <a href="http://www.cppindia.co.in/" target="blank"
+                              ><p>
+                                "Helping the CPP India team with session
+                                outreach over twitter and moderating the session
+                                "
+                              </p>
+                            </a>
+                            <!-- <p>"Helping the CPP India team with session outreach over twitter and moderating the session "</p> -->
+                            <span>June 2020 - June 2023</span>
+                            <!-- &nbsp
                                                     <a href="http://www.cppindia.co.in/" target="blank"><span>CPPIndia</span> </a> -->
-                                                </div>                                           
-                                            </div>
-                                        </div>
-                                      <!-- <div class="item animate" data-animate="fadeInUp">
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="item animate" data-animate="fadeInUp">
                                             <div class="testimonial-item">
                                                 <div class="client-row">
                                                     <img src="images/kaggle.jpg" class="rounded-circle" alt="profile 2">
@@ -492,8 +733,8 @@
                                                 </div>                                           
                                             </div>
                                         </div> -->
-                                       
-                                      <!-- <div class="item animate" data-animate="fadeInUp">
+
+                      <!-- <div class="item animate" data-animate="fadeInUp">
                                             <div class="testimonial-item">
                                                 <div class="client-row">
                                                     <img src="images/esya.jpg" class="rounded-circle" alt="profile 3">
@@ -505,69 +746,128 @@
                                                 </div>                                           
                                             </div>
                                         </div> -->
-                                      
-                                       
-                                      <!--add more volunteering experiecnes-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="section animated-row" data-section="slide07">
-                <div class="section-inner">
-                    <div class="row justify-content-center">
-                        <div class="col-md-7 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>Contact</span>
-                                <h2>Get In Touch!</h2>
-                            </div>
-                            <div class="contact-section">
-                                <div class="row">
-                                    <div class="col-md-6 animate" data-animate="fadeInUp">
-                                        <div class="contact-box">
-                                    
-                                            <div class="contact-row">
-                                                <i class="fa fa-envelope"></i> simarpreetsingh.019@gmail.com
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 animate" data-animate="fadeInUp">
-                                        <form id="ajax-contact" method="post" action="https://formspree.io/f/mayakpra">
-                                            <div class="input-field">
-                                                <input type="text" class="form-control" name="name" id="name" required placeholder="Name">
-                                            </div>
-                                            <div class="input-field">
-                                                <input type="email" class="form-control" name="email" id="email" required placeholder="Email">
-                                            </div>
-                                            <div class="input-field">
-                                                <textarea class="form-control" name="message" id="message" required placeholder="Message"></textarea>
-                                            </div>
-                                            <button class="btn" type="submit">Submit</button>
-                                        </form>
-                                        <div id="form-messages" class="mt-3"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      <!--add more volunteering experiecnes-->
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
 
-        <div id="social-icons">
-            <div class="text-right">
-                <ul class="social-icons">
-                    <li><a href="https://github.com/simarpreetsingh-019" target="blank" title="Github"><i class="fa fa-github"></i></a></li>
-                    <li><a href="https://twitter.com/simarpreet019" target="blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/simarpreetsingh019/" target="blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="https://medium.com/@simarpreetsingh.019" target="blank" title="Medium"><i class="fa fa-medium"></i></a></li>
-                </ul>
+        <div class="section animated-row" data-section="slide07">
+          <div class="section-inner">
+            <div class="row justify-content-center">
+              <div class="col-md-7 wide-col-laptop">
+                <div class="title-block animate" data-animate="fadeInUp">
+                  <span>Contact</span>
+                  <h2>Get In Touch!</h2>
+                </div>
+                <div class="contact-section">
+                  <div class="row">
+                    <div class="col-md-6 animate" data-animate="fadeInUp">
+                      <div class="contact-box">
+                        <div class="contact-row">
+                          <i class="fa fa-envelope"></i>
+                          simarpreetsingh.019@gmail.com
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 animate" data-animate="fadeInUp">
+                      <form
+                        id="ajax-contact"
+                        method="post"
+                        action="https://formspree.io/f/mayakpra"
+                      >
+                        <div class="input-field">
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            id="name"
+                            required
+                            placeholder="Name"
+                          />
+                        </div>
+                        <div class="input-field">
+                          <input
+                            type="email"
+                            class="form-control"
+                            name="email"
+                            id="email"
+                            required
+                            placeholder="Email"
+                          />
+                        </div>
+                        <div class="input-field">
+                          <textarea
+                            class="form-control"
+                            name="message"
+                            id="message"
+                            required
+                            placeholder="Message"
+                          ></textarea>
+                        </div>
+                        <button class="btn" type="submit">Submit</button>
+                      </form>
+                      <div id="form-messages" class="mt-3"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>  
+      </div>
+
+      <div id="social-icons">
+        <div class="text-right">
+          <ul class="social-icons">
+            <li>
+              <a
+                href="https://twitter.com/simarpreet019"
+                target="blank"
+                title="Twitter"
+                ><i class="fa fa-twitter"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/simarpreetsingh019/"
+                target="blank"
+                title="Linkedin"
+                ><i class="fa fa-linkedin"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/simarpreetsingh-019"
+                target="blank"
+                title="Github"
+                ><i class="fa fa-github"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://medium.com/@simarpreetsingh.019"
+                target="blank"
+                title="Medium"
+                ><i class="fa fa-medium"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/@simarpreetsingh019/playlists"
+                target="blank"
+                title="Youtube"
+                ><i class="fa fa-youtube-play"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <script src="js/jquery.js"></script>
 
@@ -585,8 +885,9 @@
 
     <script src="js/custom.js"></script>
 
-    <script src="https://kit.fontawesome.com/7b87b4eff7.js" crossorigin="anonymous"></script>
-
-
+    <script
+      src="https://kit.fontawesome.com/7b87b4eff7.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
