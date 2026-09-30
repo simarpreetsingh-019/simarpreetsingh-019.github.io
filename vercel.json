@@ -1,0 +1,10 @@
+{
+  "buildCommand": "node scripts/build-seo.js",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] },
+    { "source": "/(llms.txt|llms-full.txt|robots.txt)", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }] },
+    { "source": "/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "index, follow" }] }
+  ]
+}

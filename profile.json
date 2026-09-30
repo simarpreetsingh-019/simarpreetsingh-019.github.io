@@ -1,0 +1,343 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Simarpreet Singh",
+    "label": "Developer Advocate · Developer Relations (DevRel) Lead · Developer Evangelist · Community Builder · Technical Educator · Partnerships & Ecosystem Lead · Go-To-Market (GTM) Lead",
+    "email": "simarpreetsingh.019@gmail.com",
+    "url": "https://simarpreetsingh-019.github.io/",
+    "summary": "I love the moment a developer goes from “what is this?” to “I just shipped it.” I sit between the teams who build developer tools and the developers who use them, turning complex products into workshops, demos and docs, and developer feedback into product fixes.",
+    "image": "https://simarpreetsingh-019.github.io/assets/img/portrait.jpg",
+    "location": {
+      "city": "New Delhi",
+      "countryCode": "IN"
+    },
+    "profiles": [
+      {
+        "network": "X / Twitter",
+        "username": "@simarpreet_019",
+        "url": "https://x.com/simarpreet_019"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "simarpreetsingh019",
+        "url": "https://linkedin.com/in/simarpreetsingh019"
+      },
+      {
+        "network": "GitHub",
+        "username": "simarpreetsingh-019",
+        "url": "https://github.com/simarpreetsingh-019"
+      },
+      {
+        "network": "YouTube",
+        "username": "@simarpreet019",
+        "url": "https://youtube.com/@simarpreet019"
+      },
+      {
+        "network": "Medium",
+        "username": "@simarpreetsingh.019",
+        "url": "https://medium.com/@simarpreetsingh.019"
+      },
+      {
+        "network": "Telegram",
+        "username": "@simarpreet_019",
+        "url": "https://t.me/simarpreet_019"
+      },
+      {
+        "network": "All links",
+        "username": "bio.link",
+        "url": "https://bio.link/simarpreetsingh"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "SOULVERSE",
+      "position": "Partnership & Ecosystem Lead",
+      "url": "https://soulverse.us",
+      "startDate": "Jul 2026",
+      "highlights": [
+        "Leading partnerships and ecosystem growth for trust infrastructure spanning identity, credentials, validation and settlement.",
+        "Working across RWA, digital assets and tokenization to bring programmable trust into fintech and Web3 products."
+      ]
+    },
+    {
+      "name": "PizzaDAO",
+      "position": "India Lead",
+      "url": "https://x.com/Pizza_DAO",
+      "startDate": "2025",
+      "highlights": [
+        "Managed and hosted 40+ in-person events across India for Bitcoin Pizza Day, all running at the same time on the same day.",
+        "Spent two months planning India's edition of the Global Bitcoin Pizza Party with the PizzaDAO team.",
+        "Co-hosted PizzaDAO's community party during ETHGlobal New Delhi and helped execute its Delhi event."
+      ]
+    },
+    {
+      "name": "Tezos India",
+      "position": "Lead Developer Relations",
+      "url": "https://in.linkedin.com/company/tezos-india-foundation",
+      "startDate": "Oct 2022",
+      "endDate": "Mar 2025",
+      "highlights": [
+        "Owned developer relations for Tezos L1 and was then entrusted to lead developer advocacy for Etherlink (EVM L2) in India, expanding into onboarding, ecosystem programs and technical enablement.",
+        "Grew ecosystem developer activity 4×, from 3,000 to 12,000+ engaged developers, through workshops, developer clubs and onboarding series.",
+        "Launched and scaled the TezAsia Hackathon from 1,500 to 13,000+ participants, with 1,050+ submissions and 200+ projects reaching MVP.",
+        "Led 150+ workshops and university programs across India and Southeast Asia, mentoring 1,000+ builders and driving a 26% increase in first-time smart-contract deployers. Many sessions are recorded in this playlist.",
+        "Ran flagship enablement programs (TezConnect, TezDay and Tezos BuilderCamp, 2 cohorts with a 75% graduation rate) with certification-style learning tracks, architecture reviews and live POC demos for startups, universities and 80+ hackathon partners; helped introduce the Tezos Guilds model with 20+ community leads.",
+        "Built production-grade dApps and reusable React templates for SDK demos (React, Ethers.js, Solidity, SmartPy), showing EVM compatibility, wallet authentication and contract-interaction patterns.",
+        "Worked with wallet, explorer and protocol teams to improve SDK usability, including a 24% activation lift for Naan Wallet; open-source starter kits and public content increased new project creation by 15%.",
+        "Co-created a credit-based blockchain curriculum with the University of the Philippines."
+      ]
+    },
+    {
+      "name": "Etherlink — L2 on Tezos",
+      "position": "Developer Advocate",
+      "url": "https://etherlink.com",
+      "startDate": "Jan 2024",
+      "endDate": "Apr 2025",
+      "highlights": [
+        "Created Solidity-to-Etherlink transition content, including starter kits, CLI onboarding videos and gas-comparison explainers, cutting Discord onboarding queries by 40%.",
+        "Ran 30+ EVM workshops and supported 100+ hackathon submissions; 18 teams continued building with mentorship and grants.",
+        "Launched the Etherlink Project Showcase on GitHub to spotlight dApps built after hackathons and inspire new builders."
+      ]
+    },
+    {
+      "name": "Web3Panjab",
+      "position": "Founder & Independent Consultant",
+      "url": "https://x.com/web3panjab",
+      "startDate": "Jul 2022",
+      "highlights": [
+        "Leading grassroots blockchain education in underrepresented regions of North India through local meetups, onboarding sessions and contributor teams.",
+        "Since April 2025, shipped two production frontends for paying clients, SuiSips and YinYang (v1), using AI-assisted development workflows (v0, Cursor, Claude), while hosting developer events for Web3 companies.",
+        "Generated $9K in revenue at a 44% margin across consulting and events in 8 months.",
+        "Lead host and program manager for a 40+ event PAN-India developer networking series in May 2026, with a $20K+ budget.",
+        "Built an independent, developer-focused YouTube series testing new tools on Sui through hands-on tutorials.",
+        "Co-hosted events such as AI After Hours with Hyperbolic, and advised 7+ companies on PAN-India tours and incubation onboarding."
+      ]
+    },
+    {
+      "name": "DRDO — Scientific Analysis Group",
+      "position": "Research Trainee",
+      "startDate": "Feb 2022",
+      "endDate": "Jul 2022",
+      "highlights": [
+        "Researched secure data transmission using Reversible Data Hiding (RDH) and steganography."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Guru Tegh Bahadur Institute of Technology, GGSIP University",
+      "area": "Computer Science and Engineering",
+      "studyType": "B.Tech",
+      "startDate": "2018-08",
+      "endDate": "2022-08"
+    }
+  ],
+  "skills": [
+    {
+      "name": "DevRel & Community",
+      "keywords": [
+        "Developer Relations",
+        "Developer onboarding",
+        "Developer experience",
+        "Workshops",
+        "Hackathons",
+        "Docs & starter kits",
+        "Live training",
+        "Certification design",
+        "POC development",
+        "Hackathon mentoring",
+        "Technical writing",
+        "Public speaking",
+        "Partnerships",
+        "GTM"
+      ]
+    },
+    {
+      "name": "Web2 & Frontend",
+      "keywords": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Node.js",
+        "REST APIs",
+        "Supabase",
+        "Vercel",
+        "Web scraping",
+        "Git & GitHub",
+        "C++",
+        "Java"
+      ]
+    },
+    {
+      "name": "AI & ML",
+      "keywords": [
+        "Cursor",
+        "Claude",
+        "v0 (Vercel)",
+        "LLM APIs",
+        "AI agent frameworks (exploring)",
+        "Python",
+        "OpenCV",
+        "Image processing",
+        "Computer vision",
+        "Seq2Seq & attention models"
+      ]
+    },
+    {
+      "name": "Web3",
+      "keywords": [
+        "Solidity",
+        "SmartPy",
+        "Move",
+        "Rust",
+        "Ethers.js",
+        "Hardhat",
+        "Foundry",
+        "Remix",
+        "Thirdweb",
+        "OpenZeppelin",
+        "Taquito.js",
+        "Beacon SDK",
+        "Web3.js",
+        "Tezos",
+        "Etherlink",
+        "Ethereum / EVM",
+        "Sui",
+        "Aptos",
+        "Arbitrum",
+        "Berachain",
+        "Miden",
+        "Sei",
+        "Monad"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "SuiSips",
+      "description": "A production SIP tracker and community platform for the Sui ecosystem: proposals synced from GitHub, discussions, articles, videos and a curated tweet wall. Built with Next.js, React Markdown and Tailwind CSS.",
+      "url": "https://suisips.com",
+      "keywords": [
+        "Next.js · Client build"
+      ]
+    },
+    {
+      "name": "Miden SDK Simulator",
+      "description": "An interactive demo of anonymous, privacy-preserving voting on Miden's ZK rollup SDK. Scoped, built and shipped with no prior Miden experience, to show how any new SDK becomes learnable through a working demo.",
+      "url": "https://sim-miden-demo-main.vercel.app/",
+      "keywords": [
+        "React · Miden SDK"
+      ]
+    },
+    {
+      "name": "Etherlink Project Showcase",
+      "description": "A showcase repo spotlighting dApps built on Tezos and Etherlink after hackathons, alongside demo apps for workshop attendees.",
+      "url": "https://github.com/simarpreetsingh-019/TIProjects",
+      "keywords": [
+        "Etherlink · GitHub"
+      ]
+    },
+    {
+      "name": "Gitfund",
+      "description": "Auto-pays open-source contributors for merged PRs using programmable smart-contract logic.",
+      "url": "https://github.com/simarpreetsingh-019/TIProjects/tree/main/Gitfund",
+      "keywords": [
+        "Web3 · OSS"
+      ]
+    },
+    {
+      "name": "JSON API Visualizer",
+      "description": "Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0.",
+      "url": "https://json-visual.vercel.app",
+      "keywords": [
+        "Next.js · Live tool"
+      ]
+    },
+    {
+      "name": "OverWatch TS",
+      "description": "Built the initial example template for overwatch-ts, a lightweight state-management library for Next.js.",
+      "url": "https://github.com/simarpreetsingh-019/overwatch/tree/main",
+      "keywords": [
+        "Open source"
+      ]
+    },
+    {
+      "name": "Virtual Tweet Gallery",
+      "description": "The W3EventGallery bot collects event tweets into a shared gallery of memories.",
+      "url": "https://web3panjab.github.io/SolanaHHDilli/",
+      "keywords": [
+        "Community tool"
+      ]
+    },
+    {
+      "name": "German → English Translator",
+      "description": "A Seq2Seq-with-attention tutorial implementation for German-to-English translation.",
+      "url": "https://github.com/soumyajit4419/YouthIcon",
+      "keywords": [
+        "ML"
+      ]
+    },
+    {
+      "name": "Face Detection & Recognition",
+      "description": "Haar-cascade face and eye detection that can also save and recognise faces by name.",
+      "url": "https://github.com/simarpreetsingh-019/face-recognition--girlscript-jaipur-project-",
+      "keywords": [
+        "OpenCV"
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "name": "Detecting Geometrical Shapes in an Image using OpenCV",
+      "url": "https://medium.com/simply-dev/detecting-geometrical-shapes-in-an-image-using-opencv-bad67c40174f",
+      "releaseDate": "May 2020"
+    },
+    {
+      "name": "Paying ATTN Might Just Be the Next Alpha: The Rise of AttentionCoins",
+      "url": "https://medium.com/@simarpreetsingh.019/paying-attn-might-just-be-the-next-alpha-the-rise-of-attentioncoins-attention-is-all-you-13b6c2bbb5f0",
+      "releaseDate": "May 2025"
+    },
+    {
+      "name": "What is Canny Edge Detection?",
+      "url": "https://medium.com/simply-dev/what-is-canny-edge-detection-cfefa272a8d0",
+      "releaseDate": "Apr 2020"
+    },
+    {
+      "name": "Why Arbitrum Stands Out: A Developer's Perspective on Ethereum Scaling",
+      "url": "https://medium.com/@simarpreetsingh.019/why-arbitrum-stands-out-a-developers-perspective-on-ethereum-scaling-f9121124d073",
+      "releaseDate": "Feb 2025"
+    },
+    {
+      "name": "Getting Started with Python",
+      "url": "https://medium.com/simply-dev/getting-started-with-python-c22347a78403",
+      "releaseDate": "Feb 2022"
+    },
+    {
+      "name": "A New Chapter in Blockchain: The Story of Berachain",
+      "url": "https://medium.com/@simarpreetsingh.019/a-new-chapter-in-blockchain-the-story-of-berachain-76768d21e40b",
+      "releaseDate": "Feb 2025"
+    },
+    {
+      "name": "Learning JavaScript & Sharing What I Know, Part 1",
+      "url": "https://medium.com/simply-dev/learning-javascript-sharing-what-i-know-about-it-lets-see-where-it-goes-part-1-2254c369d56a",
+      "releaseDate": "Mar 2025"
+    },
+    {
+      "name": "How Eco Revamps Stablecoin Transactions",
+      "url": "https://medium.com/@simarpreetsingh.019/the-revolution-of-onchain-interactions-how-eco-revamps-stablecoin-transactions-9961b73b50ba",
+      "releaseDate": "Jan 2025"
+    },
+    {
+      "name": "OnePlus 7T: My Best Companion",
+      "url": "https://medium.com/@simarpreetsingh.019/oneplus-7t-my-best-companion-660f75229f44",
+      "releaseDate": "Apr 2020"
+    }
+  ],
+  "meta": {
+    "lastModified": "2026-09-30"
+  }
+}

@@ -1,0 +1,46 @@
+# Simarpreet Singh
+
+> Simarpreet Singh is a developer advocate, developer relations lead, community builder and technical educator from New Delhi, India. 12K+ developers engaged, 1,000+ builders mentored, 150+ workshops. Partnerships, GTM and ecosystem growth across Web2, AI and Web3.
+
+Roles: Developer Advocate · Developer Relations (DevRel) Lead · Developer Evangelist · Community Builder · Technical Educator · Partnerships & Ecosystem Lead · Go-To-Market (GTM) Lead
+Location: New Delhi, India
+Email: simarpreetsingh.019@gmail.com
+Website: https://simarpreetsingh-019.github.io/
+
+## Summary
+I love the moment a developer goes from “what is this?” to “I just shipped it.” I sit between the teams who build developer tools and the developers who use them, turning complex products into workshops, demos and docs, and developer feedback into product fixes.
+
+I'm Simarpreet, Partnership & Ecosystem Lead at SOULVERSE, where we are building the trust layer that connects identity, credentials, compliance and payments.
+
+Before that, I spent 2.5 years leading Developer Relations at Tezos India and evangelising Etherlink, an EVM rollup on Tezos. I ran workshops across India and Southeast Asia, scaled the TezAsia hackathon from 1,500 to 13,000+ participants, and co-created a credit-based blockchain course with the University of the Philippines.
+
+Alongside that, I run Web3Panjab, a grassroots community onboarding North India to Web3, and a YouTube series on building with Sui from a Solidity developer's perspective. I hold a B.Tech in Computer Science and Engineering from GTBIT, Guru Gobind Singh Indraprastha University (2018–2022).
+
+## Key numbers
+- 12K+ developers engaged
+- 1,000+ builders mentored
+- 150+ workshops & university sessions
+- 60+ hackathons partnered
+- 15+ college blockchain clubs set up
+- 10+ hackathons judged
+
+## Current and recent roles
+- Partnership & Ecosystem Lead, SOULVERSE (Jul 2026 — Present)
+- India Lead, PizzaDAO (2025 — Present)
+- Lead Developer Relations, Tezos India (Oct 2022 — Mar 2025)
+- Developer Advocate, Etherlink — L2 on Tezos (Jan 2024 — Apr 2025)
+- Founder & Independent Consultant, Web3Panjab (Jul 2022 — Present)
+- Research Trainee, DRDO — Scientific Analysis Group (Feb 2022 — Jul 2022)
+
+## Links
+- X / Twitter: https://x.com/simarpreet_019
+- LinkedIn: https://linkedin.com/in/simarpreetsingh019
+- GitHub: https://github.com/simarpreetsingh-019
+- YouTube: https://youtube.com/@simarpreet019
+- Medium: https://medium.com/@simarpreetsingh.019
+- Telegram: https://t.me/simarpreet_019
+- All links: https://bio.link/simarpreetsingh
+- Full profile for AI assistants: https://simarpreetsingh-019.github.io/llms-full.txt
+- Résumé (JSON): https://simarpreetsingh-019.github.io/profile.json
+- Developer evangelist résumé (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Developer-Evangelist-Resume.pdf
+- Web3 DevRel résumé (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Resume.pdf
