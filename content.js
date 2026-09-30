@@ -70,7 +70,7 @@ window.SITE = {
     keywords: [
       "developer advocate", "developer relations", "DevRel", "developer evangelist", "community builder",
       "technical educator", "developer experience", "ecosystem lead", "partnerships", "GTM", "hackathons",
-      "workshops", "Web3", "Web2", "AI", "Tezos", "Etherlink", "Sui", "India", "New Delhi",
+      "workshops", "Web3", "Web2", "AI", "Tezos", "Etherlink", "Sui", "India", "New Delhi" , "Web3 Punjab",, "Web3Panjab", "Punjab", 
     ],
   },
 
@@ -134,8 +134,8 @@ window.SITE = {
     label: "[ WHO AM I ]",
     title: "Part engineer, part *community* builder.",
     paragraphs: [
-      "I'm Simarpreet, Partnership & Ecosystem Lead at SOULVERSE, where we are building the trust layer that connects identity, credentials, compliance and payments.",
-      "Before that, I spent 2.5 years leading Developer Relations at Tezos India and evangelising Etherlink, an EVM rollup on Tezos. I ran workshops across India and Southeast Asia, scaled the TezAsia hackathon from 1,500 to 13,000+ participants, and co-created a credit-based blockchain course with the University of the Philippines.",
+      "I'm Simarpreet, Partnership & Ecosystem Lead at SOULVERSE, building the trust layer that connects identity, credentials, compliance and payments.",
+      "Before that, I spent 2.6 years leading Developer Relations at Tezos India and evangelising Etherlink, an EVM rollup on Tezos. I ran workshops across India and Southeast Asia, scaled the TezAsia hackathon from 1,500 to 13,000+ participants, and co-created a credit-based blockchain course with the University of the Philippines.",
       "Alongside that, I run Web3Panjab, a grassroots community onboarding North India to Web3, and a YouTube series on building with Sui from a Solidity developer's perspective. I hold a B.Tech in Computer Science and Engineering from GTBIT, Guru Gobind Singh Indraprastha University (2018–2022).",
     ],
     photo: "https://pbs.twimg.com/media/HS6uh2aaEAA7T54.jpg?name=medium",
@@ -207,9 +207,9 @@ window.SITE = {
         period: "2025 — Present",
         location: "PAN India",
         points: [
-          "Managed and hosted 40+ in-person events across India for Bitcoin Pizza Day, all running at the same time on the same day.",
           "Spent two months planning India's edition of the Global Bitcoin Pizza Party with the PizzaDAO team.",
-          "Co-hosted PizzaDAO's community party during ETHGlobal New Delhi and helped execute its Delhi event.",
+          "Managed and hosted 40+ in-person events across India for Bitcoin Pizza Day, all running at the same time on the same day.",
+          "Co-hosted EVVM & PizzaDAO's community party during ETHGlobal New Delhi and helped execute its Delhi event.",
         ],
         tags: ["Community", "IRL Events", "Operations", "Web3"],
       },
@@ -564,7 +564,7 @@ window.SITE = {
       { name: "DevRel & Community", topic: "all", items: ["Developer Relations", "Developer onboarding", "Developer experience", "Workshops", "Hackathons", "Docs & starter kits", "Live training", "Certification design", "POC development", "Hackathon mentoring", "Technical writing", "Public speaking", "Partnerships", "GTM"] },
       { name: "Web2 & Frontend", topic: "web2", items: ["Python", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Node.js", "REST APIs", "Supabase", "Vercel", "Web scraping", "Git & GitHub", "C++", "Java"] },
       { name: "AI & ML", topic: "ai", items: ["Cursor", "Claude", "v0 (Vercel)", "LLM APIs", "AI agent frameworks (exploring)", "Python", "OpenCV", "Image processing", "Computer vision", "Seq2Seq & attention models"] },
-      { name: "Web3", topic: "web3", items: ["Solidity", "SmartPy", "Move", "Rust", "Ethers.js", "Hardhat", "Foundry", "Remix", "Thirdweb", "OpenZeppelin", "Taquito.js", "Beacon SDK", "Web3.js", "Tezos", "Etherlink", "Ethereum / EVM", "Sui", "Aptos", "Arbitrum", "Berachain", "Miden", "Sei", "Monad"] },
+      { name: "Web3", topic: "web3", items: ["Solidity", "SmartPy", "Move", "Ethers.js", "Hardhat", "Foundry", "Remix", "Thirdweb", "OpenZeppelin", "Taquito.js", "Beacon SDK", "Web3.js", "Tezos", "Etherlink", "Ethereum / EVM", "Sui", "Aptos", "Arbitrum", "Berachain", "Miden", "Sei", "Monad"] },
     ],
   },
 
