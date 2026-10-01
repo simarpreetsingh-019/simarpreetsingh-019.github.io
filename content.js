@@ -203,7 +203,7 @@ window.SITE = {
       {
         company: "PizzaDAO",
         url: "https://x.com/Pizza_DAO",
-        role: "India Lead",
+        role: "India Lead - Underboss",
         period: "2025 — Present",
         location: "PAN India",
         points: [
@@ -593,6 +593,6 @@ window.SITE = {
   ],
 
   footer: {
-    line: "Built with plain HTML, CSS & JS. No backend, no drama.",
+    line: "Built with love, coffee & drama.",
   },
 };
