@@ -457,17 +457,7 @@ window.SITE = {
     text: "Workshops, explainers and stage talks from the last few years. Pick a channel, press play and watch it right here on the page.",
     cta: { label: "YouTube channel", href: "https://youtube.com/@simarpreet019" },
     channels: [
-      {
-        name: "Solidity → Move",
-        blurb: "A Solidity dev learns Sui Move, out loud.",
-        playlist: "https://www.youtube.com/playlist?list=PLNO985wwQsV5ZJfMe8NUg81aWo1Kkn5Rp",
-        items: [
-          { id: "6u9tOdSCmIs", title: "What is Move lang: from Solidity to Move, a dev's perspective", duration: "14:42" },
-          { id: "u3LAXnwkj4A", title: "What is Sui Move?", duration: "31:06" },
-          { id: "E190cj6JjZ0", title: "Sui SIP 6 explained: StakedSui", duration: "8:11" },
-        ],
-      },
-      {
+       {
         name: "Dapp Breakdown",
         blurb: "Short explainers on protocols worth knowing.",
         playlist: "https://www.youtube.com/playlist?list=PLNO985wwQsV7dz8UVeNQmBzpI1tM-PTuv",
@@ -480,18 +470,19 @@ window.SITE = {
           { id: "iDYPuabLJh8", title: "StealthVote: anonymous voting with Miden SDK ZK proofs", duration: "2:12" },
         ],
       },
-      {
+
+       {
         name: "On Stage",
         blurb: "Tezos & Etherlink workshops, hackathons and conference talks.",
         playlist: "https://www.youtube.com/playlist?list=PLNO985wwQsV5BMBRIO4ZHddWqkjQfSqxG",
         items: [
-          { id: "1vixLGDBWKk", title: "Etherlink: a step towards the future", duration: "1:16:22", by: "Tezos JH", featured: true },
-          { id: "3kMPb0g-LS4", title: "TezAsia Hackathon 2023: Kickoff Event", duration: "48:12", by: "Tezos India", featured: true },
           { id: "7aixfHAJ0vA", title: "Unlocking Metaverse-as-a-Service (Web3Conf)", duration: "39:12", by: "Web3Conf India", featured: true },
           { id: "RiPHJDR5Ng0", title: "Get Started with Etherlink at Hack4Bengal 3.0", duration: "1:13:08", by: "Hack4Bengal", featured: true },
           { id: "Vob3wCOYqJI", title: "Etherlink Workshop with Tezos India", duration: "1:23:38", by: "Crash Talks", featured: true },
           { id: "5A0tR9XGCnw", title: "Intro to Etherlink at CodeWave Hub", duration: "55:57", by: "CodeWave Hub", featured: true },
           { id: "Rhox07X9-iw", title: "SmartPy and Tezos Workshop, Tezos Club SATI", duration: "1:09:20", by: "NextGen Code", featured: true },
+          { id: "1vixLGDBWKk", title: "Etherlink: a step towards the future", duration: "1:16:22", by: "Tezos JH", featured: true },
+          { id: "3kMPb0g-LS4", title: "TezAsia Hackathon 2023: Kickoff Event", duration: "48:12", by: "Tezos India", featured: true },
           { id: "fbqA2u741qU", title: "Tezos India Hackathon: SmartPy at Hansraj College, Part 1", duration: "49:07", by: "Web3 Entirety" },
           { id: "pznhBUJ3OI0", title: "Tezos India Hackathon: SmartPy at Hansraj College, Part 2", duration: "44:28", by: "Web3 Entirety" },
           { id: "N-adfu-rM14", title: "Web3 using Tezos webinar at DSU DevHack 2024", duration: "58:08", by: "DSU DevHack" },
@@ -504,6 +495,18 @@ window.SITE = {
           { id: "NenHLrSWgJQ", title: "Demo Day: TezAsia Hackathon 3.0", duration: "2:42:03", by: "Tezos India" },
         ],
       },
+       
+      {
+        name: "Solidity → Move",
+        blurb: "A Solidity dev learns Sui Move, out loud.",
+        playlist: "https://www.youtube.com/playlist?list=PLNO985wwQsV5ZJfMe8NUg81aWo1Kkn5Rp",
+        items: [
+          { id: "6u9tOdSCmIs", title: "What is Move lang: from Solidity to Move, a dev's perspective", duration: "14:42" },
+          { id: "u3LAXnwkj4A", title: "What is Sui Move?", duration: "31:06" },
+          { id: "E190cj6JjZ0", title: "Sui SIP 6 explained: StakedSui", duration: "8:11" },
+        ],
+      },
+      
     ],
     // The collage under the TV shows every video marked  featured: true
     reel: { label: "[ HIGHLIGHT REEL ]", title: "Mic check, *on stage*." },
