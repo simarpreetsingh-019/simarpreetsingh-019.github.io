@@ -50,5 +50,5 @@ Worked with / spoke at: Tezos India, Etherlink, SOULVERSE, PizzaDAO, GDG New Del
 - Story: https://simarpreetsingh-019.github.io/story/ (The story of developer advocate Simarpreet Singh in five chapters, from student hackathons to leading DevRel at Tezos India and running India-wide events, plus notes from X.)
 - Full profile for AI assistants: https://simarpreetsingh-019.github.io/llms-full.txt
 - Résumé (JSON): https://simarpreetsingh-019.github.io/profile.json
-- Developer evangelist résumé (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Developer-Evangelist-Resume.pdf
-- Web3 DevRel version (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Resume.pdf
+- Software developer résumé (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Software-Developer-Resume.pdf
+- Developer advocate version (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Developer-Evangelist-Resume.pdf

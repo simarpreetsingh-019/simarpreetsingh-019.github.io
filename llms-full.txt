@@ -50,8 +50,8 @@ Worked with / spoke at: Tezos India, Etherlink, SOULVERSE, PizzaDAO, GDG New Del
 - Story: https://simarpreetsingh-019.github.io/story/ (The story of developer advocate Simarpreet Singh in five chapters, from student hackathons to leading DevRel at Tezos India and running India-wide events, plus notes from X.)
 - Full profile for AI assistants: https://simarpreetsingh-019.github.io/llms-full.txt
 - Résumé (JSON): https://simarpreetsingh-019.github.io/profile.json
-- Developer evangelist résumé (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Developer-Evangelist-Resume.pdf
-- Web3 DevRel version (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Resume.pdf
+- Software developer résumé (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Software-Developer-Resume.pdf
+- Developer advocate version (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Developer-Evangelist-Resume.pdf
 
 ## What I bring to any developer team
 - **Developer onboarding** — −40% onboarding questions. Starter kits, CLI walkthroughs and explainer videos cut repeat onboarding questions on Discord by 40%.
@@ -150,7 +150,7 @@ Feb 2022 — Jul 2022 · New Delhi
 - 2019 — First hackathon win: Won 3rd prize at HackGTBIT and was a Top-5 Campus Ambassador for ESYA '19 at IIIT Delhi. The hackathon bug bit hard.
 
 ## Projects
-- **QuestPass** (Community app · Devcon 8) — A side-quest companion for Devcon 8 in Mumbai: pin a digital boarding pass, find people flying in from your city, browse and submit side events, swap contacts by QR and collect NFC stamps around the city. Powered by Web3Panjab. Built with: Cloudflare, QR codes, NFC stamps, Animated GIFs, vCard / CSV export, Claude. https://questpass.live
+- **QuestPass** (Founder · full-stack · Devcon 8) — An event engagement platform launched at Devcon 8 Mumbai: 65+ attendee passes from 30+ cities and 138 side events and stamp spots. QR connect with consent-based contact sharing, a filterable People directory, organiser event submissions with Luma and CSV imports, and an NFC stamp hunt with a leaderboard. Built with: TypeScript, Docker, Google Cloud, Cloudflare Tunnel, NFC, Claude Code. https://questpass.live
 - **SuiSips** (Next.js · Client build) — A production SIP tracker and community platform for the Sui ecosystem: proposals synced from GitHub, discussions, articles, videos and a curated tweet wall. Built with Next.js, React Markdown and Tailwind CSS. https://suisips.com
 - **Miden SDK Simulator** (React · Miden SDK) — An interactive demo of anonymous, privacy-preserving voting on Miden's ZK rollup SDK. Scoped, built and shipped with no prior Miden experience, to show how any new SDK becomes learnable through a working demo. https://sim-miden-demo-main.vercel.app/
 - **JSON API Visualizer** (Next.js · Live tool) — Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0. https://json-visual.vercel.app
@@ -207,7 +207,7 @@ Feb 2022 — Jul 2022 · New Delhi
 
 ## Skills
 - DevRel & Community: Developer Relations, Developer onboarding, Developer experience, Workshops, Hackathons, Docs & starter kits, Live training, Certification design, POC development, Hackathon mentoring, Technical writing, Public speaking, Partnerships, GTM
-- Web2 & Frontend: Python, JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, REST APIs, Supabase, Vercel, Web scraping, Git & GitHub, C++, Java
+- Web2 & Frontend: Python, JavaScript, TypeScript, React, Next.js, Tailwind CSS, Zustand, Zod, Node.js, REST APIs, Supabase, Docker, Google Cloud, Cloudflare, Vercel, Web scraping, Git & GitHub, C++, Java
 - AI & ML: Cursor, Claude, v0 (Vercel), LLM APIs, AI agent frameworks (exploring), Python, OpenCV, Image processing, Computer vision, Seq2Seq & attention models
 - Web3: Solidity, SmartPy, Move, Ethers.js, Hardhat, Foundry, Remix, Thirdweb, OpenZeppelin, Taquito.js, Beacon SDK, Web3.js, Tezos, Etherlink, Ethereum / EVM, Sui, Aptos, Arbitrum, Berachain, Miden, Sei, Monad
 

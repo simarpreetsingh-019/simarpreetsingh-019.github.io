@@ -1127,3 +1127,5 @@ a.lore__item.reveal.in:hover { transform: rotate(0) translate(-3px, -3px); }
 .stack li { font-family: var(--f-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border: 1.5px dashed var(--ink); border-radius: 999px; color: var(--ink-soft); }
 .ql__body .stack { margin: -6px 0 16px; }
 @media (max-width: 600px) { .stack li { font-size: 12.5px; } }
+/* About photo: show the whole yearbook picture */
+.polaroid img { aspect-ratio: 4 / 5; }

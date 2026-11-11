@@ -147,8 +147,8 @@ window.SITE = {
       label: "Download résumé",
       // The FIRST file is the one-click button; the others show as a small "or …" link under it.
       options: [
-        { label: "Developer evangelist résumé", href: "assets/docs/Simarpreet-Singh-Developer-Evangelist-Resume.pdf" },
-        { label: "Web3 DevRel version", href: "assets/docs/Simarpreet-Singh-Resume.pdf" },
+        { label: "Software developer résumé", href: "assets/docs/Simarpreet-Singh-Software-Developer-Resume.pdf" },
+        { label: "Developer advocate version", href: "assets/docs/Simarpreet-Singh-Developer-Evangelist-Resume.pdf" },
       ],
     },
   },
@@ -195,7 +195,7 @@ window.SITE = {
       "I'm Simarpreet, a developer advocate and DevRel lead. For two and a half years I led Developer Relations at Tezos India and evangelised Etherlink, its EVM rollup, across India and Southeast Asia. Most recently I was Partnership & Ecosystem Lead at SOULVERSE, working on a trust layer for identity, credentials, compliance and payments. I'm now open to software developer and DevRel roles.",
       "Outside work I run Web3Panjab, a grassroots community onboarding North India to Web3, and a YouTube series on building with Sui from a Solidity developer's perspective. B.Tech in Computer Science and Engineering, GTBIT, Guru Gobind Singh Indraprastha University (2018–2022).",
     ],
-    photo: "https://pbs.twimg.com/media/HS6uh2aaEAA7T54.jpg?name=medium",
+    photo: "assets/img/solana-high-2026.jpg",
     photoFallback: "assets/img/night.jpg", // used if the photo above can't load
     photoAlt: "Simarpreet in a Solana High yearbook photo: most likely to host an event and find the photos later",
     photoLink: "https://x.com/simarpreet_019/status/2102809979434770561",
@@ -418,8 +418,8 @@ window.SITE = {
     title: "Things I've *built*.",
     featured: 4, // how many big cards before the ring
     items: [
-      { name: "QuestPass", topic: "web3", kind: "Community app · Devcon 8", text: "A side-quest companion for Devcon 8 in Mumbai: pin a digital boarding pass, find people flying in from your city, browse and submit side events, swap contacts by QR and collect NFC stamps around the city. Powered by Web3Panjab.", url: "https://questpass.live",
-        stack: ["Cloudflare", "QR codes", "NFC stamps", "Animated GIFs", "vCard / CSV export", "Claude"] },
+      { name: "QuestPass", topic: "web3", kind: "Founder · full-stack · Devcon 8", text: "An event engagement platform launched at Devcon 8 Mumbai: 65+ attendee passes from 30+ cities and 138 side events and stamp spots. QR connect with consent-based contact sharing, a filterable People directory, organiser event submissions with Luma and CSV imports, and an NFC stamp hunt with a leaderboard.", url: "https://questpass.live",
+        stack: ["TypeScript", "Docker", "Google Cloud", "Cloudflare Tunnel", "NFC", "Claude Code"] },
       { name: "SuiSips", topic: "web3", kind: "Next.js · Client build", text: "A production SIP tracker and community platform for the Sui ecosystem: proposals synced from GitHub, discussions, articles, videos and a curated tweet wall. Built with Next.js, React Markdown and Tailwind CSS.", url: "https://suisips.com" },
       { name: "Miden SDK Simulator", topic: "web3", kind: "React · Miden SDK", text: "An interactive demo of anonymous, privacy-preserving voting on Miden's ZK rollup SDK. Scoped, built and shipped with no prior Miden experience, to show how any new SDK becomes learnable through a working demo.", url: "https://sim-miden-demo-main.vercel.app/" },
       { name: "JSON API Visualizer", topic: "web2", kind: "Next.js · Live tool", text: "Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0.", url: "https://json-visual.vercel.app" },
@@ -658,7 +658,7 @@ window.SITE = {
     // topic: "all" groups never fade; "web2" / "ai" / "web3" groups light up with the filter chips.
     groups: [
       { name: "DevRel & Community", topic: "all", items: ["Developer Relations", "Developer onboarding", "Developer experience", "Workshops", "Hackathons", "Docs & starter kits", "Live training", "Certification design", "POC development", "Hackathon mentoring", "Technical writing", "Public speaking", "Partnerships", "GTM"] },
-      { name: "Web2 & Frontend", topic: "web2", items: ["Python", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Node.js", "REST APIs", "Supabase", "Vercel", "Web scraping", "Git & GitHub", "C++", "Java"] },
+      { name: "Web2 & Frontend", topic: "web2", items: ["Python", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Zustand", "Zod", "Node.js", "REST APIs", "Supabase", "Docker", "Google Cloud", "Cloudflare", "Vercel", "Web scraping", "Git & GitHub", "C++", "Java"] },
       { name: "AI & ML", topic: "ai", items: ["Cursor", "Claude", "v0 (Vercel)", "LLM APIs", "AI agent frameworks (exploring)", "Python", "OpenCV", "Image processing", "Computer vision", "Seq2Seq & attention models"] },
       { name: "Web3", topic: "web3", items: ["Solidity", "SmartPy", "Move", "Ethers.js", "Hardhat", "Foundry", "Remix", "Thirdweb", "OpenZeppelin", "Taquito.js", "Beacon SDK", "Web3.js", "Tezos", "Etherlink", "Ethereum / EVM", "Sui", "Aptos", "Arbitrum", "Berachain", "Miden", "Sei", "Monad"] },
     ],

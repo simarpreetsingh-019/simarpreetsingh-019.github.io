@@ -163,9 +163,14 @@
         "React",
         "Next.js",
         "Tailwind CSS",
+        "Zustand",
+        "Zod",
         "Node.js",
         "REST APIs",
         "Supabase",
+        "Docker",
+        "Google Cloud",
+        "Cloudflare",
         "Vercel",
         "Web scraping",
         "Git & GitHub",
@@ -219,16 +224,16 @@
   "projects": [
     {
       "name": "QuestPass",
-      "description": "A side-quest companion for Devcon 8 in Mumbai: pin a digital boarding pass, find people flying in from your city, browse and submit side events, swap contacts by QR and collect NFC stamps around the city. Powered by Web3Panjab.",
+      "description": "An event engagement platform launched at Devcon 8 Mumbai: 65+ attendee passes from 30+ cities and 138 side events and stamp spots. QR connect with consent-based contact sharing, a filterable People directory, organiser event submissions with Luma and CSV imports, and an NFC stamp hunt with a leaderboard.",
       "url": "https://questpass.live",
       "keywords": [
-        "Community app · Devcon 8",
-        "Cloudflare",
-        "QR codes",
-        "NFC stamps",
-        "Animated GIFs",
-        "vCard / CSV export",
-        "Claude"
+        "Founder · full-stack · Devcon 8",
+        "TypeScript",
+        "Docker",
+        "Google Cloud",
+        "Cloudflare Tunnel",
+        "NFC",
+        "Claude Code"
       ]
     },
     {
