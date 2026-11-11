@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Simarpreet Singh",
-    "label": "Developer Advocate · Developer Relations (DevRel) Lead · Developer Evangelist · Community Builder · Technical Educator · Partnerships & Ecosystem Lead · Go-To-Market (GTM) Lead",
+    "label": "Developer Advocate · Developer Relations (DevRel) Lead · Software Developer · Developer Evangelist · Community Builder · Technical Educator · Partnerships & Ecosystem Lead · Go-To-Market (GTM) Lead",
     "email": "simarpreetsingh.019@gmail.com",
     "url": "https://simarpreetsingh-019.github.io/",
     "summary": "I love the moment a developer goes from “what is this?” to “I just shipped it.” I sit between the teams who build developer tools and the developers who use them, turning complex products into workshops, demos and docs, and developer feedback into product fixes.",
@@ -55,20 +55,21 @@
       "position": "Partnership & Ecosystem Lead",
       "url": "https://soulverse.us",
       "startDate": "Jul 2026",
+      "endDate": "Oct 2026",
       "highlights": [
-        "Leading partnerships and ecosystem growth for trust infrastructure spanning identity, credentials, validation and settlement.",
-        "Working across RWA, digital assets and tokenization to bring programmable trust into fintech and Web3 products."
+        "Led partnerships and ecosystem growth for trust infrastructure spanning identity, credentials, validation and settlement.",
+        "Worked across RWA, digital assets and tokenization to bring programmable trust into fintech and Web3 products."
       ]
     },
     {
       "name": "PizzaDAO",
-      "position": "India Lead",
+      "position": "India Lead · Underboss",
       "url": "https://x.com/Pizza_DAO",
       "startDate": "2025",
       "highlights": [
-        "Managed and hosted 40+ in-person events across India for Bitcoin Pizza Day, all running at the same time on the same day.",
         "Spent two months planning India's edition of the Global Bitcoin Pizza Party with the PizzaDAO team.",
-        "Co-hosted PizzaDAO's community party during ETHGlobal New Delhi and helped execute its Delhi event."
+        "Managed and hosted 40+ in-person events across India for Bitcoin Pizza Day, all running at the same time on the same day.",
+        "Co-hosted EVVM & PizzaDAO's community party during ETHGlobal New Delhi and helped execute its Delhi event."
       ]
     },
     {
@@ -76,7 +77,7 @@
       "position": "Lead Developer Relations",
       "url": "https://in.linkedin.com/company/tezos-india-foundation",
       "startDate": "Oct 2022",
-      "endDate": "Mar 2025",
+      "endDate": "Apr 2025",
       "highlights": [
         "Owned developer relations for Tezos L1 and was then entrusted to lead developer advocacy for Etherlink (EVM L2) in India, expanding into onboarding, ecosystem programs and technical enablement.",
         "Grew ecosystem developer activity 4×, from 3,000 to 12,000+ engaged developers, through workshops, developer clubs and onboarding series.",
@@ -162,9 +163,14 @@
         "React",
         "Next.js",
         "Tailwind CSS",
+        "Zustand",
+        "Zod",
         "Node.js",
         "REST APIs",
         "Supabase",
+        "Docker",
+        "Google Cloud",
+        "Cloudflare",
         "Vercel",
         "Web scraping",
         "Git & GitHub",
@@ -193,7 +199,6 @@
         "Solidity",
         "SmartPy",
         "Move",
-        "Rust",
         "Ethers.js",
         "Hardhat",
         "Foundry",
@@ -218,6 +223,20 @@
   ],
   "projects": [
     {
+      "name": "QuestPass",
+      "description": "An event engagement platform launched at Devcon 8 Mumbai: 65+ attendee passes from 30+ cities and 138 side events and stamp spots. QR connect with consent-based contact sharing, a filterable People directory, organiser event submissions with Luma and CSV imports, and an NFC stamp hunt with a leaderboard.",
+      "url": "https://questpass.live",
+      "keywords": [
+        "Founder · full-stack · Devcon 8",
+        "TypeScript",
+        "Docker",
+        "Google Cloud",
+        "Cloudflare Tunnel",
+        "NFC",
+        "Claude Code"
+      ]
+    },
+    {
       "name": "SuiSips",
       "description": "A production SIP tracker and community platform for the Sui ecosystem: proposals synced from GitHub, discussions, articles, videos and a curated tweet wall. Built with Next.js, React Markdown and Tailwind CSS.",
       "url": "https://suisips.com",
@@ -234,6 +253,14 @@
       ]
     },
     {
+      "name": "JSON API Visualizer",
+      "description": "Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0.",
+      "url": "https://json-visual.vercel.app",
+      "keywords": [
+        "Next.js · Live tool"
+      ]
+    },
+    {
       "name": "Etherlink Project Showcase",
       "description": "A showcase repo spotlighting dApps built on Tezos and Etherlink after hackathons, alongside demo apps for workshop attendees.",
       "url": "https://github.com/simarpreetsingh-019/TIProjects",
@@ -247,14 +274,6 @@
       "url": "https://github.com/simarpreetsingh-019/TIProjects/tree/main/Gitfund",
       "keywords": [
         "Web3 · OSS"
-      ]
-    },
-    {
-      "name": "JSON API Visualizer",
-      "description": "Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0.",
-      "url": "https://json-visual.vercel.app",
-      "keywords": [
-        "Next.js · Live tool"
       ]
     },
     {
@@ -338,6 +357,6 @@
     }
   ],
   "meta": {
-    "lastModified": "2026-09-30"
+    "lastModified": "2026-11-11"
   }
 }

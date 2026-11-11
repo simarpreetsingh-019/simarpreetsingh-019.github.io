@@ -12,24 +12,27 @@
 
    FIND A SECTION FAST — search this file (Ctrl/Cmd + F) for the marker:
      ✏️ EDIT: THEME         accent colour: "daily", "orange" or "blue"
+     ✏️ EDIT: MENU & PAGES  top menu + the Talks / Writing / Story pages
      ✏️ EDIT: BASICS        page title, name, email, photo, résumé
      ✏️ EDIT: HERO          status bar, big headline, intro, stickers
      ✏️ EDIT: STATS         the six big numbers under the hero
-     ✏️ EDIT: MARQUEE       the scrolling black strip
+     ✏️ EDIT: LOGOS         "Worked with · spoke at" names in the black strip
      ✏️ EDIT: ABOUT         "Who am I" text + photo
      ✏️ EDIT: PLAYBOOK      "What I bring to any dev team" cards + badges
      ✏️ EDIT: WORK          jobs / roles
-     ✏️ EDIT: LORE          the year-by-year origin story (newest first)
-     ✏️ EDIT: PROJECTS      project cards
+     ✏️ EDIT: LORE          the origin-story tree (newest first)
+     ✏️ EDIT: PROJECTS      project cards + the rotating ring
      ✏️ EDIT: ARTICLES      the magazine (first item = cover story)
-     ✏️ EDIT: VIDEOS        Simar's TV channels + highlight reel
-     ✏️ EDIT: X POSTS       posts from X / Twitter
-     ✏️ EDIT: TOOLKIT       skills
-     ✏️ EDIT: CONTACT       contact text + Formspree form
+     ✏️ EDIT: VIDEOS        Simar's TV channels + "Mic check" puzzle
+     ✏️ EDIT: X POSTS       notes on the cork board
+     ✏️ EDIT: TESTIMONIALS  quotes from people you've worked with
+     ✏️ EDIT: TOOLKIT       skills (shown inside the Playbook section)
+     ✏️ EDIT: CONTACT       contact text, "open to" doors, Formspree form
      ✏️ EDIT: SOCIALS       social links (contact section + footer)
 
    HANDY TRICKS
    • Hide a whole section: set  show: false  in it (its menu link disappears).
+   • Top menu and extra pages: see ✏️ EDIT: MENU & PAGES.
    • *word*  → blue hand-drawn underline.   ~word~ → orange highlight block.
    • Images: drop the file into /assets/img and write "assets/img/name.jpg",
      or paste a full image URL (https://…).
@@ -52,6 +55,46 @@ window.SITE = {
     { id: "ai", label: "AI & ML" },
   ],
 
+  /* ✏️ EDIT: MENU & PAGES ----------------------------------------------
+     The site is a short home page plus three extra pages.
+     menu  = the top menu. "#work" jumps to a home section, "talks/" opens a page.
+     pages = the extra pages: what each one shows ("sections") and what
+             Google, link previews and AI assistants see (title, description,
+             ogImage = the 1200×630 picture shown when that page's link is shared).
+             After changing pages, the build step regenerates the page files
+             (it runs on every deploy).                                      */
+  menu: [
+    { label: "About", href: "#about" },
+    { label: "Work", href: "#work" },
+    { label: "Projects", href: "#projects" },
+    { label: "Talks", href: "talks/" },
+    { label: "Writing", href: "writing/" },
+    { label: "Story", href: "story/" },
+  ],
+  pages: [
+    {
+      id: "talks", path: "talks/", label: "Talks", sections: ["videos"], ogImage: "assets/img/og-talks.jpg",
+      title: "Talks & Workshops — Simarpreet Singh, Developer Advocate",
+      description: "Workshops, stage talks and explainers by developer advocate Simarpreet Singh: Etherlink, Tezos, SmartPy, Sui Move and more. Watch them right on the page.",
+      teaser: "Workshops, stage talks and explainers, playing on Simar's TV.",
+      cta: "Watch the talks",
+    },
+    {
+      id: "writing", path: "writing/", label: "Writing", sections: ["articles"], ogImage: "assets/img/og-writing.jpg",
+      title: "Writing — Articles by Simarpreet Singh",
+      description: "Articles by Simarpreet Singh on computer vision, Web3, Layer 2s, Python and JavaScript, published on Medium and dev.to.",
+      teaser: "Tutorials and explainers on Web3, AI and code.",
+      cta: "Read the paper",
+    },
+    {
+      id: "story", path: "story/", label: "Story", sections: ["lore", "posts"], ogImage: "assets/img/og-story.jpg",
+      title: "Story — Simarpreet Singh, from first hackathon to DevRel lead",
+      description: "The story of developer advocate Simarpreet Singh in five chapters, from student hackathons to leading DevRel at Tezos India and running India-wide events, plus notes from X.",
+      teaser: "Five chapters, from first hackathon to India-wide events.",
+      cta: "Read the story",
+    },
+  ],
+
   /* ✏️ EDIT: BASICS ----------------------------------------------------
      title/description = what Google and link previews show.            */
   meta: {
@@ -61,16 +104,16 @@ window.SITE = {
       "Simarpreet Singh is a developer advocate, developer relations lead, community builder and technical educator from New Delhi, India. 12K+ developers engaged, 1,000+ builders mentored, 150+ workshops. Partnerships, GTM and ecosystem growth across Web2, AI and Web3.",
     // ⚠️ Set this to your real live address after you deploy (no trailing slash).
     url: "https://simarpreetsingh-019.github.io",
-    ogImage: "assets/img/portrait.jpg",
+    ogImage: "assets/img/og.jpg", // the 1200×630 card shown when the link is shared on WhatsApp, LinkedIn, X, Slack… (swap the file to change it)
     // Roles you want to be found for (used in structured data for Google and AI search).
     roles: [
-      "Developer Advocate", "Developer Relations (DevRel) Lead", "Developer Evangelist", "Community Builder",
+      "Developer Advocate", "Developer Relations (DevRel) Lead", "Software Developer", "Developer Evangelist", "Community Builder",
       "Technical Educator", "Partnerships & Ecosystem Lead", "Go-To-Market (GTM) Lead",
     ],
     keywords: [
       "developer advocate", "developer relations", "DevRel", "developer evangelist", "community builder",
       "technical educator", "developer experience", "ecosystem lead", "partnerships", "GTM", "hackathons",
-      "workshops", "Web3", "Web2", "AI", "Tezos", "Etherlink", "Sui", "India", "New Delhi" , "Web3 Punjab",, "Web3Panjab", "Punjab", 
+      "workshops", "Web3", "Web2", "AI", "Tezos", "Etherlink", "Sui", "India", "New Delhi", "Web3 Punjab", "Web3Panjab", "Punjab",
     ],
   },
 
@@ -92,17 +135,20 @@ window.SITE = {
 
   hero: {
     // Each string is one line of the giant headline.
-    headline: ["I turn", "*curious*", "developers", "into", "~builders~."],
+    headline: ["I turn *curious*", "developers", "into", "~builders~."],
     intro:
       "I love the moment a developer goes from “what is this?” to “I just shipped it.” I sit between the teams who build developer tools and the developers who use them, turning complex products into workshops, demos and docs, and developer feedback into product fixes.",
     stickers: ["Founder, Web3Panjab", "Ex–Lead DevRel, Tezos India", "Speaker & Mentor"],
+    // Small line under the buttons. Leave empty ("") to hide it.
+    availability: "Open to software developer & DevRel roles · speaking & advisory",
+    location: "Based in New Delhi · open to remote", // second small line; "" hides it
     primaryCta: { label: "Let's talk", href: "#contact" },
     secondaryCta: {
-      label: "Download resume",
-      // Two versions: the button opens a small menu. Add or remove lines to change it.
+      label: "Download résumé",
+      // The FIRST file is the one-click button; the others show as a small "or …" link under it.
       options: [
-        { label: "Developer evangelist résumé", href: "assets/docs/Simarpreet-Singh-Developer-Evangelist-Resume.pdf" },
-        { label: "Web3 DevRel résumé", href: "assets/docs/Simarpreet-Singh-Resume.pdf" },
+        { label: "Software developer résumé", href: "assets/docs/Simarpreet-Singh-Software-Developer-Resume.pdf" },
+        { label: "Developer advocate version", href: "assets/docs/Simarpreet-Singh-Developer-Evangelist-Resume.pdf" },
       ],
     },
   },
@@ -113,16 +159,28 @@ window.SITE = {
     { value: "12K+", label: "developers engaged" },
     { value: "1,000+", label: "builders mentored" },
     { value: "150+", label: "workshops & university sessions" },
-    { value: "60+", label: "hackathons partnered" },
+    { value: "80+", label: "hackathons partnered" },
     { value: "15+", label: "college blockchain clubs set up" },
     { value: "10+", label: "hackathons judged" },
   ],
 
-  /* ✏️ EDIT: MARQUEE — words that scroll across the black strip. */
-  marquee: [
-    "Developer Relations", "Developer Experience", "Workshops", "Docs & Starter Kits", "Python", "React",
-    "Open Source", "AI & ML", "Hackathons", "Community", "Solidity", "Tezos", "Sui",
-  ],
+  /* ✏️ EDIT: LOGOS — names that scroll across the black strip under the hero.
+     Plain text (no logo images), so nothing to upload.                  */
+  logos: {
+    label: "Worked with · spoke at",
+    items: [
+      "Tezos India", "Etherlink", "SOULVERSE", "PizzaDAO", "GDG New Delhi", "Web3Conf India", "ETHIndia",
+      "ETHGlobal New Delhi", "ETHTokyo", "Hack4Bengal", "University of the Philippines", "Chandigarh University", "DRDO",
+    ],
+  },
+
+  /* ✏️ EDIT: EXPLORE — the three doors on the home page that lead to
+     the Talks, Writing and Story pages (their text comes from "pages"). */
+  explore: {
+    show: true,
+    label: "[ KEEP EXPLORING ]",
+    title: "There's *more* where that came from.",
+  },
 
   /* ✏️ EDIT: ABOUT -----------------------------------------------------
      paragraphs: one string per paragraph.
@@ -134,11 +192,10 @@ window.SITE = {
     label: "[ WHO AM I ]",
     title: "Part engineer, part *community* builder.",
     paragraphs: [
-      "I'm Simarpreet, Partnership & Ecosystem Lead at SOULVERSE, building the trust layer that connects identity, credentials, compliance and payments.",
-      "Before that, I spent 2.6 years leading Developer Relations at Tezos India and evangelising Etherlink, an EVM rollup on Tezos. I ran workshops across India and Southeast Asia, scaled the TezAsia hackathon from 1,500 to 13,000+ participants, and co-created a credit-based blockchain course with the University of the Philippines.",
-      "Alongside that, I run Web3Panjab, a grassroots community onboarding North India to Web3, and a YouTube series on building with Sui from a Solidity developer's perspective. I hold a B.Tech in Computer Science and Engineering from GTBIT, Guru Gobind Singh Indraprastha University (2018–2022).",
+      "I'm Simarpreet, a developer advocate and DevRel lead. For two and a half years I led Developer Relations at Tezos India and evangelised Etherlink, its EVM rollup, across India and Southeast Asia. Most recently I was Partnership & Ecosystem Lead at SOULVERSE, working on a trust layer for identity, credentials, compliance and payments. I'm now open to software developer and DevRel roles.",
+      "Outside work I run Web3Panjab, a grassroots community onboarding North India to Web3, and a YouTube series on building with Sui from a Solidity developer's perspective. B.Tech in Computer Science and Engineering, GTBIT, Guru Gobind Singh Indraprastha University (2018–2022).",
     ],
-    photo: "https://pbs.twimg.com/media/HS6uh2aaEAA7T54.jpg?name=medium",
+    photo: "assets/img/solana-high-2026.jpg",
     photoFallback: "assets/img/night.jpg", // used if the photo above can't load
     photoAlt: "Simarpreet in a Solana High yearbook photo: most likely to host an event and find the photos later",
     photoLink: "https://x.com/simarpreet_019/status/2102809979434770561",
@@ -148,19 +205,20 @@ window.SITE = {
   /* ✏️ EDIT: PLAYBOOK --------------------------------------------------
      "The DevRel playbook": what you bring to any developer team, each with
      one real number. Keep 6 cards so the grid stays even.
-     alsoAt = the "Also at home in…" badges under the cards.            */
+     Under the cards: the toolkit (see ✏️ EDIT: TOOLKIT) and the
+     alsoAt "Also at home in" lines.                                     */
   playbook: {
     show: true,
-    nav: "Playbook",
+    nav: "", // "" = not in the top menu (keeps the menu short)
     label: "[ THE DEVREL PLAYBOOK ]",
     title: "What I bring to *any* dev team.",
     text: "Stack-agnostic skills, proven on real developer programs. The tools change; the job of getting developers from first contact to shipped does not.",
     cards: [
       { skill: "Developer onboarding", value: "−40%", unit: "onboarding questions", text: "Starter kits, CLI walkthroughs and explainer videos cut repeat onboarding questions on Discord by 40%." },
-      { skill: "Technical education", value: "150+", unit: "workshops & sessions", text: "Mentored 1,000+ builders through structured workshops and live POC demos, and co-created a credit-backed course for 72 students at the University of the Philippines." },
+      { skill: "Technical education", value: "72", unit: "students in a credit course", text: "Co-created a credit-backed blockchain course with the University of the Philippines, alongside structured workshops and live POC demos." },
       { skill: "Developer programs", value: "75%", unit: "graduation rate", text: "Designed a two-cohort builder camp; 60+ developers stayed on as long-term contributors." },
       { skill: "Product feedback loop", value: "+24%", unit: "wallet activation", text: "Worked with wallet, explorer and protocol teams to turn developer feedback into SDK fixes, including a 24% activation lift for Naan Wallet." },
-      { skill: "Events & hackathons", value: "1.5K → 13K+", unit: "hackathon participants", text: "Scaled a flagship hackathon nearly 9×, and ran 40+ in-person community events across India on a single day." },
+      { skill: "Events & hackathons", value: "1.5K → 13K+", unit: "hackathon participants", text: "Grew a flagship hackathon nearly 9×, then ran 40+ in-person community events across India on a single day." },
       { skill: "Content & storytelling", value: "35+", unit: "articles & videos", text: "Tutorials, talks and explainers on Medium, dev.to and YouTube, written for beginners and experienced developers alike." },
     ],
     alsoAt: [
@@ -177,8 +235,11 @@ window.SITE = {
      Newest role first. To add a role, copy one { … } block (from
      "company" to the closing "},") and paste it where it belongs.
        current: true  → black "NOW" card (use on one role only)
+       compact: true  → slim row for smaller roles
        url            → optional link on the company name
        points         → bullet list;  tags → small labels
+       stepUp         → optional box inside a card for a promotion or
+                        second remit at the same company (see Tezos India)
        Links inside a bullet: wrap words like [this](https://…) and they
        become highlighted, clickable links.                           */
   experience: {
@@ -186,24 +247,27 @@ window.SITE = {
     nav: "Work", // menu label (the menu follows the order of sections on the page)
     label: "[ THE WORK ]",
     title: "Where I've *shipped*.",
+    text: "Four years of getting developers from first contact to shipped: from a college community to leading DevRel for a Layer 1 and its EVM Layer 2.",
+    showPoints: 3, // bullets shown per role before the "Show more" button (all stay on the page for Google & AI)
+    showPointsPhone: 2, // the same on phones
     items: [
       {
         company: "SOULVERSE",
         url: "https://soulverse.us",
         role: "Partnership & Ecosystem Lead",
-        period: "Jul 2026 — Present",
+        period: "Jul 2026 — Oct 2026",
         location: "Remote · New Delhi",
-        current: true,
         points: [
-          "Leading partnerships and ecosystem growth for trust infrastructure spanning identity, credentials, validation and settlement.",
-          "Working across RWA, digital assets and tokenization to bring programmable trust into fintech and Web3 products.",
+          "Led partnerships and ecosystem growth for trust infrastructure spanning identity, credentials, validation and settlement.",
+          "Worked across RWA, digital assets and tokenization to bring programmable trust into fintech and Web3 products.",
         ],
         tags: ["GTM", "Partnerships", "Digital Identity", "RWA"],
       },
       {
         company: "PizzaDAO",
         url: "https://x.com/Pizza_DAO",
-        role: "India Lead - Underboss",
+        role: "India Lead · Underboss",
+        compact: true, // slim row: first bullet only, the rest behind "Show more"
         period: "2025 — Present",
         location: "PAN India",
         points: [
@@ -217,7 +281,7 @@ window.SITE = {
         company: "Tezos India",
         url: "https://in.linkedin.com/company/tezos-india-foundation",
         role: "Lead Developer Relations",
-        period: "Oct 2022 — Mar 2025",
+        period: "Oct 2022 — Apr 2025",
         location: "Remote / Hybrid",
         points: [
           "Owned developer relations for Tezos L1 and was then entrusted to lead developer advocacy for Etherlink (EVM L2) in India, expanding into onboarding, ecosystem programs and technical enablement.",
@@ -230,19 +294,19 @@ window.SITE = {
           "Co-created a credit-based blockchain curriculum with the University of the Philippines.",
         ],
         tags: ["DevRel", "SmartPy", "Hackathons", "Education"],
-      },
-      {
-        company: "Etherlink — L2 on Tezos",
-        url: "https://etherlink.com",
-        role: "Developer Advocate",
-        period: "Jan 2024 — Apr 2025",
-        location: "Remote",
-        points: [
-          "Created Solidity-to-Etherlink transition content, including starter kits, CLI onboarding videos and gas-comparison explainers, cutting Discord onboarding queries by 40%.",
-          "Ran 30+ EVM workshops and supported 100+ hackathon submissions; 18 teams continued building with mentorship and grants.",
-          "Launched the [Etherlink Project Showcase on GitHub](https://github.com/simarpreetsingh-019/TIProjects) to spotlight dApps built after hackathons and inspire new builders.",
-        ],
-        tags: ["EVM", "Solidity", "Docs", "Workshops"],
+        // A promotion / extra remit inside the same company, shown as a box inside this card.
+        stepUp: {
+          company: "Etherlink — L2 on Tezos",
+          url: "https://etherlink.com",
+          role: "Developer Advocate",
+          period: "Jan 2024 — Apr 2025",
+          points: [
+            "Created Solidity-to-Etherlink transition content, including starter kits, CLI onboarding videos and gas-comparison explainers, cutting Discord onboarding queries by 40%.",
+            "Ran 30+ EVM workshops and supported 100+ hackathon submissions; 18 teams continued building with mentorship and grants.",
+            "Launched the [Etherlink Project Showcase on GitHub](https://github.com/simarpreetsingh-019/TIProjects) to spotlight dApps built after hackathons and inspire new builders.",
+          ],
+          tags: ["EVM", "Solidity", "Docs", "Workshops"],
+        },
       },
       {
         company: "Web3Panjab",
@@ -263,6 +327,7 @@ window.SITE = {
       {
         company: "DRDO — Scientific Analysis Group",
         role: "Research Trainee",
+        compact: true,
         period: "Feb 2022 — Jul 2022",
         location: "New Delhi",
         points: [
@@ -275,6 +340,7 @@ window.SITE = {
 
   /* ✏️ EDIT: LORE ------------------------------------------------------
      NEWEST FIRST: add new moments at the TOP of the list.
+     On the page they are grouped into the chapters listed below the title.
      Cards with the same "year" are grouped under that year automatically.
        when      → optional month/date badge, e.g. "Sep"
        url       → optional link; makes the card clickable
@@ -285,9 +351,19 @@ window.SITE = {
        { year: "2027", when: "Jan", title: "Something new", text: "One or two sentences.", url: "https://…" },   */
   lore: {
     show: true,
-    nav: "Lore", // menu label (the menu follows the order of sections on the page)
+    nav: "Story", // menu label (the menu follows the order of sections on the page)
     label: "[ ORIGIN STORY ]",
     title: "lore",
+    text: "Five chapters, from first hackathon to running India-wide events. Open any moment to read it.",
+    showPerChapter: 4, // moments shown per chapter before "more"
+    // Chapters group the moments below by year. Add a chapter when a new era starts.
+    chapters: [
+      { title: "Student hacker", years: ["2019", "2020", "2021"], blurb: "Hackathons, open source and a first taste of teaching." },
+      { title: "The Web3 leap", years: ["2022"], blurb: "From DRDO research to founding Web3Panjab and joining Tezos India." },
+      { title: "Leading DevRel", years: ["2023"], blurb: "Full-time DevRel lead: conferences, campuses and Bengaluru." },
+      { title: "Going global", years: ["2024"], blurb: "Etherlink advocacy, Tokyo, and a speaker spot at DevFest." },
+      { title: "Independent", years: ["2025", "2026"], blurb: "Web3Panjab, client builds, PizzaDAO and content." },
+    ],
     items: [
       { year: "2026", when: "May", title: "Bitcoin Pizza Day across India", text: "After two months of planning with PizzaDAO, hosted 40+ in-person Bitcoin Pizza Day events across India, all on the same day.", url: "https://x.com/simarpreet_019/status/2058184415742935451", linkLabel: "See the post ↗" },
       { year: "2026", title: "Content creation era", text: "Made creating content a consistent habit." },
@@ -331,19 +407,24 @@ window.SITE = {
 
   /* ✏️ EDIT: PROJECTS --------------------------------------------------
      One line per project: { name, topic, kind (small label), text, url }.
+     stack: optional list of tools, shown as small chips: stack: ["Next.js", "Supabase"]
      topic: "web2", "web3" or "ai" — used by the All / Web2 / Web3 / AI & ML filter.
-     Put your best project first.                                       */
+     The first `featured` projects are big cards; the rest sit on a
+     rotating ring with a Quick Look preview. Put your best projects first. */
   projects: {
     show: true,
     nav: "Projects", // menu label (the menu follows the order of sections on the page)
     label: "[ SIDE QUESTS ]",
     title: "Things I've *built*.",
+    featured: 4, // how many big cards before the ring
     items: [
+      { name: "QuestPass", topic: "web3", kind: "Founder · full-stack · Devcon 8", text: "An event engagement platform launched at Devcon 8 Mumbai: 65+ attendee passes from 30+ cities and 138 side events and stamp spots. QR connect with consent-based contact sharing, a filterable People directory, organiser event submissions with Luma and CSV imports, and an NFC stamp hunt with a leaderboard.", url: "https://questpass.live",
+        stack: ["TypeScript", "Docker", "Google Cloud", "Cloudflare Tunnel", "NFC", "Claude Code"] },
       { name: "SuiSips", topic: "web3", kind: "Next.js · Client build", text: "A production SIP tracker and community platform for the Sui ecosystem: proposals synced from GitHub, discussions, articles, videos and a curated tweet wall. Built with Next.js, React Markdown and Tailwind CSS.", url: "https://suisips.com" },
       { name: "Miden SDK Simulator", topic: "web3", kind: "React · Miden SDK", text: "An interactive demo of anonymous, privacy-preserving voting on Miden's ZK rollup SDK. Scoped, built and shipped with no prior Miden experience, to show how any new SDK becomes learnable through a working demo.", url: "https://sim-miden-demo-main.vercel.app/" },
+      { name: "JSON API Visualizer", topic: "web2", kind: "Next.js · Live tool", text: "Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0.", url: "https://json-visual.vercel.app" },
       { name: "Etherlink Project Showcase", topic: "web3", kind: "Etherlink · GitHub", text: "A showcase repo spotlighting dApps built on Tezos and Etherlink after hackathons, alongside demo apps for workshop attendees.", url: "https://github.com/simarpreetsingh-019/TIProjects" },
       { name: "Gitfund", topic: "web3", kind: "Web3 · OSS", text: "Auto-pays open-source contributors for merged PRs using programmable smart-contract logic.", url: "https://github.com/simarpreetsingh-019/TIProjects/tree/main/Gitfund" },
-      { name: "JSON API Visualizer", topic: "web2", kind: "Next.js · Live tool", text: "Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0.", url: "https://json-visual.vercel.app" },
       { name: "OverWatch TS", topic: "web2", kind: "Open source", text: "Built the initial example template for overwatch-ts, a lightweight state-management library for Next.js.", url: "https://github.com/simarpreetsingh-019/overwatch/tree/main" },
       { name: "Virtual Tweet Gallery", topic: "web2", kind: "Community tool", text: "The W3EventGallery bot collects event tweets into a shared gallery of memories.", url: "https://web3panjab.github.io/SolanaHHDilli/" },
       { name: "German → English Translator", topic: "ai", kind: "ML", text: "A Seq2Seq-with-attention tutorial implementation for German-to-English translation.", url: "https://github.com/soumyajit4419/YouthIcon" },
@@ -353,8 +434,9 @@ window.SITE = {
   },
 
   /* ✏️ EDIT: ARTICLES --------------------------------------------------
-     The FIRST item is the big cover story; the next two sit beside it;
-     the rest become taped-on cards.
+     The FIRST item is the big cover story; the next two sit beside it.
+     The rest go on "page 2": the story with the most stats leads on the
+     left (or mark one with  lead: true ), the others are tiles on the right.
        title, kicker (small red label), date, read ("4 min"), url  → required
        topic → "web2", "web3", "ai" or "other" (for the filter chips)
        image → the post's cover (on Medium: right-click the image → Copy image address)
@@ -447,17 +529,18 @@ window.SITE = {
        id       → the part after ?v= in the YouTube link
        title, duration ("12:34")
        by       → the channel that hosted it (leave out for your own uploads)
-       featured → true shows it in the "Mic check" collage (7 looks best)
+       featured → true shows it as a piece of the "Mic check" puzzle
+                  (the first 5 featured videos are used, in the order listed)
      To add a whole channel, copy a { name, blurb, playlist, items } block.  */
   videos: {
     show: true,
-    nav: "Videos", // menu label (the menu follows the order of sections on the page)
+    nav: "Talks", // menu label (the menu follows the order of sections on the page)
     label: "[ NOW PLAYING ]",
     title: "Tune in to *Simar's TV*.",
     text: "Workshops, explainers and stage talks from the last few years. Pick a channel, press play and watch it right here on the page.",
     cta: { label: "YouTube channel", href: "https://youtube.com/@simarpreet019" },
     channels: [
-       {
+      {
         name: "Dapp Breakdown",
         blurb: "Short explainers on protocols worth knowing.",
         playlist: "https://www.youtube.com/playlist?list=PLNO985wwQsV7dz8UVeNQmBzpI1tM-PTuv",
@@ -470,8 +553,7 @@ window.SITE = {
           { id: "iDYPuabLJh8", title: "StealthVote: anonymous voting with Miden SDK ZK proofs", duration: "2:12" },
         ],
       },
-
-       {
+      {
         name: "On Stage",
         blurb: "Tezos & Etherlink workshops, hackathons and conference talks.",
         playlist: "https://www.youtube.com/playlist?list=PLNO985wwQsV5BMBRIO4ZHddWqkjQfSqxG",
@@ -495,7 +577,6 @@ window.SITE = {
           { id: "NenHLrSWgJQ", title: "Demo Day: TezAsia Hackathon 3.0", duration: "2:42:03", by: "Tezos India" },
         ],
       },
-       
       {
         name: "Solidity → Move",
         blurb: "A Solidity dev learns Sui Move, out loud.",
@@ -506,26 +587,25 @@ window.SITE = {
           { id: "E190cj6JjZ0", title: "Sui SIP 6 explained: StakedSui", duration: "8:11" },
         ],
       },
-      
     ],
-    // The collage under the TV shows every video marked  featured: true
+    // The puzzle under the TV shows every video marked  featured: true
     reel: { label: "[ HIGHLIGHT REEL ]", title: "Mic check, *on stage*." },
 
   },
 
   /* ✏️ EDIT: X POSTS ---------------------------------------------------
      Add a post: copy a line and paste its link (on X: Share → Copy link).
-     It appears as the real X post, so videos play on the page.
+     Each post becomes a note pinned to a cork board, with a link to X.
        pinned: true → yellow PINNED sticker (use on one post)
        by / byName  → only for posts from other accounts
-       text, date, likes, video → optional backup text, shown while X loads
-                                   or if a visitor's browser blocks X
+       text, date, likes, video → what the note shows (copy it from the post)
      Minimal example:  { url: "https://x.com/simarpreet_019/status/123…" },   */
   posts: {
     show: true,
-    nav: "On X", // menu label (the menu follows the order of sections on the page)
+    nav: "", // "" = not in the top menu
     label: "[ FROM THE TIMELINE ]",
-    title: "Live from *X*.",
+    title: "Pinned to the *board*.",
+    showFirst: 3, // notes shown before "Show more"
     text: "Threads, clips and moments from @simarpreet_019.",
     name: "Simarpreet Singh",
     handle: "@simarpreet_019",
@@ -554,18 +634,31 @@ window.SITE = {
     ],
   },
 
+  /* ✏️ EDIT: TESTIMONIALS -------------------------------------------
+     Short quotes from managers, partners or organisers (LinkedIn
+     recommendations work well). The section stays hidden until you add
+     at least one. Copy this line into items and fill it in:
+       { quote: "…", name: "Full Name", role: "Title, Company", url: "https://linkedin.com/in/…" },   */
+  testimonials: {
+    show: true,
+    nav: "",
+    label: "[ WORD ON THE STREET ]",
+    title: "Don't take *my* word for it.",
+    items: [],
+  },
+
   /* ✏️ EDIT: TOOLKIT ---------------------------------------------------
      Four groups; add or remove words inside the [ … ] lists.
      topic decides which filter chip (All / Web2 / Web3 / AI & ML) highlights it. */
   skills: {
     show: true,
-    nav: "Toolkit", // menu label (the menu follows the order of sections on the page)
+    nav: "", // "" = not in the top menu (the menu follows the order of sections on the page)
     label: "[ TOOLKIT ]",
     title: "What's in the *bag*.",
     // topic: "all" groups never fade; "web2" / "ai" / "web3" groups light up with the filter chips.
     groups: [
       { name: "DevRel & Community", topic: "all", items: ["Developer Relations", "Developer onboarding", "Developer experience", "Workshops", "Hackathons", "Docs & starter kits", "Live training", "Certification design", "POC development", "Hackathon mentoring", "Technical writing", "Public speaking", "Partnerships", "GTM"] },
-      { name: "Web2 & Frontend", topic: "web2", items: ["Python", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Node.js", "REST APIs", "Supabase", "Vercel", "Web scraping", "Git & GitHub", "C++", "Java"] },
+      { name: "Web2 & Frontend", topic: "web2", items: ["Python", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Zustand", "Zod", "Node.js", "REST APIs", "Supabase", "Docker", "Google Cloud", "Cloudflare", "Vercel", "Web scraping", "Git & GitHub", "C++", "Java"] },
       { name: "AI & ML", topic: "ai", items: ["Cursor", "Claude", "v0 (Vercel)", "LLM APIs", "AI agent frameworks (exploring)", "Python", "OpenCV", "Image processing", "Computer vision", "Seq2Seq & attention models"] },
       { name: "Web3", topic: "web3", items: ["Solidity", "SmartPy", "Move", "Ethers.js", "Hardhat", "Foundry", "Remix", "Thirdweb", "OpenZeppelin", "Taquito.js", "Beacon SDK", "Web3.js", "Tezos", "Etherlink", "Ethereum / EVM", "Sui", "Aptos", "Arbitrum", "Berachain", "Miden", "Sei", "Monad"] },
     ],
@@ -574,8 +667,13 @@ window.SITE = {
   /* ✏️ EDIT: CONTACT — text above the form + the Formspree endpoint. */
   contact: {
     label: "[ SAY HELLO ]",
-    title: "Got an *ecosystem* to grow?",
-    text: "Partnerships, speaking, hackathon judging or just a good Web3 conversation: my inbox is open.",
+    title: "Building for *developers*?",
+    text: "Hiring a developer or a DevRel lead, or need a speaker, workshop lead or advisor? Pick a door below, or just write in.",
+    // The two "doors". Clicking one fills in the reason on the form.
+    openTo: [
+      { id: "role", chip: "A role", title: "Open to roles", text: "Software Developer · Developer Advocate · DevRel Lead", meta: "Remote or New Delhi", cta: "Talk about a role" },
+      { id: "speaking", chip: "Speaking or advisory", title: "Open to speaking & advisory", text: "Talks, workshops, hackathon judging, DevRel advisory", meta: "In person across India · online anywhere", cta: "Invite me" },
+    ],
     // Same Formspree form as the old site. Submissions go to your Formspree inbox/email.
     formspree: "https://formspree.io/f/mayakpra",
   },

@@ -1,0 +1,26 @@
+# For GitHub Pages: after every push that changes content.js, rebuild the
+# pages and SEO/AI files (index.html, talks/ writing/ story/, llms.txt, sitemap …)
+# and commit them back. Vercel does this itself via vercel.json.
+name: Build SEO & AI files
+on:
+  push:
+    branches: [main]
+    paths: ["content.js", "index.html", "scripts/**"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node scripts/build-seo.js
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add -A  # index.html, the extra pages (talks/, writing/, story/ …) and the AI/SEO files
+          git diff --cached --quiet || git commit -m "chore: rebuild SEO & AI files [skip ci]"
+          git push
