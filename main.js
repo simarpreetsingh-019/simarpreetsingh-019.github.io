@@ -63,7 +63,7 @@
 
   /* ---------- meta ---------- */
   var p = S.person;
-  if (S.meta) {
+  if (S.meta && (document.body.getAttribute("data-page") || "home") === "home") { // extra pages keep their own title
     document.title = S.meta.title;
     var d = document.querySelector('meta[name="description"]');
     if (d) d.setAttribute("content", S.meta.description);
@@ -78,29 +78,42 @@
     "ctas",
     '<a class="btn btn--hot" href="' + esc(S.hero.primaryCta.href) + '">' + esc(S.hero.primaryCta.label) + " →</a>" +
     (function (c) {
-      if (!c.options) return '<a class="btn" href="' + esc(c.href) + '" download>' + esc(c.label) + " ↓</a>";
-      return '<div class="dl"><button type="button" class="btn" id="dlBtn" aria-expanded="false" aria-controls="dlMenu">' + esc(c.label) + ' <span aria-hidden="true">↓</span></button>' +
-        '<div class="dl__menu" id="dlMenu" hidden>' + c.options.map(function (o) {
-          return '<a href="' + esc(o.href) + '" download><span>' + esc(o.label) + "</span><small>PDF ↓</small></a>";
-        }).join("") + "</div></div>";
+      var o = c.options && c.options.length ? c.options : [{ href: c.href }];
+      return '<a class="btn" href="' + esc(o[0].href) + '" download>' + esc(c.label) + ' <span aria-hidden="true">↓</span></a>' +
+        (o.length > 1 ? '<span class="cv-alt">or ' + o.slice(1).map(function (x) { return '<a href="' + esc(x.href) + '" download>' + esc(x.label) + " ↓</a>"; }).join(" · ") + "</span>" : "");
     })(S.hero.secondaryCta)
   );
-  (function dlMenu() {
-    var btn = document.getElementById("dlBtn"), menu = document.getElementById("dlMenu");
-    if (!btn) return;
-    function set(open) { menu.hidden = !open; btn.setAttribute("aria-expanded", open); }
-    btn.addEventListener("click", function (e) { e.stopPropagation(); set(menu.hidden); });
-    document.addEventListener("click", function (e) { if (!menu.hidden && !menu.contains(e.target)) set(false); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
-  })();
+  var av = document.querySelector('[data-fill="avail"]');
+  if (av) {
+    if (S.hero.availability) av.innerHTML = '<i aria-hidden="true"></i><span class="avail__txt"><span>' + esc(S.hero.availability) + ' <span aria-hidden="true">→</span></span>' +
+      (S.hero.location ? '<small class="avail__loc">' + esc(S.hero.location) + "</small>" : "") + "</span>";
+    else av.remove();
+  }
   var img = document.querySelector('[data-fill="photo"]');
   if (img) { img.src = p.photo; img.alt = p.photoAlt || p.firstName; }
   fill("stickers", (S.hero.stickers || []).map(function (t) { return '<span class="sticker">' + esc(t) + "</span>"; }).join(""));
   fill("stats", (S.stats || []).map(function (s) {
     return '<li class="reveal"><strong>' + esc(s.value) + "</strong><span>" + esc(s.label) + "</span></li>";
   }).join(""));
-  var mq = (S.marquee || []).map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
-  fill("marquee", mq + mq); // duplicated for a seamless loop
+  // "Worked with · spoke at" names scroll across the black strip (second copy only makes the loop seamless)
+  var L = S.logos || {}, names = L.items || [];
+  var mq = names.map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
+  fill("marqueeLabel", esc(L.label || ""));
+  fill("marquee", mq + mq.replace(/<span>/g, '<span aria-hidden="true">'));
+
+  /* ---------- old links (#videos, #articles, #lore, #posts) now live on their own pages ---------- */
+  (function legacyLinks() {
+    var h = location.hash.slice(1);
+    if (!h || document.getElementById(h)) return;
+    (S.pages || []).forEach(function (pg) {
+      (pg.sections || []).forEach(function (sec) {
+        var ids = { videos: "videos", articles: "articles", lore: "lore", posts: "posts" };
+        if (ids[sec] === h) location.replace(pg.path + "#" + h);
+      });
+    });
+  })();
+  // extra pages use <base href="../">, so keep the "skip to content" link on the current page
+  if (document.querySelector("base")) document.querySelectorAll('a[href="#main"]').forEach(function (a) { a.href = location.pathname + "#main"; });
 
   /* ---------- sections ---------- */
   var R = {};
@@ -118,63 +131,228 @@
       "</div>";
   };
 
+  // bullets beyond the first N are folded behind "Show more" (still in the page for crawlers)
+  function points(list, keep) {
+    list = list || [];
+    var extra = keep && list.length > keep ? list.length - keep : 0;
+    return "<ul>" + list.map(function (pt, k) { return '<li' + (extra && k >= keep ? ' class="xtra"' : "") + ">" + linkify(pt) + "</li>"; }).join("") + "</ul>" +
+      (extra ? '<button type="button" class="more-btn" data-more aria-expanded="false" data-label="Show ' + extra + ' more">Show ' + extra + " more</button>" : "");
+  }
   R.experience = function (e) {
-    return '<div class="wrap">' + head(e) + '<div class="jobs">' +
+    var phone = matchMedia("(max-width: 600px)").matches;
+    var keep = (phone && e.showPointsPhone) || e.showPoints || 0;
+    return '<div class="wrap">' + head(e, e.text ? '<p class="lead">' + esc(e.text) + "</p>" : "") + '<div class="jobs">' +
       e.items.map(function (j, i) {
         var co = j.url ? '<a href="' + esc(j.url) + '"' + ext(j.url) + ">" + esc(j.company) + "</a>" : esc(j.company);
-        return '<article class="card job reveal' + (j.current ? " job--current" : "") + '">' +
+        var up = j.stepUp;
+        var upHtml = up ? '<div class="stepup">' +
+          '<p class="stepup__tag"><span aria-hidden="true">↑</span> Step up · ' + esc(up.period) + "</p>" +
+          '<h4 class="stepup__role">' + esc(up.role) + ", " + (up.url ? '<a href="' + esc(up.url) + '"' + ext(up.url) + ">" + esc(up.company) + "</a>" : esc(up.company)) + "</h4>" +
+          points(up.points, 0) +
+          '<div class="tags">' + (up.tags || []).map(function (t) { return '<span class="tag">' + esc(t) + "</span>"; }).join("") + "</div></div>" : "";
+        return '<article class="card job reveal' + (j.current ? " job--current" : "") + (j.compact ? " job--compact" : "") + '">' +
           "<div>" +
           '<span class="job__num">[' + String(i + 1).padStart(2, "0") + "]</span>" +
           (j.current ? '<span class="now-pill">NOW</span>' : "") +
           '<h3 class="job__co">' + co + "</h3>" +
           '<p class="job__role">' + esc(j.role) + "</p>" +
           '<p class="job__meta">' + esc(j.period) + (j.location ? "<br>" + esc(j.location) : "") + "</p>" +
-          "</div><div>" +
-          "<ul>" + (j.points || []).map(function (pt) { return "<li>" + linkify(pt) + "</li>"; }).join("") + "</ul>" +
+          (up ? '<p class="job__up">+ ' + esc(up.role) + ", " + esc(up.company.split(" — ")[0]) + "</p>" : "") +
+          '</div><div class="fold">' +
+          points(j.points, j.compact ? 1 : keep) + upHtml +
           '<div class="tags">' + (j.tags || []).map(function (t) { return '<span class="tag">' + esc(t) + "</span>"; }).join("") + "</div>" +
           "</div></article>";
       }).join("") + "</div></div>";
   };
 
+  /* ---------- Lore: the story in chapters (oldest → newest) ---------- */
   R.lore = function (l) {
-    // group cards under their year, keeping the order written in content.js
-    var groups = [];
-    l.items.forEach(function (it) {
-      var g = groups[groups.length - 1];
-      if (!g || g.year !== it.year) { g = { year: it.year, items: [] }; groups.push(g); }
-      g.items.push(it);
-    });
+    var chapters = l.chapters && l.chapters.length ? l.chapters : null;
+    if (!chapters) { // no chapters set: one chapter per year
+      var ys = []; l.items.forEach(function (it) { if (ys.indexOf(it.year) < 0) ys.unshift(it.year); });
+      chapters = ys.map(function (y) { return { title: y, years: [y] }; });
+    }
+    var keep = l.showPerChapter || 4;
+    var html = chapters.map(function (ch, ci) {
+      var moments = l.items.filter(function (it) { return ch.years.indexOf(it.year) >= 0; }).reverse(); // oldest first inside a chapter
+      if (!moments.length) return "";
+      var extra = Math.max(0, moments.length - keep);
+      var yr = ch.years.length > 1 ? ch.years[0] + "–" + ch.years[ch.years.length - 1].slice(-2) : ch.years[0];
+      return '<li class="chap reveal fold">' +
+        '<p class="chap__num">CH.' + (ci + 1) + "<span>" + esc(yr) + "</span></p>" +
+        '<h3 class="chap__title">' + esc(ch.title) + "</h3>" +
+        (ch.blurb ? '<p class="chap__blurb">' + esc(ch.blurb) + "</p>" : "") +
+        '<ol class="chap__list">' + moments.map(function (it, k) {
+          var links = (it.url ? [{ label: it.linkLabel || "View ↗", url: it.url }] : []).concat(it.links || []);
+          return "<li" + (k >= keep ? ' class="xtra"' : "") + "><details>" +
+            '<summary><span class="chap__when">' + esc((it.when ? it.when + " " : "") + it.year) + "</span>" +
+            '<span class="chap__mt">' + esc(it.title) + "</span></summary>" +
+            '<div class="chap__body"><p>' + esc(it.text) + "</p>" +
+            (links.length ? '<p class="chap__links">' + links.map(function (x) { return '<a href="' + esc(x.url) + '"' + ext(x.url) + ">" + esc(x.label) + "</a>"; }).join("") + "</p>" : "") +
+            "</div></details></li>";
+        }).join("") + "</ol>" +
+        (extra ? '<button type="button" class="more-btn chap__more" data-more aria-expanded="false" data-label="+' + extra + ' more">+' + extra + " more</button>" : "") +
+        "</li>";
+    }).join("");
     return '<div class="wrap">' +
-      (l.label ? '<p class="label reveal">' + esc(l.label) + "</p><br>" : "") +
-      '<h2 class="lore-title reveal">' + esc(l.title) + SPARKLE + "</h2>" +
-      '<ol class="lore">' +
-      groups.map(function (g) {
-        return '<li class="lore__row"><span class="lore__yr reveal">' + esc(g.year) + '</span><div class="lore__cards">' +
-          g.items.map(function (it) {
-            var inner = (it.when ? '<span class="lore__when">' + esc(it.when) + " " + esc(g.year) + "</span>" : "") +
-              "<h3>" + esc(it.title) + "</h3><p>" + esc(it.text) + "</p>" +
-              (it.url ? '<span class="lore__go">' + esc(it.linkLabel || "View ↗") + "</span>" : "") +
-              (it.links ? '<span class="lore__links">' + it.links.map(function (l) {
-                return '<a class="lore__go" href="' + esc(l.url) + '"' + ext(l.url) + ">" + esc(l.label) + "</a>";
-              }).join("") + "</span>" : "");
-            return it.url
-              ? '<a class="lore__item reveal" href="' + esc(it.url) + '"' + ext(it.url) + ">" + inner + "</a>"
-              : '<article class="lore__item reveal">' + inner + "</article>";
-          }).join("") + "</div></li>";
-      }).join("") + "</ol></div>";
+      '<div class="lore__head">' +
+        "<div>" + (l.label ? '<p class="label reveal">' + esc(l.label) + "</p><br>" : "") +
+        '<h2 class="lore-title reveal">' + esc(l.title) + SPARKLE + "</h2></div>" +
+        (l.text ? '<p class="lore__text reveal">' + esc(l.text) + "</p>" : "") +
+      "</div>" +
+      '<ol class="chapters">' + html + "</ol>" +
+      "</div>";
   };
 
+  /* ---------- Home: three doors to the Talks / Writing / Story pages ---------- */
+  R.explore = function (x) {
+    var pages = S.pages || [];
+    if (!pages.length) return "";
+    function stat(n, label) { return "<span><b>" + esc(n) + "</b> " + esc(label) + "</span>"; }
+    var doors = pages.map(function (pg) {
+      var body = "", meta = "";
+      if (pg.id === "talks" && S.videos) {
+        var vids = [], feat = null;
+        S.videos.channels.forEach(function (c) { c.items.forEach(function (it) { vids.push(it); if (it.featured && !feat) feat = it; }); });
+        feat = feat || vids[0];
+        body = '<span class="door2__tv">' + (feat ? thumbImg(feat, "door2__thumb") + '<span class="door2__play" aria-hidden="true"></span><span class="door2__now">' + esc(feat.title) + "</span>" : "") + "</span>";
+        var more = [];
+        S.videos.channels.forEach(function (c) { c.items.forEach(function (it) { if (it.featured && it !== feat && more.length < 2) more.push(it); }); });
+        body += more.length ? '<ul class="door2__list">' + more.map(function (it) { return "<li><small>" + esc(it.by || "") + "</small>" + esc(it.title) + "</li>"; }).join("") + "</ul>" : "";
+        meta = stat(vids.length, "videos") + stat(S.videos.channels.length, "channels");
+      } else if (pg.id === "writing" && S.articles) {
+        var a = S.articles.items, claps = 0;
+        a.forEach(function (it) { (it.stats || []).forEach(function (st) { if (/clap/.test(st.label)) claps += parseInt(String(st.value).replace(/\D/g, ""), 10) || 0; }); });
+        body = '<ol class="door2__heads">' + a.slice(0, 3).map(function (it) { return "<li><small>" + esc(it.kicker || "") + "</small>" + esc(it.title) + "</li>"; }).join("") + "</ol>";
+        meta = stat(a.length, "stories") + (claps ? stat(claps, "claps") : "");
+      } else if (pg.id === "story" && S.lore) {
+        var ch = S.lore.chapters || [];
+        body = '<ol class="door2__chaps">' + ch.map(function (c, i) { return "<li><small>CH." + (i + 1) + "</small>" + esc(c.title) + "</li>"; }).join("") + "</ol>";
+        var ys = S.lore.items.map(function (it) { return +it.year; });
+        meta = stat(S.lore.items.length, "moments") + stat(Math.min.apply(null, ys) + "–" + Math.max.apply(null, ys), "");
+      }
+      return '<a class="door2 door2--' + esc(pg.id) + ' reveal" href="' + esc(pg.path) + '">' +
+        '<span class="door2__label">' + esc(pg.label) + "</span>" +
+        '<span class="door2__teaser">' + esc(pg.teaser || "") + "</span>" + body +
+        '<span class="door2__meta">' + meta + "</span>" +
+        '<span class="door2__cta">' + esc(pg.cta || "Open") + " →</span></a>";
+    }).join("");
+    return '<div class="wrap">' + head(x) + '<div class="doors2">' + doors + "</div></div>";
+  };
+
+  /* ---------- Testimonials (hidden until content.js has quotes) ---------- */
+  R.testimonials = function (t) {
+    var items = (t.items || []).filter(function (x) { return x.quote; });
+    if (!items.length) return "";
+    return '<div class="wrap">' + head(t) + '<div class="quotes">' + items.map(function (q, k) {
+      return '<figure class="quote reveal q' + (k % 3) + '"><blockquote>' + esc(q.quote) + "</blockquote>" +
+        "<figcaption><b>" + (q.url ? '<a href="' + esc(q.url) + '"' + ext(q.url) + ">" + esc(q.name) + "</a>" : esc(q.name || "")) + "</b>" +
+        (q.role ? "<span>" + esc(q.role) + "</span>" : "") + "</figcaption></figure>";
+    }).join("") + "</div></div>";
+  };
+
+  /* ---------- Projects: big cards, then a rotating ring with a Quick Look panel ---------- */
+  function projCard(it) {
+    var tagOpen = it.url ? '<a class="card project reveal"' + topicAttr(it.topic) + ' href="' + esc(it.url) + '"' + ext(it.url) + ">" : '<div class="card project reveal"' + topicAttr(it.topic) + ">";
+    return tagOpen + '<span class="tag project__kind">' + esc(it.kind) + "</span><h3>" + esc(it.name) + "</h3><p>" + esc(it.text) + "</p>" + stackHtml(it) +
+      (it.url ? '<span class="project__go">View ↗</span>' : "") + (it.url ? "</a>" : "</div>");
+  }
+  function stackHtml(it) {
+    return it.stack && it.stack.length ? '<ul class="stack" aria-label="Built with">' + it.stack.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" : "";
+  }
+  function host(u) { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; } }
   R.projects = function (pr) {
-    return '<div class="wrap">' + head(pr, filterBar()) + '<div class="projects">' +
-      pr.items.map(function (it) {
-        var tagOpen = it.url ? '<a class="card project reveal"' + topicAttr(it.topic) + ' href="' + esc(it.url) + '"' + ext(it.url) + ">" : '<div class="card project reveal"' + topicAttr(it.topic) + ">";
-        var tagClose = it.url ? "</a>" : "</div>";
-        return tagOpen + '<span class="tag project__kind">' + esc(it.kind) + "</span><h3>" + esc(it.name) + "</h3><p>" + esc(it.text) + "</p>" +
-          (it.url ? '<span class="project__go">View ↗</span>' : "") + tagClose;
-      }).join("") + "</div>" +
+    var n = pr.featured == null ? 4 : pr.featured;
+    var top = pr.items.slice(0, n), rest = pr.items.slice(n);
+    var ring = rest.length ? (
+      '<div class="ringwrap reveal" id="ringwrap">' +
+        '<div class="ringwrap__head"><h3 class="ringwrap__title">More side quests <span>· ' + rest.length + "</span></h3>" +
+        '<p class="ringwrap__hint">Drag the ring or use the arrows · click to preview</p></div>' +
+        '<div class="ringwrap__body">' +
+          '<div class="ring" id="ring" tabindex="0" role="listbox" aria-label="More projects">' +
+            '<div class="ring__spin" id="ringSpin" style="--n:' + rest.length + '">' +
+            rest.map(function (it, k) {
+              return '<button type="button" role="option" class="ring__item" style="--k:' + k + '" data-k="' + k + '"' + topicAttr(it.topic) + ' aria-selected="false">' +
+                '<span class="ring__kind">' + esc(it.kind) + "</span>" +
+                '<span class="ring__name">' + esc(it.name) + "</span>" +
+                '<span class="ring__host">' + esc(host(it.url)) + "</span></button>";
+            }).join("") + "</div>" +
+            '<button type="button" class="ring__arrow ring__arrow--l" data-step="-1" aria-label="Previous project">←</button>' +
+            '<button type="button" class="ring__arrow ring__arrow--r" data-step="1" aria-label="Next project">→</button>' +
+          "</div>" +
+          '<div class="ql" id="ql" aria-live="polite">' +
+            '<div class="ql__bar"><i></i><i></i><i></i><span id="qlFile"></span></div>' +
+            '<div class="ql__body" id="qlBody"></div>' +
+          "</div>" +
+        "</div>" +
+        '<ul class="ring__data" hidden>' + rest.map(function (it) {
+          return "<li>" + (it.url ? '<a href="' + esc(it.url) + '">' + esc(it.name) + "</a>" : esc(it.name)) + ": " + esc(it.text) + "</li>";
+        }).join("") + "</ul>" +
+      "</div>") : "";
+    return '<div class="wrap">' + head(pr, filterBar()) + '<div class="projects">' + top.map(projCard).join("") + "</div>" + ring +
       (pr.moreLink ? '<div class="more reveal"><a class="btn" href="' + esc(pr.moreLink.href) + '"' + ext(pr.moreLink.href) + ">" + esc(pr.moreLink.label) + " ↗</a></div>" : "") +
       "</div>";
   };
+
+  function initRing() {
+    var ring = document.getElementById("ring");
+    if (!ring) return;
+    var pr = S.projects, rest = pr.items.slice(pr.featured == null ? 4 : pr.featured);
+    var spin = document.getElementById("ringSpin"), items = [].slice.call(ring.querySelectorAll(".ring__item"));
+    var n = items.length, pos = 0, cur = 0;
+    // items sit on a flat circle seen from the front: the selected one is big and in front
+    function paint(anim) {
+      var Rx = Math.min(250, ring.clientWidth * 0.36);
+      spin.classList.toggle("still", !anim);
+      items.forEach(function (b, k) {
+        var th = (k - pos) * 2 * Math.PI / n, c = Math.cos(th), depth = (c + 1) / 2;
+        b.style.transform = "translate(-50%, -50%) translateX(" + (Math.sin(th) * Rx).toFixed(1) + "px) translateY(" + ((1 - depth) * -26).toFixed(1) + "px) scale(" + (0.62 + 0.38 * depth).toFixed(3) + ") rotate(" + (Math.sin(th) * 6).toFixed(2) + "deg)";
+        b.style.zIndex = Math.round(depth * 100);
+        b.style.setProperty("--op", (0.5 + 0.5 * depth).toFixed(2));
+        b.tabIndex = -1;
+      });
+    }
+    function show(k) {
+      cur = k;
+      items.forEach(function (b, j) { b.setAttribute("aria-selected", j === k ? "true" : "false"); });
+      var it = rest[k];
+      document.getElementById("qlFile").textContent = it.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") + ".project";
+      document.getElementById("qlBody").innerHTML =
+        '<span class="tag">' + esc(it.kind) + "</span>" +
+        "<h4>" + esc(it.name) + "</h4><p>" + esc(it.text) + "</p>" + stackHtml(it) +
+        '<dl><div><dt>Area</dt><dd>' + esc(({ web2: "Web2", web3: "Web3", ai: "AI & ML" })[it.topic] || "—") + "</dd></div>" +
+        (it.url ? "<div><dt>Where</dt><dd>" + esc(host(it.url)) + "</dd></div>" : "") +
+        "<div><dt>No.</dt><dd>" + (k + 1) + " of " + n + "</dd></div></dl>" +
+        (it.url ? '<a class="btn btn--sm btn--hot" href="' + esc(it.url) + '"' + ext(it.url) + ">Open ↗</a>" : "");
+    }
+    function go(k) { var d = ((k - cur) % n + n) % n; if (d > n / 2) d -= n; pos += d; paint(true); show(((k % n) + n) % n); }
+    ring.addEventListener("click", function (e) {
+      if (dragged) return;
+      var a = e.target.closest(".ring__arrow"); if (a) { go(cur + +a.dataset.step); return; }
+      var b = e.target.closest(".ring__item"); if (b) go(+b.dataset.k);
+    });
+    ring.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); go(cur + 1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); go(cur - 1); }
+    });
+    var start = null, dragged = false;
+    ring.addEventListener("pointerdown", function (e) {
+      if (e.target.closest(".ring__arrow")) return;
+      start = { x: e.clientX, p: pos }; dragged = false;
+    });
+    addEventListener("pointermove", function (e) {
+      if (!start) return;
+      var dx = e.clientX - start.x;
+      if (Math.abs(dx) > 6) dragged = true;
+      if (dragged) { pos = start.p - dx / 160; paint(false); }
+    });
+    addEventListener("pointerup", function () {
+      if (!start) return; start = null;
+      if (dragged) { pos = Math.round(pos); paint(true); show(((pos % n) + n) % n); setTimeout(function () { dragged = false; }, 0); }
+    });
+    addEventListener("resize", function () { paint(false); });
+    paint(false); show(0);
+  }
 
   /* ---------- Articles: magazine collage ---------- */
   function statLine(it) {
@@ -213,12 +391,36 @@
         (it.dek ? '<span class="mag__dek mag__dek--sm">' + esc(it.dek) + "</span>" : "") +
         '<span class="mag__stats">' + statLine(it) + "</span></span></a>";
     }).join("") + "</div>";
-    var restHtml = '<div class="mag__grid">' + rest.map(function (it, i) {
-      return '<a class="mag__clip reveal r' + (i % 3) + '"' + topicAttr(it.topic) + ' href="' + esc(it.url) + '"' + ext(it.url) + ">" + artImg(it) +
-        '<span class="mag__kicker">' + esc(it.kicker || "") + " · " + esc(it.date || "") + "</span>" +
-        '<span class="mag__h3">' + esc(it.title) + "</span>" +
-        '<span class="mag__stats">' + statLine(it) + "</span></a>";
-    }).join("") + "</div>";
+    // Page 2: the story with the most stats leads on the left (or the one marked lead: true); the rest are tiles
+    function score(it) { var t = 0; (it.stats || []).forEach(function (st) { t += parseInt(String(st.value).replace(/\D/g, ""), 10) || 0; }); return t; }
+    var lead = null;
+    rest.forEach(function (it) { if (it.lead) lead = it; });
+    if (!lead) rest.forEach(function (it) { if (it.topic !== "other" && (!lead || score(it) > score(lead))) lead = it; });
+    if (!lead) lead = rest[0];
+    var tiles = rest.filter(function (it) { return it !== lead; });
+    var restHtml = !rest.length ? "" : (
+      '<div class="paper">' +
+        '<div class="paper__rule reveal"><span>PAGE 2</span><b>More from the desk</b><span>' + rest.length + " STORIES</span></div>" +
+        '<div class="paper__cols">' +
+          '<a class="paper__lead reveal"' + topicAttr(lead.topic) + ' href="' + esc(lead.url) + '"' + ext(lead.url) + ">" +
+            artImg(lead) +
+            '<span class="mag__kicker">' + esc(lead.kicker || "") + (lead.pub ? " · " + esc(lead.pub) : "") + " · " + esc(lead.date || "") + "</span>" +
+            '<span class="paper__h">' + esc(lead.title) + "</span>" +
+            (lead.dek ? '<span class="mag__dek mag__dek--sm">' + esc(lead.dek) + "</span>" : "") +
+            '<span class="paper__stats">' + (lead.stats || []).map(function (st) { return "<span><strong>" + esc(st.value) + "</strong>" + esc(st.label) + "</span>"; }).join("") +
+              (lead.read ? "<span><strong>" + esc(lead.read.replace(/ ?min/, "")) + "</strong>min read</span>" : "") + "</span>" +
+            '<span class="paper__go">Read the story ↗</span>' +
+          "</a>" +
+          '<div class="paper__tiles">' + tiles.map(function (it) {
+            return '<a class="paper__tile reveal"' + topicAttr(it.topic) + ' href="' + esc(it.url) + '"' + ext(it.url) + ">" +
+              '<span class="paper__txt"><span class="mag__kicker">' + esc(it.kicker || "") + " · " + esc(it.date || "") + "</span>" +
+              '<span class="paper__th">' + esc(it.title) + "</span>" +
+              (it.dek ? '<span class="paper__dek">' + esc(it.dek) + "</span>" : "") +
+              '<span class="mag__stats">' + statLine(it) + (it.pub ? " · " + esc(it.pub) : "") + "</span></span>" +
+              artImg(it) + "</a>";
+          }).join("") + "</div>" +
+        "</div>" +
+      "</div>");
     return '<div class="wrap">' + head(a, filterBar()) +
       '<div class="mag">' +
         '<div class="mag__masthead reveal"><span>VOL. 01 · ' + items.length + " STORIES" + (claps ? " · " + claps + " CLAPS" : "") + '</span><b>' + esc(a.masthead || "") + '</b><span>MEDIUM · DEV.TO</span></div>' +
@@ -241,15 +443,18 @@
     }).join("");
     var featured = [];
     chans.forEach(function (c, ci) { c.items.forEach(function (it, ii) { if (it.featured) featured.push({ it: it, ci: ci, ii: ii }); }); });
+    featured = featured.slice(0, (v.reel && v.reel.max) || 5); // the puzzle is designed for 5 pieces
     var reel = featured.length ? (
       '<div class="reel">' +
-      '<div class="section__head reveal"><p class="label">' + esc((v.reel || {}).label || "") + '</p><h3 class="h2">' + rich((v.reel || {}).title || "") + "</h3></div>" +
-      '<div class="reel__grid">' + featured.map(function (f, k) {
-        return '<button type="button" class="reel__tile reveal t' + (k % 7) + '" data-ch="' + f.ci + '" data-i="' + f.ii + '" style="--h:' + ((k * 57) % 360) + '">' +
-          thumbImg(f.it, "reel__img") +
-          '<span class="reel__fallback" aria-hidden="true">' + esc(f.it.title) + "</span>" +
-          '<span class="reel__meta"><span class="reel__title">' + esc(f.it.title) + "</span><span>" + esc(f.it.by || "") + " · " + esc(f.it.duration || "") + "</span></span>" +
-          '<span class="reel__play" aria-hidden="true"></span></button>';
+      '<div class="section__head reveal"><p class="label">' + esc((v.reel || {}).label || "") + '</p><h3 class="h2">' + rich((v.reel || {}).title || "") + "</h3>" +
+      '<p class="lead">' + esc((v.reel || {}).text || "Five talks, one puzzle. Pick up a piece to play it on the TV.") + "</p></div>" +
+      '<div class="puzzle reveal" id="puzzle">' + featured.map(function (f, k) {
+        return '<button type="button" class="pz reel__tile" data-ch="' + f.ci + '" data-i="' + f.ii + '" style="--h:' + ((k * 57) % 360) + '" aria-label="Play ' + esc(f.it.title) + '">' +
+          '<span class="pz__clip">' + thumbImg(f.it, "pz__img") +
+          '<span class="pz__fb" aria-hidden="true">' + esc(f.it.title) + "</span>" +
+          '<span class="pz__meta"><span class="pz__title">' + esc(f.it.title) + "</span><span>" + esc(f.it.by || "") + " · " + esc(f.it.duration || "") + "</span></span>" +
+          '<span class="pz__play" aria-hidden="true"></span>' +
+          '<svg class="pz__line" aria-hidden="true"><path /></svg></span></button>';
       }).join("") + "</div></div>") : "";
     return '<div class="wrap">' +
       '<div class="videos__head">' + head(v, '<p class="lead">' + esc(v.text) + "</p>") +
@@ -366,63 +571,94 @@
     renderGuide(); renderScreen();
   }
 
-  /* ---------- Posts from X ---------- */
+  /* ---------- "Mic check" puzzle: pieces of different sizes that interlock ---------- */
+  function initPuzzle() {
+    var box = document.getElementById("puzzle");
+    if (!box) return;
+    var pieces = [].slice.call(box.querySelectorAll(".pz"));
+    // layouts in grid units: [x, y, w, h]
+    var WIDE = { cols: 12, unit: 0.075, rects: [[0, 0, 7, 4], [7, 0, 5, 2], [7, 2, 5, 2], [0, 4, 5, 2.4], [5, 4, 7, 2.4]] };
+    var NARROW = { cols: 2, unit: 0.36, rects: [[0, 0, 2, 1.6], [0, 1.6, 1, 1.5], [1, 1.6, 1, 1.5], [0, 3.1, 1, 1.5], [1, 3.1, 1, 1.5]] };
+    function plan(n, wide) {
+      var L = wide ? WIDE : NARROW, out = L.rects.slice(0, n);
+      while (out.length < n) { var last = out[out.length - 1]; out.push([0, last[1] + last[3], L.cols, wide ? 2 : 1.5]); }
+      return { cols: L.cols, unit: L.unit, rects: out };
+    }
+    function draw() {
+      var W = box.clientWidth; if (!W) return;
+      var wide = W > 640, P = plan(pieces.length, wide);
+      var cw = W / P.cols, ch = W * P.unit, K = wide ? 40 : 28;
+      var r = K / 1.8, nk = r * 0.6;
+      var R = P.rects.map(function (q) { return { x: q[0] * cw, y: q[1] * ch, w: q[2] * cw, h: q[3] * ch, tabs: { t: [], r: [], b: [], l: [] } }; });
+      var H = 0; R.forEach(function (q) { H = Math.max(H, q.y + q.h); });
+      box.style.height = H + "px";
+      // tabs along every shared edge (one per ~280px); which side sticks out alternates
+      function spots(lo, hi) { var m = Math.max(1, Math.floor((hi - lo) / 280)), out = []; for (var q = 0; q < m; q++) out.push(lo + (hi - lo) * (q + 0.5) / m); return out; }
+      for (var i = 0; i < R.length; i++) for (var j = i + 1; j < R.length; j++) {
+        var A = R[i], B = R[j], out = (i + j) % 2 === 0;
+        [[A, B], [B, A]].forEach(function (pr, side) {
+          var a = pr[0], b = pr[1];
+          if (Math.abs(a.x + a.w - b.x) < 1) { // a's right edge touches b's left edge
+            var lo = Math.max(a.y, b.y), hi = Math.min(a.y + a.h, b.y + b.h);
+            if (hi - lo > 4 * r) spots(lo, hi).forEach(function (c, m) { var o = (side ? !out : out) !== !!(m % 2); a.tabs.r.push({ c: c - a.y, o: o }); b.tabs.l.push({ c: c - b.y, o: !o }); });
+          }
+          if (Math.abs(a.y + a.h - b.y) < 1) { // a's bottom touches b's top
+            var lo2 = Math.max(a.x, b.x), hi2 = Math.min(a.x + a.w, b.x + b.w);
+            if (hi2 - lo2 > 4 * r) spots(lo2, hi2).forEach(function (c, m) { var o = (side ? !out : out) !== !!(m % 2); a.tabs.b.push({ c: c - a.x, o: o }); b.tabs.t.push({ c: c - b.x, o: !o }); });
+          }
+        });
+      }
+      R.forEach(function (q, k) {
+        var w = q.w, h = q.h, f = function (n) { return n.toFixed(1); };
+        var d = "M" + f(K) + " " + f(K);
+        q.tabs.t.sort(function (a, b) { return a.c - b.c; }).forEach(function (t) { d += "L" + f(K + t.c - nk) + " " + f(K) + "A" + f(r) + " " + f(r) + " 0 1 " + (t.o ? 1 : 0) + " " + f(K + t.c + nk) + " " + f(K); });
+        d += "L" + f(K + w) + " " + f(K);
+        q.tabs.r.sort(function (a, b) { return a.c - b.c; }).forEach(function (t) { d += "L" + f(K + w) + " " + f(K + t.c - nk) + "A" + f(r) + " " + f(r) + " 0 1 " + (t.o ? 1 : 0) + " " + f(K + w) + " " + f(K + t.c + nk); });
+        d += "L" + f(K + w) + " " + f(K + h);
+        q.tabs.b.sort(function (a, b) { return b.c - a.c; }).forEach(function (t) { d += "L" + f(K + t.c + nk) + " " + f(K + h) + "A" + f(r) + " " + f(r) + " 0 1 " + (t.o ? 1 : 0) + " " + f(K + t.c - nk) + " " + f(K + h); });
+        d += "L" + f(K) + " " + f(K + h);
+        q.tabs.l.sort(function (a, b) { return b.c - a.c; }).forEach(function (t) { d += "L" + f(K) + " " + f(K + t.c + nk) + "A" + f(r) + " " + f(r) + " 0 1 " + (t.o ? 1 : 0) + " " + f(K) + " " + f(K + t.c - nk); });
+        d += "Z";
+        var el = pieces[k], clip = el.firstChild;
+        el.style.left = (q.x - K) + "px"; el.style.top = (q.y - K) + "px";
+        el.style.width = (w + 2 * K) + "px"; el.style.height = (h + 2 * K) + "px"; el.style.setProperty("--k", K + "px");
+        clip.style.clipPath = 'path("' + d + '")';
+        clip.style.webkitClipPath = 'path("' + d + '")';
+        var svg = el.querySelector(".pz__line");
+        svg.setAttribute("viewBox", "0 0 " + (w + 2 * K) + " " + (h + 2 * K));
+        svg.firstChild.setAttribute("d", d);
+        el.classList.toggle("pz--big", w * h > 0.2 * W * H);
+      });
+    }
+    draw();
+    if ("ResizeObserver" in window) new ResizeObserver(draw).observe(box); else addEventListener("resize", draw);
+  }
+
+  /* ---------- Posts from X: notes pinned to a cork board ---------- */
   R.posts = function (x) {
     var items = x.items || [];
     if (!items.length) return "";
+    var first = x.showFirst || items.length, extra = Math.max(0, items.length - first);
+    var kinds = ["paper", "sticky", "index", "paper", "sticky"];
     return '<div class="wrap">' + head(x, x.text ? '<p class="lead">' + esc(x.text) + "</p>" : "") +
-      '<div class="xgrid">' + items.map(function (t) {
-        var url = t.url.replace("//twitter.com/", "//x.com/");
-        return '<article class="xpost reveal' + (t.pinned ? " xpost--pinned" : "") + '">' +
-          (t.pinned ? '<span class="xpost__pin">PINNED</span>' : "") +
-          '<div class="xpost__embed" data-tweet="' + esc(url) + '">' +
-            '<div class="xpost__fallback card">' +
-              '<p class="xpost__who"><b>' + esc(t.byName || x.name || "") + '</b> <span>' + esc(t.by || x.handle || "") + "</span></p>" +
-              (t.text ? "<p>" + esc(t.text) + "</p>" : "") +
-              (t.video ? '<p class="xpost__vid">▶ Video · ' + esc(t.video) + "</p>" : "") +
-              (t.likes ? '<p class="xpost__likes">♥ ' + esc(t.likes) + " likes</p>" : "") +
-              '<p class="xpost__meta">' + esc(t.date || "") + ' · <a href="' + esc(url) + '" target="_blank" rel="noopener">View on X ↗</a></p>' +
-            "</div>" +
-          "</div></article>";
-      }).join("") + "</div>" +
+      '<div class="cork reveal fold">' +
+        '<ul class="cork__board">' + items.map(function (t, k) {
+          var url = t.url.replace("//twitter.com/", "//x.com/");
+          var kind = t.pinned ? "pinned" : t.video ? "polaroid" : kinds[k % kinds.length];
+          return '<li class="note note--' + kind + (k >= first ? " xtra" : "") + '" style="--r:' + (((k * 37) % 7) - 3) * 0.7 + 'deg">' +
+            (t.pinned || k % 3 === 1 ? '<span class="note__tape" aria-hidden="true"></span>' : '<span class="note__pin" aria-hidden="true"></span>') +
+            (t.pinned ? '<span class="note__flag">PINNED</span>' : "") +
+            (t.video ? '<span class="note__shot" aria-hidden="true"><span>▶</span><small>VIDEO · ' + esc(t.video) + "</small></span>" : "") +
+            '<p class="note__who"><b>' + esc(t.byName || x.name || "") + "</b> " + esc(t.by || x.handle || "") + "</p>" +
+            (t.text ? '<p class="note__text">' + esc(t.text) + "</p>" : "") +
+            '<p class="note__meta"><span>' + esc(t.date || "") + (t.likes ? " · ♥ " + esc(t.likes) : "") + "</span>" +
+            '<a href="' + esc(url) + '" target="_blank" rel="noopener">Open on X ↗</a></p></li>';
+        }).join("") + "</ul>" +
+        (extra ? '<button type="button" class="more-btn more-btn--cork" data-more aria-expanded="false" data-label="Show ' + extra + ' more notes">Show ' + extra + " more notes</button>" : "") +
+      "</div>" +
       (x.cta ? '<div class="more reveal"><a class="btn" href="' + esc(x.cta.href) + '"' + ext(x.cta.href) + ">" + esc(x.cta.label) + " ↗</a></div>" : "") +
       "</div>";
   };
-
-  // Load X's official embed only when the posts scroll near, then swap the fallback card for it.
-  function initPosts() {
-    var boxes = document.querySelectorAll(".xpost__embed");
-    if (!boxes.length || window.__PREVIEW__) return;
-    var loaded = false;
-    function isDark() {
-      var t = document.documentElement.dataset.theme;
-      return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-    }
-    function render() {
-      boxes.forEach(function (box) {
-        if (box.dataset.done) return;
-        box.dataset.done = "1";
-        var url = box.dataset.tweet.replace("//x.com/", "//twitter.com/");
-        var id = (url.match(/status\/(\d+)/) || [])[1];
-        if (!id || !window.twttr || !twttr.widgets) return;
-        var holder = document.createElement("div");
-        box.appendChild(holder);
-        twttr.widgets.createTweet(id, holder, { theme: isDark() ? "dark" : "light", dnt: true, align: "center" })
-          .then(function (el) { if (el) box.classList.add("is-live"); else holder.remove(); });
-      });
-    }
-    function load() {
-      if (loaded) return; loaded = true;
-      var sc = document.createElement("script");
-      sc.src = "https://platform.twitter.com/widgets.js"; sc.async = true; sc.charset = "utf-8";
-      sc.onload = function () { twttr.ready(render); };
-      document.body.appendChild(sc);
-    }
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (en) { if (en.some(function (e) { return e.isIntersecting; })) { load(); io.disconnect(); } }, { rootMargin: "600px 0px" });
-      boxes.forEach(function (b) { io.observe(b); });
-    } else load();
-  }
 
   R.playbook = function (pb) {
     return '<div class="wrap">' + head(pb, pb.text ? '<p class="lead">' + esc(pb.text) + "</p>" : "") +
@@ -434,8 +670,17 @@
           '<p class="play__unit">' + esc(c.unit) + "</p>" +
           '<p class="play__text">' + esc(c.text) + "</p></article>";
       }).join("") + "</div>" +
-      (pb.alsoAt && pb.alsoAt.length ? '<div class="also reveal"><p class="also__label">Also at home in</p><ul class="also__list">' +
-        pb.alsoAt.map(function (x) { return '<li><b>' + esc(x.title) + "</b><span>" + esc(x.text) + "</span></li>"; }).join("") + "</ul></div>" : "") +
+      (S.skills && S.skills.groups ? '<div class="kit reveal fold"><p class="kit__label">Toolkit</p><div class="kit__groups">' +
+        S.skills.groups.map(function (g) {
+          return '<div class="kit__group"' + topicAttr(g.topic) + "><h3>" + esc(g.name) + '</h3><ul class="kit__chips">' +
+            g.items.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul></div>";
+        }).join("") + "</div>" +
+        '<button type="button" class="more-btn kit__more" data-more aria-expanded="false" data-label="Show the full toolkit">Show the full toolkit</button>' +
+        // "Also at home in": folded behind a button (still in the page for Google & AI)
+        (pb.alsoAt && pb.alsoAt.length ? '<div class="also2 fold">' +
+          '<button type="button" class="more-btn also2__btn" data-more aria-expanded="false" data-label="Also at home in · ' + pb.alsoAt.length + ' more areas">Also at home in · ' + pb.alsoAt.length + " more areas</button>" +
+          '<ul class="kit__also">' + pb.alsoAt.map(function (x) { return "<li><b>" + esc(x.title) + "</b> " + esc(x.text) + "</li>"; }).join("") + "</ul></div>" : "") +
+        "</div>" : "") +
       "</div>";
   };
 
@@ -457,18 +702,28 @@
   });
 
   initTV();
-  initPosts();
+  initPuzzle();
+  initRing();
+
+  /* ---------- "Show more" buttons (the hidden items are in the page all along) ---------- */
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-more]");
+    if (!b) return;
+    var box = b.closest(".fold");
+    var open = box.classList.toggle("open");
+    b.setAttribute("aria-expanded", open ? "true" : "false");
+    b.textContent = open ? "Show less" : b.dataset.label;
+  });
 
   /* ---------- menu: built from the sections, in page order ---------- */
   (function buildNav() {
     var nav = document.getElementById("navLinks");
-    var html = "";
-    document.querySelectorAll("main section[data-section]").forEach(function (el) {
-      var d = S[el.getAttribute("data-section")];
-      var label = (d && d.nav) || el.id.charAt(0).toUpperCase() + el.id.slice(1);
-      html += '<a href="#' + el.id + '">' + esc(label) + "</a>";
-    });
-    nav.innerHTML = html;
+    var page = document.body.getAttribute("data-page") || "";
+    var cur = (S.pages || []).filter(function (x) { return x.id === page; })[0];
+    nav.innerHTML = (S.menu || []).map(function (m) {
+      var on = cur && m.href === cur.path;
+      return '<a href="' + esc(m.href) + '"' + (on ? ' aria-current="page"' : "") + ">" + esc(m.label) + "</a>";
+    }).join("");
   })();
 
   /* ---------- contact + footer ---------- */
@@ -476,6 +731,27 @@
   fill("contactLabel", esc(c.label));
   fill("contactTitle", rich(c.title));
   fill("contactText", esc(c.text));
+  var doors = c.openTo || [];
+  if (doors.length) {
+    fill("doors", doors.map(function (d, k) {
+      return '<button type="button" class="door door--' + k + '" data-door="' + esc(d.id) + '">' +
+        '<span class="door__title">' + esc(d.title) + "</span>" +
+        '<span class="door__text">' + esc(d.text) + "</span>" +
+        (d.meta ? '<span class="door__meta">' + esc(d.meta) + "</span>" : "") +
+        '<span class="door__cta">' + esc(d.cta || "Get in touch") + " →</span></button>";
+    }).join(""));
+    fill("reason", '<legend><span>I\'m writing about</span></legend><div class="reason__opts">' +
+      doors.map(function (d) { return '<label><input type="radio" name="reason" value="' + esc(d.title) + '" data-door="' + esc(d.id) + '" /><span>' + esc(d.chip || d.title) + "</span></label>"; }).join("") +
+      '<label><input type="radio" name="reason" value="Something else" /><span>Something else</span></label></div>');
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest && e.target.closest("button[data-door]"); if (!b) return;
+      var r = document.querySelector('input[name="reason"][data-door="' + b.dataset.door + '"]');
+      if (r) r.checked = true;
+      var f = document.getElementById("contactForm");
+      f.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+      setTimeout(function () { document.getElementById("name").focus({ preventScroll: true }); }, 400);
+    });
+  } else { var rs = document.querySelector('[data-fill="reason"]'); if (rs) rs.remove(); var ds = document.querySelector('[data-fill="doors"]'); if (ds) ds.remove(); }
   document.querySelectorAll('[data-fill="email"]').forEach(function (a) { a.href = "mailto:" + p.email; a.textContent = p.email; });
   fill("socials", S.socials.map(function (s) {
     return '<li><a href="' + esc(s.url) + '"' + ext(s.url) + "><span>" + esc(s.name) + "</span><small>" + esc(s.handle) + "</small></a></li>";
@@ -638,7 +914,11 @@
   var toTop = document.getElementById("toTop");
   if (toTop) {
     toTop.hidden = false;
-    var onScroll = function () { toTop.classList.toggle("show", scrollY > 600); };
+    var formEl = document.getElementById("contactForm"), overForm = false;
+    if (formEl && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (en) { overForm = en[0].isIntersecting; onScroll(); }, { rootMargin: "0px 0px -60px 0px" }).observe(formEl.querySelector("button[type=submit]"));
+    }
+    var onScroll = function () { toTop.classList.toggle("show", scrollY > 600 && !overForm); };
     addEventListener("scroll", onScroll, { passive: true }); onScroll();
     toTop.addEventListener("click", function (e) {
       e.preventDefault();

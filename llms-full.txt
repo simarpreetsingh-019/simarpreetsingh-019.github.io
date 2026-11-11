@@ -2,7 +2,7 @@
 
 > Simarpreet Singh is a developer advocate, developer relations lead, community builder and technical educator from New Delhi, India. 12K+ developers engaged, 1,000+ builders mentored, 150+ workshops. Partnerships, GTM and ecosystem growth across Web2, AI and Web3.
 
-Roles: Developer Advocate · Developer Relations (DevRel) Lead · Developer Evangelist · Community Builder · Technical Educator · Partnerships & Ecosystem Lead · Go-To-Market (GTM) Lead
+Roles: Developer Advocate · Developer Relations (DevRel) Lead · Software Developer · Developer Evangelist · Community Builder · Technical Educator · Partnerships & Ecosystem Lead · Go-To-Market (GTM) Lead
 Location: New Delhi, India
 Email: simarpreetsingh.019@gmail.com
 Website: https://simarpreetsingh-019.github.io/
@@ -10,24 +10,29 @@ Website: https://simarpreetsingh-019.github.io/
 ## Summary
 I love the moment a developer goes from “what is this?” to “I just shipped it.” I sit between the teams who build developer tools and the developers who use them, turning complex products into workshops, demos and docs, and developer feedback into product fixes.
 
-I'm Simarpreet, Partnership & Ecosystem Lead at SOULVERSE, where we are building the trust layer that connects identity, credentials, compliance and payments.
+Availability: Open to software developer & DevRel roles · speaking & advisory
+- Open to roles: Software Developer · Developer Advocate · DevRel Lead (Remote or New Delhi)
+- Open to speaking & advisory: Talks, workshops, hackathon judging, DevRel advisory (In person across India · online anywhere)
 
-Before that, I spent 2.5 years leading Developer Relations at Tezos India and evangelising Etherlink, an EVM rollup on Tezos. I ran workshops across India and Southeast Asia, scaled the TezAsia hackathon from 1,500 to 13,000+ participants, and co-created a credit-based blockchain course with the University of the Philippines.
+I'm Simarpreet, a developer advocate and DevRel lead. For two and a half years I led Developer Relations at Tezos India and evangelised Etherlink, its EVM rollup, across India and Southeast Asia. Most recently I was Partnership & Ecosystem Lead at SOULVERSE, working on a trust layer for identity, credentials, compliance and payments. I'm now open to software developer and DevRel roles.
 
-Alongside that, I run Web3Panjab, a grassroots community onboarding North India to Web3, and a YouTube series on building with Sui from a Solidity developer's perspective. I hold a B.Tech in Computer Science and Engineering from GTBIT, Guru Gobind Singh Indraprastha University (2018–2022).
+Outside work I run Web3Panjab, a grassroots community onboarding North India to Web3, and a YouTube series on building with Sui from a Solidity developer's perspective. B.Tech in Computer Science and Engineering, GTBIT, Guru Gobind Singh Indraprastha University (2018–2022).
 
 ## Key numbers
 - 12K+ developers engaged
 - 1,000+ builders mentored
 - 150+ workshops & university sessions
-- 60+ hackathons partnered
+- 80+ hackathons partnered
 - 15+ college blockchain clubs set up
 - 10+ hackathons judged
 
+Worked with / spoke at: Tezos India, Etherlink, SOULVERSE, PizzaDAO, GDG New Delhi, Web3Conf India, ETHIndia, ETHGlobal New Delhi, ETHTokyo, Hack4Bengal, University of the Philippines, Chandigarh University, DRDO
+
+
 ## Current and recent roles
-- Partnership & Ecosystem Lead, SOULVERSE (Jul 2026 — Present)
-- India Lead, PizzaDAO (2025 — Present)
-- Lead Developer Relations, Tezos India (Oct 2022 — Mar 2025)
+- Partnership & Ecosystem Lead, SOULVERSE (Jul 2026 — Oct 2026)
+- India Lead · Underboss, PizzaDAO (2025 — Present)
+- Lead Developer Relations, Tezos India (Oct 2022 — Apr 2025)
 - Developer Advocate, Etherlink — L2 on Tezos (Jan 2024 — Apr 2025)
 - Founder & Independent Consultant, Web3Panjab (Jul 2022 — Present)
 - Research Trainee, DRDO — Scientific Analysis Group (Feb 2022 — Jul 2022)
@@ -40,17 +45,20 @@ Alongside that, I run Web3Panjab, a grassroots community onboarding North India 
 - Medium: https://medium.com/@simarpreetsingh.019
 - Telegram: https://t.me/simarpreet_019
 - All links: https://bio.link/simarpreetsingh
+- Talks: https://simarpreetsingh-019.github.io/talks/ (Workshops, stage talks and explainers by developer advocate Simarpreet Singh: Etherlink, Tezos, SmartPy, Sui Move and more. Watch them right on the page.)
+- Writing: https://simarpreetsingh-019.github.io/writing/ (Articles by Simarpreet Singh on computer vision, Web3, Layer 2s, Python and JavaScript, published on Medium and dev.to.)
+- Story: https://simarpreetsingh-019.github.io/story/ (The story of developer advocate Simarpreet Singh in five chapters, from student hackathons to leading DevRel at Tezos India and running India-wide events, plus notes from X.)
 - Full profile for AI assistants: https://simarpreetsingh-019.github.io/llms-full.txt
 - Résumé (JSON): https://simarpreetsingh-019.github.io/profile.json
 - Developer evangelist résumé (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Developer-Evangelist-Resume.pdf
-- Web3 DevRel résumé (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Resume.pdf
+- Web3 DevRel version (PDF): https://simarpreetsingh-019.github.io/assets/docs/Simarpreet-Singh-Resume.pdf
 
 ## What I bring to any developer team
 - **Developer onboarding** — −40% onboarding questions. Starter kits, CLI walkthroughs and explainer videos cut repeat onboarding questions on Discord by 40%.
-- **Technical education** — 150+ workshops & sessions. Mentored 1,000+ builders through structured workshops and live POC demos, and co-created a credit-backed course for 72 students at the University of the Philippines.
+- **Technical education** — 72 students in a credit course. Co-created a credit-backed blockchain course with the University of the Philippines, alongside structured workshops and live POC demos.
 - **Developer programs** — 75% graduation rate. Designed a two-cohort builder camp; 60+ developers stayed on as long-term contributors.
 - **Product feedback loop** — +24% wallet activation. Worked with wallet, explorer and protocol teams to turn developer feedback into SDK fixes, including a 24% activation lift for Naan Wallet.
-- **Events & hackathons** — 1.5K → 13K+ hackathon participants. Scaled a flagship hackathon nearly 9×, and ran 40+ in-person community events across India on a single day.
+- **Events & hackathons** — 1.5K → 13K+ hackathon participants. Grew a flagship hackathon nearly 9×, then ran 40+ in-person community events across India on a single day.
 - **Content & storytelling** — 35+ articles & videos. Tutorials, talks and explainers on Medium, dev.to and YouTube, written for beginners and experienced developers alike.
 
 Also at home in:
@@ -63,20 +71,20 @@ Also at home in:
 
 ## Work experience
 ### Partnership & Ecosystem Lead — SOULVERSE
-Jul 2026 — Present · Remote · New Delhi
+Jul 2026 — Oct 2026 · Remote · New Delhi
 https://soulverse.us
-- Leading partnerships and ecosystem growth for trust infrastructure spanning identity, credentials, validation and settlement.
-- Working across RWA, digital assets and tokenization to bring programmable trust into fintech and Web3 products.
+- Led partnerships and ecosystem growth for trust infrastructure spanning identity, credentials, validation and settlement.
+- Worked across RWA, digital assets and tokenization to bring programmable trust into fintech and Web3 products.
 
-### India Lead — PizzaDAO
+### India Lead · Underboss — PizzaDAO
 2025 — Present · PAN India
 https://x.com/Pizza_DAO
-- Managed and hosted 40+ in-person events across India for Bitcoin Pizza Day, all running at the same time on the same day.
 - Spent two months planning India's edition of the Global Bitcoin Pizza Party with the PizzaDAO team.
-- Co-hosted PizzaDAO's community party during ETHGlobal New Delhi and helped execute its Delhi event.
+- Managed and hosted 40+ in-person events across India for Bitcoin Pizza Day, all running at the same time on the same day.
+- Co-hosted EVVM & PizzaDAO's community party during ETHGlobal New Delhi and helped execute its Delhi event.
 
 ### Lead Developer Relations — Tezos India
-Oct 2022 — Mar 2025 · Remote / Hybrid
+Oct 2022 — Apr 2025 · Remote / Hybrid
 https://in.linkedin.com/company/tezos-india-foundation
 - Owned developer relations for Tezos L1 and was then entrusted to lead developer advocacy for Etherlink (EVM L2) in India, expanding into onboarding, ecosystem programs and technical enablement.
 - Grew ecosystem developer activity 4×, from 3,000 to 12,000+ engaged developers, through workshops, developer clubs and onboarding series.
@@ -88,7 +96,7 @@ https://in.linkedin.com/company/tezos-india-foundation
 - Co-created a credit-based blockchain curriculum with the University of the Philippines.
 
 ### Developer Advocate — Etherlink — L2 on Tezos
-Jan 2024 — Apr 2025 · Remote
+Jan 2024 — Apr 2025 · Remote / Hybrid
 https://etherlink.com
 - Created Solidity-to-Etherlink transition content, including starter kits, CLI onboarding videos and gas-comparison explainers, cutting Discord onboarding queries by 40%.
 - Ran 30+ EVM workshops and supported 100+ hackathon submissions; 18 teams continued building with mentorship and grants.
@@ -142,11 +150,12 @@ Feb 2022 — Jul 2022 · New Delhi
 - 2019 — First hackathon win: Won 3rd prize at HackGTBIT and was a Top-5 Campus Ambassador for ESYA '19 at IIIT Delhi. The hackathon bug bit hard.
 
 ## Projects
+- **QuestPass** (Community app · Devcon 8) — A side-quest companion for Devcon 8 in Mumbai: pin a digital boarding pass, find people flying in from your city, browse and submit side events, swap contacts by QR and collect NFC stamps around the city. Powered by Web3Panjab. Built with: Cloudflare, QR codes, NFC stamps, Animated GIFs, vCard / CSV export, Claude. https://questpass.live
 - **SuiSips** (Next.js · Client build) — A production SIP tracker and community platform for the Sui ecosystem: proposals synced from GitHub, discussions, articles, videos and a curated tweet wall. Built with Next.js, React Markdown and Tailwind CSS. https://suisips.com
 - **Miden SDK Simulator** (React · Miden SDK) — An interactive demo of anonymous, privacy-preserving voting on Miden's ZK rollup SDK. Scoped, built and shipped with no prior Miden experience, to show how any new SDK becomes learnable through a working demo. https://sim-miden-demo-main.vercel.app/
+- **JSON API Visualizer** (Next.js · Live tool) — Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0. https://json-visual.vercel.app
 - **Etherlink Project Showcase** (Etherlink · GitHub) — A showcase repo spotlighting dApps built on Tezos and Etherlink after hackathons, alongside demo apps for workshop attendees. https://github.com/simarpreetsingh-019/TIProjects
 - **Gitfund** (Web3 · OSS) — Auto-pays open-source contributors for merged PRs using programmable smart-contract logic. https://github.com/simarpreetsingh-019/TIProjects/tree/main/Gitfund
-- **JSON API Visualizer** (Next.js · Live tool) — Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0. https://json-visual.vercel.app
 - **OverWatch TS** (Open source) — Built the initial example template for overwatch-ts, a lightweight state-management library for Next.js. https://github.com/simarpreetsingh-019/overwatch/tree/main
 - **Virtual Tweet Gallery** (Community tool) — The W3EventGallery bot collects event tweets into a shared gallery of memories. https://web3panjab.github.io/SolanaHHDilli/
 - **German → English Translator** (ML) — A Seq2Seq-with-attention tutorial implementation for German-to-English translation. https://github.com/soumyajit4419/YouthIcon
@@ -164,11 +173,6 @@ Feb 2022 — Jul 2022 · New Delhi
 - [OnePlus 7T: My Best Companion](https://medium.com/@simarpreetsingh.019/oneplus-7t-my-best-companion-660f75229f44) — Off-topic, Apr 2020
 
 ## Talks and videos
-### Solidity → Move
-- [What is Move lang: from Solidity to Move, a dev's perspective](https://www.youtube.com/watch?v=6u9tOdSCmIs)
-- [What is Sui Move?](https://www.youtube.com/watch?v=u3LAXnwkj4A)
-- [Sui SIP 6 explained: StakedSui](https://www.youtube.com/watch?v=E190cj6JjZ0)
-
 ### Dapp Breakdown
 - [Sui Starter Pack: getting started with Sui](https://www.youtube.com/watch?v=3FK9SONxOzA)
 - [Sui Starter Pack, extended: bridging ETH to Sui](https://www.youtube.com/watch?v=s79igTDkRZc)
@@ -178,13 +182,13 @@ Feb 2022 — Jul 2022 · New Delhi
 - [StealthVote: anonymous voting with Miden SDK ZK proofs](https://www.youtube.com/watch?v=iDYPuabLJh8)
 
 ### On Stage
-- [Etherlink: a step towards the future](https://www.youtube.com/watch?v=1vixLGDBWKk) — Tezos JH
-- [TezAsia Hackathon 2023: Kickoff Event](https://www.youtube.com/watch?v=3kMPb0g-LS4) — Tezos India
 - [Unlocking Metaverse-as-a-Service (Web3Conf)](https://www.youtube.com/watch?v=7aixfHAJ0vA) — Web3Conf India
 - [Get Started with Etherlink at Hack4Bengal 3.0](https://www.youtube.com/watch?v=RiPHJDR5Ng0) — Hack4Bengal
 - [Etherlink Workshop with Tezos India](https://www.youtube.com/watch?v=Vob3wCOYqJI) — Crash Talks
 - [Intro to Etherlink at CodeWave Hub](https://www.youtube.com/watch?v=5A0tR9XGCnw) — CodeWave Hub
 - [SmartPy and Tezos Workshop, Tezos Club SATI](https://www.youtube.com/watch?v=Rhox07X9-iw) — NextGen Code
+- [Etherlink: a step towards the future](https://www.youtube.com/watch?v=1vixLGDBWKk) — Tezos JH
+- [TezAsia Hackathon 2023: Kickoff Event](https://www.youtube.com/watch?v=3kMPb0g-LS4) — Tezos India
 - [Tezos India Hackathon: SmartPy at Hansraj College, Part 1](https://www.youtube.com/watch?v=fbqA2u741qU) — Web3 Entirety
 - [Tezos India Hackathon: SmartPy at Hansraj College, Part 2](https://www.youtube.com/watch?v=pznhBUJ3OI0) — Web3 Entirety
 - [Web3 using Tezos webinar at DSU DevHack 2024](https://www.youtube.com/watch?v=N-adfu-rM14) — DSU DevHack
@@ -196,10 +200,15 @@ Feb 2022 — Jul 2022 · New Delhi
 - [Tezos deployment and management with Zeeve (TezAsia 3.0)](https://www.youtube.com/watch?v=6SV8C_-KI2k) — Tezos India
 - [Demo Day: TezAsia Hackathon 3.0](https://www.youtube.com/watch?v=NenHLrSWgJQ) — Tezos India
 
+### Solidity → Move
+- [What is Move lang: from Solidity to Move, a dev's perspective](https://www.youtube.com/watch?v=6u9tOdSCmIs)
+- [What is Sui Move?](https://www.youtube.com/watch?v=u3LAXnwkj4A)
+- [Sui SIP 6 explained: StakedSui](https://www.youtube.com/watch?v=E190cj6JjZ0)
+
 ## Skills
 - DevRel & Community: Developer Relations, Developer onboarding, Developer experience, Workshops, Hackathons, Docs & starter kits, Live training, Certification design, POC development, Hackathon mentoring, Technical writing, Public speaking, Partnerships, GTM
 - Web2 & Frontend: Python, JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, REST APIs, Supabase, Vercel, Web scraping, Git & GitHub, C++, Java
 - AI & ML: Cursor, Claude, v0 (Vercel), LLM APIs, AI agent frameworks (exploring), Python, OpenCV, Image processing, Computer vision, Seq2Seq & attention models
-- Web3: Solidity, SmartPy, Move, Rust, Ethers.js, Hardhat, Foundry, Remix, Thirdweb, OpenZeppelin, Taquito.js, Beacon SDK, Web3.js, Tezos, Etherlink, Ethereum / EVM, Sui, Aptos, Arbitrum, Berachain, Miden, Sei, Monad
+- Web3: Solidity, SmartPy, Move, Ethers.js, Hardhat, Foundry, Remix, Thirdweb, OpenZeppelin, Taquito.js, Beacon SDK, Web3.js, Tezos, Etherlink, Ethereum / EVM, Sui, Aptos, Arbitrum, Berachain, Miden, Sei, Monad
 
-_Last updated: 2026-09-30_
+_Last updated: 2026-11-11_
