@@ -107,7 +107,7 @@
     if (!h || document.getElementById(h)) return;
     (S.pages || []).forEach(function (pg) {
       (pg.sections || []).forEach(function (sec) {
-        var ids = { videos: "videos", articles: "articles", lore: "lore", posts: "posts" };
+        var ids = { videos: "videos", articles: "articles", lore: "lore", posts: "posts", about: "about", playbook: "playbook", experience: "work", projects: "projects" };
         if (ids[sec] === h) location.replace(pg.path + "#" + h);
       });
     });
@@ -210,34 +210,53 @@
     if (!pages.length) return "";
     function stat(n, label) { return "<span><b>" + esc(n) + "</b> " + esc(label) + "</span>"; }
     var doors = pages.map(function (pg) {
-      var body = "", meta = "";
+      var meta = "";
       if (pg.id === "talks" && S.videos) {
-        var vids = [], feat = null;
-        S.videos.channels.forEach(function (c) { c.items.forEach(function (it) { vids.push(it); if (it.featured && !feat) feat = it; }); });
-        feat = feat || vids[0];
-        body = '<span class="door2__tv">' + (feat ? thumbImg(feat, "door2__thumb") + '<span class="door2__play" aria-hidden="true"></span><span class="door2__now">' + esc(feat.title) + "</span>" : "") + "</span>";
-        var more = [];
-        S.videos.channels.forEach(function (c) { c.items.forEach(function (it) { if (it.featured && it !== feat && more.length < 2) more.push(it); }); });
-        body += more.length ? '<ul class="door2__list">' + more.map(function (it) { return "<li><small>" + esc(it.by || "") + "</small>" + esc(it.title) + "</li>"; }).join("") + "</ul>" : "";
-        meta = stat(vids.length, "videos") + stat(S.videos.channels.length, "channels");
+        var n = 0; S.videos.channels.forEach(function (c) { n += c.items.length; });
+        meta = stat(n, "videos") + stat(S.videos.channels.length, "channels");
       } else if (pg.id === "writing" && S.articles) {
-        var a = S.articles.items, claps = 0;
-        a.forEach(function (it) { (it.stats || []).forEach(function (st) { if (/clap/.test(st.label)) claps += parseInt(String(st.value).replace(/\D/g, ""), 10) || 0; }); });
-        body = '<ol class="door2__heads">' + a.slice(0, 3).map(function (it) { return "<li><small>" + esc(it.kicker || "") + "</small>" + esc(it.title) + "</li>"; }).join("") + "</ol>";
-        meta = stat(a.length, "stories") + (claps ? stat(claps, "claps") : "");
+        var claps = 0;
+        S.articles.items.forEach(function (it) { (it.stats || []).forEach(function (st) { if (/clap/.test(st.label)) claps += parseInt(String(st.value).replace(/\D/g, ""), 10) || 0; }); });
+        meta = stat(S.articles.items.length, "stories") + (claps ? stat(claps, "claps") : "");
       } else if (pg.id === "story" && S.lore) {
-        var ch = S.lore.chapters || [];
-        body = '<ol class="door2__chaps">' + ch.map(function (c, i) { return "<li><small>CH." + (i + 1) + "</small>" + esc(c.title) + "</li>"; }).join("") + "</ol>";
-        var ys = S.lore.items.map(function (it) { return +it.year; });
-        meta = stat(S.lore.items.length, "moments") + stat(Math.min.apply(null, ys) + "–" + Math.max.apply(null, ys), "");
+        meta = stat(S.lore.items.length, "moments") + stat((S.lore.chapters || []).length, "chapters");
+      } else if (pg.id === "work" && S.experience) {
+        meta = stat(S.experience.items.length, "roles") + stat("2022–now", "");
+      } else if (pg.id === "projects" && S.projects) {
+        meta = stat(S.projects.items.length, "projects");
+      } else if (pg.id === "about" && S.playbook) {
+        meta = stat(S.playbook.cards.length, "strengths") + (S.skills ? stat(S.skills.groups.length, "toolkits") : "");
       }
       return '<a class="door2 door2--' + esc(pg.id) + ' reveal" href="' + esc(pg.path) + '">' +
         '<span class="door2__label">' + esc(pg.label) + "</span>" +
-        '<span class="door2__teaser">' + esc(pg.teaser || "") + "</span>" + body +
+        '<span class="door2__teaser">' + esc(pg.teaser || "") + "</span>" +
         '<span class="door2__meta">' + meta + "</span>" +
         '<span class="door2__cta">' + esc(pg.cta || "Open") + " →</span></a>";
     }).join("");
     return '<div class="wrap">' + head(x) + '<div class="doors2">' + doors + "</div></div>";
+  };
+
+  /* ---------- Home: the short versions of Work and Projects ---------- */
+  function moreLink(m) { return m ? '<a class="brief__more" href="' + esc(m.href) + '">' + esc(m.label) + " →</a>" : ""; }
+  R.workBrief = function (w) {
+    var e = S.experience; if (!e) return "";
+    return '<div class="wrap">' + head(w) + '<ol class="wbrief">' + e.items.map(function (j, i) {
+      var up = j.stepUp ? '<span class="wbrief__up">+ ' + esc(j.stepUp.role) + ", " + esc(j.stepUp.company.split(" — ")[0]) + "</span>" : "";
+      return '<li class="wbrief__row reveal">' +
+        '<span class="wbrief__n">' + String(i + 1).padStart(2, "0") + "</span>" +
+        '<span class="wbrief__who"><b>' + esc(j.company.split(" — ")[0]) + "</b><span>" + esc(j.role) + "</span>" + up + "</span>" +
+        '<span class="wbrief__win">' + esc(j.win || "") + "</span>" +
+        '<span class="wbrief__when">' + esc(j.period) + "</span></li>";
+    }).join("") + "</ol>" + moreLink(w.more) + "</div>";
+  };
+  R.projectBrief = function (b) {
+    var pr = S.projects; if (!pr) return "";
+    var first = function (t) { var m = String(t || "").match(/^.*?[.:](\s|$)/); return m ? m[0].replace(/[:]\s*$/, ".") : t; };
+    return '<div class="wrap">' + head(b) + '<div class="pbrief">' + pr.items.slice(0, b.count || 3).map(function (it) {
+      var open = it.url ? '<a class="pbrief__card reveal" href="' + esc(it.url) + '"' + ext(it.url) + ">" : '<div class="pbrief__card reveal">';
+      return open + '<span class="tag">' + esc(it.kind) + "</span><b>" + esc(it.name) + "</b><span>" + esc(first(it.text)) + "</span>" +
+        (it.stack ? '<small>' + it.stack.slice(0, 4).map(esc).join(" · ") + "</small>" : "") + (it.url ? "</a>" : "</div>");
+    }).join("") + "</div>" + moreLink(b.more ? { label: b.more.label + " (" + pr.items.length + ")", href: b.more.href } : null) + "</div>";
   };
 
   /* ---------- Testimonials (hidden until content.js has quotes) ---------- */

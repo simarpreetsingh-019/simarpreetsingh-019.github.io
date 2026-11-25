@@ -45,6 +45,9 @@ Worked with / spoke at: Tezos India, Etherlink, SOULVERSE, PizzaDAO, GDG New Del
 - Medium: https://medium.com/@simarpreetsingh.019
 - Telegram: https://t.me/simarpreet_019
 - All links: https://bio.link/simarpreetsingh
+- About: https://simarpreetsingh-019.github.io/about/ (Who Simarpreet Singh is, what he brings to developer teams (onboarding, education, developer programs, feedback loops, events, content) and the full toolkit across Web2, AI and Web3.)
+- Work: https://simarpreetsingh-019.github.io/work/ (Full work history of Simarpreet Singh: Lead Developer Relations at Tezos India and Etherlink, PizzaDAO India Lead, founder of Web3Panjab, SOULVERSE and DRDO, with results and links.)
+- Projects: https://simarpreetsingh-019.github.io/projects/ (Things Simarpreet Singh has built: QuestPass, Thermo for Mac, makereel, shipcrate, Model Shelf, SuiSips, Miden SDK Simulator and more, with tech stacks and links.)
 - Talks: https://simarpreetsingh-019.github.io/talks/ (Workshops, stage talks and explainers by developer advocate Simarpreet Singh: Etherlink, Tezos, SmartPy, Sui Move and more. Watch them right on the page.)
 - Writing: https://simarpreetsingh-019.github.io/writing/ (Articles by Simarpreet Singh on computer vision, Web3, Layer 2s, Python and JavaScript, published on Medium and dev.to.)
 - Story: https://simarpreetsingh-019.github.io/story/ (The story of developer advocate Simarpreet Singh in five chapters, from student hackathons to leading DevRel at Tezos India and running India-wide events, plus notes from X.)

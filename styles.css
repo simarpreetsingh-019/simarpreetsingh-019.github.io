@@ -1129,3 +1129,92 @@ a.lore__item.reveal.in:hover { transform: rotate(0) translate(-3px, -3px); }
 @media (max-width: 600px) { .stack li { font-size: 12.5px; } }
 /* About photo: show the whole yearbook picture */
 .polaroid img { aspect-ratio: 4 / 5; }
+
+/* =========================================================
+   v7: short home page (Work + Projects briefs, compact doors)
+   ========================================================= */
+.wbrief { list-style: none; margin: 0; padding: 0; border: var(--b); background: var(--card); box-shadow: 8px 8px 0 var(--shadow); }
+.wbrief__row { display: grid; grid-template-columns: 44px minmax(0, 1.1fr) minmax(0, 1.4fr) 170px; gap: 18px; align-items: center; padding: 14px 20px; border-bottom: 2px solid var(--ink); }
+.wbrief__row:last-child { border-bottom: 0; }
+.wbrief__n { font-family: var(--f-mono); font-weight: 700; color: var(--hot-2); }
+.wbrief__who { display: grid; gap: 1px; min-width: 0; }
+.wbrief__who b { font-family: var(--f-display); font-weight: 800; font-size: 18px; text-transform: uppercase; line-height: 1.1; }
+.wbrief__who > span { font-family: var(--f-mono); font-size: 12.5px; font-weight: 700; text-transform: uppercase; color: var(--hot-2); }
+.wbrief__up { font-family: var(--f-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--muted); }
+.wbrief__win { font-size: 15px; color: var(--ink-soft); line-height: 1.45; }
+.wbrief__when { font-family: var(--f-mono); font-size: 12.5px; font-weight: 700; text-align: right; color: var(--muted); }
+.brief__more { display: inline-block; margin-top: 22px; font-family: var(--f-mono); font-size: 14px; font-weight: 700; text-transform: uppercase; color: var(--ink);
+  padding: 10px 16px; border: 2px solid var(--ink); background: var(--card); box-shadow: 3px 3px 0 var(--shadow); text-decoration: none; }
+.brief__more:hover { background: var(--hot-grad); color: #fff; }
+.pbrief { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.pbrief__card { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px; text-decoration: none; color: var(--ink); background: var(--card); border: var(--b); border-radius: var(--r); box-shadow: 6px 6px 0 var(--shadow); transition: transform .15s ease, box-shadow .15s ease; }
+.pbrief__card:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--hot-2); }
+.pbrief__card .tag { align-self: flex-start; }
+.pbrief__card b { font-family: var(--f-display); font-weight: 800; font-size: 21px; text-transform: uppercase; line-height: 1.05; }
+.pbrief__card > span:not(.tag) { font-size: 14.5px; color: var(--ink-soft); line-height: 1.45; }
+.pbrief__card small { margin-top: auto; font-family: var(--f-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--muted); }
+/* compact doors */
+.doors2 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.door2 { gap: 8px; padding: 18px 20px; }
+.door2__label { font-size: clamp(24px, 2.4vw, 30px); }
+.door2__teaser { font-size: 18px; }
+.door2__meta { margin-top: 2px; }
+.door2--about { background: var(--hot-grad); color: #fff; }
+.door2--work { background: #ffe14a; color: #0a0a0a; }
+.door2--projects { background: var(--card); }
+@media (max-width: 1000px) {
+  .wbrief__row { grid-template-columns: 34px minmax(0, 1fr) auto; }
+  .wbrief__win { grid-column: 2 / -1; }
+  .wbrief__when { grid-row: 1; grid-column: 3; }
+  .pbrief { grid-template-columns: 1fr 1fr; }
+  .doors2 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .section--tight { padding: 44px 0; }
+  .wbrief__row { padding: 10px 12px; gap: 4px 10px; }
+  .wbrief__who b { font-size: 15px; }
+  .wbrief__win { font-size: 13.5px; }
+  .wbrief__up { display: none; }
+  .pbrief { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding: 4px 4px 14px; margin: 0 -4px; }
+  .pbrief__card { flex: 0 0 80%; scroll-snap-align: start; }
+  .doors2 { gap: 12px; }
+  .door2 { padding: 12px 14px; gap: 4px; box-shadow: 4px 4px 0 var(--shadow); }
+  .door2__label { font-size: 19px; }
+  .door2__teaser { font-size: 14.5px; line-height: 1.25; }
+  .door2__meta { display: none; }
+  .door2__cta { font-size: 12.5px; }
+}
+/* v7: phone home trims */
+@media (max-width: 600px) {
+  .hero__media { width: min(300px, 74%); }
+  .stats { margin-top: 36px; }
+  .stats li { padding: 10px 12px; }
+  .stats strong { font-size: 24px; }
+  .stats span { margin-top: 4px; }
+  body[data-page="home"] .doors { display: none; } /* "open to" is in the hero line and the form's reason chips */
+  #contact { padding-top: 48px; }
+  .contact .mail { margin-bottom: 18px; }
+  .footer { padding-top: 48px; }
+  .footer__name { margin-bottom: 22px; }
+  .footer__links { margin-bottom: 26px; }
+  .vibe { padding: 16px; gap: 12px; margin-bottom: 26px; }
+  .vibe__text { display: none; }
+  .coin { width: 84px; height: 84px; }
+  .coin__face { font-size: 11px; }
+  .coin__shadow { width: 60px; }
+}
+@media (max-width: 600px) {
+  .form { padding: 18px; gap: 12px; }
+  .field textarea { height: 96px; }
+  .field input, .field textarea { padding: 10px 12px; }
+  .socials a { padding: 8px 10px; }
+  .wbrief__row:nth-child(n+4) .wbrief__win { display: none; } /* older roles: one line each on phones */
+  .marquee__label { padding: 4px 16px; }
+  .marquee__track span { padding: 10px 18px; }
+}
+@media (max-width: 600px) {
+  .wbrief__row { grid-template-columns: 30px minmax(0, 1fr); }
+  .wbrief__when { grid-row: auto; grid-column: 2; text-align: left; font-size: 12px; }
+  .wbrief__win { grid-column: 2; }
+  .door2__label { font-size: 17px; overflow-wrap: anywhere; }
+}

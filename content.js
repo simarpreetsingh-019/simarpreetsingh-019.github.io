@@ -64,14 +64,35 @@ window.SITE = {
              After changing pages, the build step regenerates the page files
              (it runs on every deploy).                                      */
   menu: [
-    { label: "About", href: "#about" },
-    { label: "Work", href: "#work" },
-    { label: "Projects", href: "#projects" },
+    { label: "About", href: "about/" },
+    { label: "Work", href: "work/" },
+    { label: "Projects", href: "projects/" },
     { label: "Talks", href: "talks/" },
     { label: "Writing", href: "writing/" },
     { label: "Story", href: "story/" },
   ],
   pages: [
+    {
+      id: "about", path: "about/", label: "About", sections: ["about", "playbook"],
+      title: "About Simarpreet Singh — Developer Advocate, DevRel Lead & Software Developer",
+      description: "Who Simarpreet Singh is, what he brings to developer teams (onboarding, education, developer programs, feedback loops, events, content) and the full toolkit across Web2, AI and Web3.",
+      teaser: "Who I am, what I bring to a dev team, and the full toolkit.",
+      cta: "Meet me",
+    },
+    {
+      id: "work", path: "work/", label: "Work", sections: ["experience", "testimonials"],
+      title: "Work — Simarpreet Singh: DevRel at Tezos India & Etherlink, PizzaDAO, Web3Panjab",
+      description: "Full work history of Simarpreet Singh: Lead Developer Relations at Tezos India and Etherlink, PizzaDAO India Lead, founder of Web3Panjab, SOULVERSE and DRDO, with results and links.",
+      teaser: "Every role in full, with the numbers and links.",
+      cta: "See the full work",
+    },
+    {
+      id: "projects", path: "projects/", label: "Projects", sections: ["projects"],
+      title: "Projects — Simarpreet Singh: QuestPass, Thermo, makereel, shipcrate and more",
+      description: "Things Simarpreet Singh has built: QuestPass, Thermo for Mac, makereel, shipcrate, Model Shelf, SuiSips, Miden SDK Simulator and more, with tech stacks and links.",
+      teaser: "Every side quest, with tech stacks and links.",
+      cta: "Browse projects",
+    },
     {
       id: "talks", path: "talks/", label: "Talks", sections: ["videos"], ogImage: "assets/img/og-talks.jpg",
       title: "Talks & Workshops — Simarpreet Singh, Developer Advocate",
@@ -182,6 +203,23 @@ window.SITE = {
     title: "There's *more* where that came from.",
   },
 
+  /* ✏️ EDIT: HOME — the short versions of Work and Projects on the home page.
+     The full sections live on the Work and Projects pages.
+     Each job's  win  (in ✏️ EDIT: WORK) is the one line shown here.        */
+  workBrief: {
+    show: true,
+    label: "[ THE WORK, SHORT ]",
+    title: "Where I've *shipped*.",
+    more: { label: "See every role in full", href: "work/" },
+  },
+  projectBrief: {
+    show: true,
+    label: "[ SIDE QUESTS ]",
+    title: "Things I've *built*.",
+    count: 3, // how many projects from the top of the projects list
+    more: { label: "All projects", href: "projects/" },
+  },
+
   /* ✏️ EDIT: ABOUT -----------------------------------------------------
      paragraphs: one string per paragraph.
      photo: a local file ("assets/img/…") or a full image URL.
@@ -253,6 +291,7 @@ window.SITE = {
     items: [
       {
         company: "SOULVERSE",
+        win: "Partnerships for identity, credentials and settlement infrastructure.", // one line for the home page
         url: "https://soulverse.us",
         role: "Partnership & Ecosystem Lead",
         period: "Jul 2026 — Oct 2026",
@@ -265,6 +304,7 @@ window.SITE = {
       },
       {
         company: "PizzaDAO",
+        win: "40+ Bitcoin Pizza Day events across India on a single day.", // one line for the home page
         url: "https://x.com/Pizza_DAO",
         role: "India Lead · Underboss",
         compact: true, // slim row: first bullet only, the rest behind "Show more"
@@ -279,6 +319,7 @@ window.SITE = {
       },
       {
         company: "Tezos India",
+        win: "Grew engaged developers 3K → 12K+ and the TezAsia hackathon 1.5K → 13K+.", // one line for the home page
         url: "https://in.linkedin.com/company/tezos-india-foundation",
         role: "Lead Developer Relations",
         period: "Oct 2022 — Apr 2025",
@@ -310,6 +351,7 @@ window.SITE = {
       },
       {
         company: "Web3Panjab",
+        win: "Grassroots Web3 community; shipped two paid client products.", // one line for the home page
         url: "https://x.com/web3panjab",
         role: "Founder & Independent Consultant",
         period: "Jul 2022 — Present",
@@ -326,6 +368,7 @@ window.SITE = {
       },
       {
         company: "DRDO — Scientific Analysis Group",
+        win: "Researched secure data transmission with reversible data hiding.", // one line for the home page
         role: "Research Trainee",
         compact: true,
         period: "Feb 2022 — Jul 2022",

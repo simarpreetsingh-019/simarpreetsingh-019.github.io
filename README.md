@@ -145,16 +145,20 @@ python3 -m http.server 8000   # then open http://localhost:8000
 (Double-clicking `index.html` also works, but YouTube refuses to play embeds from `file://`, so use the server above to test Simar's TV.)
 
 ## 🗂 Pages
-The site is a short home page plus three extra pages, all built from `content.js`:
+The site is a short home page plus extra pages, all built from `content.js`:
 
 | Page | Shows | File |
 |---|---|---|
-| Home `/` | hero, about, playbook + toolkit, work, projects, links to the pages below, contact | `index.html` |
+| Home `/` | hero, numbers, short Work list, top 3 projects, doors to every page, contact (about 6 screens) | `index.html` |
+| About `/about/` | about, playbook and toolkit | `about/index.html` (generated) |
+| Work `/work/` | every role in full | `work/index.html` (generated) |
+| Projects `/projects/` | all project cards and the ring | `projects/index.html` (generated) |
 | Talks `/talks/` | Simar's TV and the "Mic check" puzzle | `talks/index.html` (generated) |
 | Writing `/writing/` | the article magazine | `writing/index.html` (generated) |
 | Story `/story/` | lore chapters and the X cork board | `story/index.html` (generated) |
+| Model Shelf `/modelshelf/` | project page for Model Shelf (hand-written) | `modelshelf/index.html` |
 
-Don't edit the generated page files by hand: `scripts/build-seo.js` rewrites them from `index.html` + `content.js`. Old links such as `/#videos` or `/#lore` forward to the right page automatically.
+Don't edit the generated page files by hand: `scripts/build-seo.js` rewrites them from `index.html` + `content.js`. Old links such as `/#work`, `/#videos` or `/#lore` forward to the right page automatically.
 
 ## ✨ Features
 - Neo-brutalist layout (grid paper, thick borders, hard shadows) with editorial serif accents and hand-drawn underlines
