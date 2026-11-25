@@ -228,6 +228,7 @@
         meta = stat(S.playbook.cards.length, "strengths") + (S.skills ? stat(S.skills.groups.length, "toolkits") : "");
       }
       return '<a class="door2 door2--' + esc(pg.id) + ' reveal" href="' + esc(pg.path) + '">' +
+        (pg.ogImage ? '<span class="door2__shot"><img src="' + esc(pg.ogImage) + '" alt="Preview of the ' + esc(pg.label) + ' page" loading="lazy" width="1200" height="630" /><span class="door2__url">/' + esc(pg.path) + "</span></span>" : "") +
         '<span class="door2__label">' + esc(pg.label) + "</span>" +
         '<span class="door2__teaser">' + esc(pg.teaser || "") + "</span>" +
         '<span class="door2__meta">' + meta + "</span>" +

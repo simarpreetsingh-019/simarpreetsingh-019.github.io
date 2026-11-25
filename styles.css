@@ -1218,3 +1218,21 @@ a.lore__item.reveal.in:hover { transform: rotate(0) translate(-3px, -3px); }
   .wbrief__win { grid-column: 2; }
   .door2__label { font-size: 17px; overflow-wrap: anywhere; }
 }
+
+/* v7.1: "Keep exploring" doors show a preview of each page */
+.door2 { padding: 0 0 16px; overflow: hidden; }
+.door2 > span:not(.door2__shot) { padding-inline: 18px; }
+.door2__shot { position: relative; display: block; aspect-ratio: 1200 / 630; border-bottom: 3px solid var(--ink); background: var(--paper); overflow: hidden; margin-bottom: 6px; }
+.door2__shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform .4s ease; }
+.door2:hover .door2__shot img { transform: scale(1.04); }
+.door2__url { position: absolute; right: 10px; bottom: 10px; font-family: var(--f-mono); font-size: 11.5px; font-weight: 700; padding: 3px 8px; background: #0a0a0a; color: #f3f1ec; border: 2px solid #f3f1ec; }
+.door2--about, .door2--work, .door2--talks, .door2--story, .door2--writing, .door2--projects { background: var(--card); color: var(--ink); }
+.door2__label { margin-top: 4px; }
+.door2__teaser { font-size: 17px; }
+@media (max-width: 1000px) { .doors2 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) {
+  .doors2 { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding: 4px 4px 16px; margin: 0 -4px; }
+  .door2 { flex: 0 0 78%; scroll-snap-align: start; padding: 0 0 12px; }
+  .door2 > span:not(.door2__shot) { padding-inline: 14px; }
+  .door2__meta { display: flex; }
+}

@@ -60,7 +60,8 @@ window.SITE = {
      menu  = the top menu. "#work" jumps to a home section, "talks/" opens a page.
      pages = the extra pages: what each one shows ("sections") and what
              Google, link previews and AI assistants see (title, description,
-             ogImage = the 1200×630 picture shown when that page's link is shared).
+             ogImage = the 1200×630 picture shown when that page's link is shared,
+                       and as the page's preview in "Keep exploring" on the home page).
              After changing pages, the build step regenerates the page files
              (it runs on every deploy).                                      */
   menu: [
@@ -73,21 +74,21 @@ window.SITE = {
   ],
   pages: [
     {
-      id: "about", path: "about/", label: "About", sections: ["about", "playbook"],
+      id: "about", path: "about/", label: "About", sections: ["about", "playbook"], ogImage: "assets/img/og-about.jpg",
       title: "About Simarpreet Singh — Developer Advocate, DevRel Lead & Software Developer",
       description: "Who Simarpreet Singh is, what he brings to developer teams (onboarding, education, developer programs, feedback loops, events, content) and the full toolkit across Web2, AI and Web3.",
       teaser: "Who I am, what I bring to a dev team, and the full toolkit.",
       cta: "Meet me",
     },
     {
-      id: "work", path: "work/", label: "Work", sections: ["experience", "testimonials"],
+      id: "work", path: "work/", label: "Work", sections: ["experience", "testimonials"], ogImage: "assets/img/og-work.jpg",
       title: "Work — Simarpreet Singh: DevRel at Tezos India & Etherlink, PizzaDAO, Web3Panjab",
       description: "Full work history of Simarpreet Singh: Lead Developer Relations at Tezos India and Etherlink, PizzaDAO India Lead, founder of Web3Panjab, SOULVERSE and DRDO, with results and links.",
       teaser: "Every role in full, with the numbers and links.",
       cta: "See the full work",
     },
     {
-      id: "projects", path: "projects/", label: "Projects", sections: ["projects"],
+      id: "projects", path: "projects/", label: "Projects", sections: ["projects"], ogImage: "assets/img/og-projects.jpg",
       title: "Projects — Simarpreet Singh: QuestPass, Thermo, makereel, shipcrate and more",
       description: "Things Simarpreet Singh has built: QuestPass, Thermo for Mac, makereel, shipcrate, Model Shelf, SuiSips, Miden SDK Simulator and more, with tech stacks and links.",
       teaser: "Every side quest, with tech stacks and links.",
