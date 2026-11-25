@@ -260,7 +260,7 @@
   function stackHtml(it) {
     return it.stack && it.stack.length ? '<ul class="stack" aria-label="Built with">' + it.stack.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" : "";
   }
-  function host(u) { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; } }
+  function host(u) { try { var x = new URL(u, location.href); return (x.hostname.replace(/^www\./, "") + (/^https?:/.test(u) ? "" : x.pathname)).replace(/\/$/, ""); } catch (e) { return ""; } }
   R.projects = function (pr) {
     var n = pr.featured == null ? 4 : pr.featured;
     var top = pr.items.slice(0, n), rest = pr.items.slice(n);

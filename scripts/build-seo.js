@@ -270,7 +270,7 @@ ${jobs(S.experience).map((j) => `### ${j.role} — ${j.company}\n${j.period}${j.
 ${S.lore.items.map((it) => `- ${it.when ? it.when + " " : ""}${it.year} — ${it.title}: ${it.text}${it.url ? " (" + it.url + ")" : ""}`).join("\n")}
 
 ## Projects
-${S.projects.items.map((p) => `- **${p.name}** (${p.kind}) — ${p.text}${p.stack ? " Built with: " + p.stack.join(", ") + "." : ""}${p.url ? " " + p.url : ""}`).join("\n")}
+${S.projects.items.map((p) => `- **${p.name}** (${p.kind}) — ${p.text}${p.stack ? " Built with: " + p.stack.join(", ") + "." : ""}${p.url ? " " + abs(p.url) : ""}`).join("\n")}
 
 ## Articles
 ${S.articles.items.map((a) => `- [${a.title}](${a.url}) — ${a.kicker}, ${a.date}`).join("\n")}
@@ -297,7 +297,7 @@ const resume = {
   work: jobs(S.experience).map((j) => ({ name: j.company, position: j.role, url: j.url, ...parsePeriod(j.period), highlights: (j.points || []).map(plain) })),
   education: [{ institution: "Guru Tegh Bahadur Institute of Technology, GGSIP University", area: "Computer Science and Engineering", studyType: "B.Tech", startDate: "2018-08", endDate: "2022-08" }],
   skills: S.skills.groups.map((g) => ({ name: g.name, keywords: g.items })),
-  projects: S.projects.items.map((p) => ({ name: p.name, description: p.text, url: p.url, keywords: [p.kind].concat(p.stack || []) })),
+  projects: S.projects.items.map((p) => ({ name: p.name, description: p.text, url: p.url && abs(p.url), keywords: [p.kind].concat(p.stack || []) })),
   publications: S.articles.items.map((a) => ({ name: a.title, url: a.url, releaseDate: a.date })),
   meta: { lastModified: TODAY },
 };
@@ -307,6 +307,7 @@ write("profile.json", JSON.stringify(resume, null, 2) + "\n");
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${SITE_URL}/</loc><lastmod>${TODAY}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+${(S.projects.items || []).filter((x) => x.url && !/^https?:/.test(x.url)).map((x) => `  <url><loc>${SITE_URL}/${x.url}</loc><lastmod>${TODAY}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`).join("\n")}
 ${PAGES.map((pg) => `  <url><loc>${SITE_URL}/${pg.path}</loc><lastmod>${TODAY}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`).join("\n")}
   <url><loc>${SITE_URL}/llms.txt</loc><lastmod>${TODAY}</lastmod><priority>0.6</priority></url>
   <url><loc>${SITE_URL}/llms-full.txt</loc><lastmod>${TODAY}</lastmod><priority>0.6</priority></url>
