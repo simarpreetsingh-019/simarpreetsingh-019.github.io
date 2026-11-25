@@ -217,7 +217,7 @@ window.SITE = {
     show: true,
     label: "[ SIDE QUESTS ]",
     title: "Things I've *built*.",
-    count: 3, // how many projects from the top of the projects list
+    count: 8, // how many projects from the top of the projects list (each shows its  image  on a little laptop)
     more: { label: "All projects", href: "projects/" },
   },
 
@@ -452,6 +452,7 @@ window.SITE = {
   /* ✏️ EDIT: PROJECTS --------------------------------------------------
      One line per project: { name, topic, kind (small label), text, url }.
      stack: optional list of tools, shown as small chips: stack: ["Next.js", "Supabase"]
+     image: optional 1200×630 preview picture (assets/img/projects/…), shown on the card
      topic: "web2", "web3" or "ai" — used by the All / Web2 / Web3 / AI & ML filter.
      The first `featured` projects are big cards; the rest sit on a
      rotating ring with a Quick Look preview. Put your best projects first. */
@@ -462,19 +463,19 @@ window.SITE = {
     title: "Things I've *built*.",
     featured: 4, // how many big cards before the ring
     items: [
-      { name: "QuestPass", topic: "web3", kind: "Founder · full-stack · Devcon 8", text: "An event engagement platform launched at Devcon 8 Mumbai: 65+ attendee passes from 30+ cities and 138 side events and stamp spots. QR connect with consent-based contact sharing, a filterable People directory, organiser event submissions with Luma and CSV imports, and an NFC stamp hunt with a leaderboard. Its photo booth has since been integrated and used by PizzaDAO at its events.", url: "https://questpass.live",
+      { name: "QuestPass", image: "assets/img/projects/questpass.jpg", topic: "web3", kind: "Founder · full-stack · Devcon 8", text: "An event engagement platform launched at Devcon 8 Mumbai: 65+ attendee passes from 30+ cities and 138 side events and stamp spots. QR connect with consent-based contact sharing, a filterable People directory, organiser event submissions with Luma and CSV imports, and an NFC stamp hunt with a leaderboard. Its photo booth has since been integrated and used by PizzaDAO at its events.", url: "https://questpass.live",
         stack: ["TypeScript", "Docker", "Google Cloud", "Cloudflare Tunnel", "NFC", "Claude Code"] },
-      { name: "Thermo", topic: "web2", kind: "macOS app · Open source", text: "A free Mac app that shows CPU, GPU, SSD and battery temperatures around the notch and tells you which app is heating your Mac, what's slowing down and what to close. Memory, battery-health and 24-hour history tabs, smart alerts, and no sudo or kernel extensions.", url: "https://simarpreetsingh-019.github.io/Thermo/",
+      { name: "Thermo", image: "assets/img/projects/thermo.jpg", topic: "web2", kind: "macOS app · Open source", text: "A free Mac app that shows CPU, GPU, SSD and battery temperatures around the notch and tells you which app is heating your Mac, what's slowing down and what to close. Memory, battery-health and 24-hour history tabs, smart alerts, and no sudo or kernel extensions.", url: "https://simarpreetsingh-019.github.io/Thermo/",
         stack: ["Swift", "macOS", "Homebrew", "AI-agent API"] },
-      { name: "shipcrate", topic: "web2", kind: "Open source · Release tooling", text: "Release and update tooling in one command: a quality gate with git hooks and CI, GitHub releases with SHA-256 checksums and provenance, a Homebrew formula, a verifying installer and update notices. Extracted from Thermo, with a Claude Code plugin and an MCP server for AI agents.", url: "https://simarpreetsingh-019.github.io/shipcrate/",
+      { name: "shipcrate", image: "assets/img/projects/shipcrate.jpg", topic: "web2", kind: "Open source · Release tooling", text: "Release and update tooling in one command: a quality gate with git hooks and CI, GitHub releases with SHA-256 checksums and provenance, a Homebrew formula, a verifying installer and update notices. Extracted from Thermo, with a Claude Code plugin and an MCP server for AI agents.", url: "https://simarpreetsingh-019.github.io/shipcrate/",
         stack: ["POSIX shell", "GitHub Actions", "Homebrew", "MCP"] },
-      { name: "makereel", topic: "ai", kind: "Open source · Video", text: "Turns live streams and long videos into captioned 9:16 reels on your own computer: clips YouTube, Twitch and Kick streams live from loudness and chat spikes, word-by-word Hindi, English and Hinglish captions, speaker framing and creator credits. No account or API key needed.", url: "https://simarpreetsingh-019.github.io/makereel/",
+      { name: "makereel", image: "assets/img/projects/makereel.jpg", topic: "ai", kind: "Open source · Video", text: "Turns live streams and long videos into captioned 9:16 reels on your own computer: clips YouTube, Twitch and Kick streams live from loudness and chat spikes, word-by-word Hindi, English and Hinglish captions, speaker framing and creator credits. No account or API key needed.", url: "https://simarpreetsingh-019.github.io/makereel/",
         stack: ["Python", "FFmpeg", "yt-dlp", "faster-whisper"] },
-      { name: "Model Shelf (msh)", topic: "ai", kind: "Rust CLI · In progress", text: "One local library for every AI model on a Mac: finds duplicate model files across Ollama, LM Studio and Hugging Face by SHA-256 and links them instead of copying, with undo.", url: "modelshelf/",
+      { name: "Model Shelf (msh)", image: "assets/img/projects/modelshelf.jpg", topic: "ai", kind: "Rust CLI · In progress", text: "One local library for every AI model on a Mac: finds duplicate model files across Ollama, LM Studio and Hugging Face by SHA-256 and links them instead of copying, with undo.", url: "modelshelf/",
         stack: ["Rust", "CLI", "Ollama", "LM Studio", "Hugging Face"] },
-      { name: "SuiSips", topic: "web3", kind: "Next.js · Client build", text: "A production SIP tracker and community platform for the Sui ecosystem: proposals synced from GitHub, discussions, articles, videos and a curated tweet wall. Built with Next.js, React Markdown and Tailwind CSS.", url: "https://suisips.com" },
-      { name: "Miden SDK Simulator", topic: "web3", kind: "React · Miden SDK", text: "An interactive demo of anonymous, privacy-preserving voting on Miden's ZK rollup SDK. Scoped, built and shipped with no prior Miden experience, to show how any new SDK becomes learnable through a working demo.", url: "https://sim-miden-demo-main.vercel.app/" },
-      { name: "JSON API Visualizer", topic: "web2", kind: "Next.js · Live tool", text: "Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0.", url: "https://json-visual.vercel.app" },
+      { name: "SuiSips", image: "assets/img/projects/suisips.jpg", topic: "web3", kind: "Next.js · Client build", text: "A production SIP tracker and community platform for the Sui ecosystem: proposals synced from GitHub, discussions, articles, videos and a curated tweet wall. Built with Next.js, React Markdown and Tailwind CSS.", url: "https://suisips.com" },
+      { name: "Miden SDK Simulator", image: "assets/img/projects/miden.jpg", topic: "web3", kind: "React · Miden SDK", text: "An interactive demo of anonymous, privacy-preserving voting on Miden's ZK rollup SDK. Scoped, built and shipped with no prior Miden experience, to show how any new SDK becomes learnable through a working demo.", url: "https://sim-miden-demo-main.vercel.app/" },
+      { name: "JSON API Visualizer", image: "assets/img/projects/jsonviz.jpg", topic: "web2", kind: "Next.js · Live tool", text: "Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0.", url: "https://json-visual.vercel.app" },
       { name: "Etherlink Project Showcase", topic: "web3", kind: "Etherlink · GitHub", text: "A showcase repo spotlighting dApps built on Tezos and Etherlink after hackathons, alongside demo apps for workshop attendees.", url: "https://github.com/simarpreetsingh-019/TIProjects" },
       { name: "Gitfund", topic: "web3", kind: "Web3 · OSS", text: "Auto-pays open-source contributors for merged PRs using programmable smart-contract logic.", url: "https://github.com/simarpreetsingh-019/TIProjects/tree/main/Gitfund" },
       { name: "OverWatch TS", topic: "web2", kind: "Open source", text: "Built the initial example template for overwatch-ts, a lightweight state-management library for Next.js.", url: "https://github.com/simarpreetsingh-019/overwatch/tree/main" },

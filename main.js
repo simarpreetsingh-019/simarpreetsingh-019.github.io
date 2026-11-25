@@ -241,22 +241,45 @@
   function moreLink(m) { return m ? '<a class="brief__more" href="' + esc(m.href) + '">' + esc(m.label) + " →</a>" : ""; }
   R.workBrief = function (w) {
     var e = S.experience; if (!e) return "";
-    return '<div class="wrap">' + head(w) + '<ol class="wbrief">' + e.items.map(function (j, i) {
-      var up = j.stepUp ? '<span class="wbrief__up">+ ' + esc(j.stepUp.role) + ", " + esc(j.stepUp.company.split(" — ")[0]) + "</span>" : "";
-      return '<li class="wbrief__row reveal">' +
+    function tags(t) { return t && t.length ? '<div class="tags">' + t.map(function (x) { return '<span class="tag">' + esc(x) + "</span>"; }).join("") + "</div>" : ""; }
+    return '<div class="wrap">' + head(w, '<p class="wbrief__hint">Click a role to open it.</p>') + '<ol class="wbrief">' + e.items.map(function (j, i) {
+      var up = j.stepUp;
+      var co = j.url ? '<a href="' + esc(j.url) + '"' + ext(j.url) + ">" + esc(j.company) + " ↗</a>" : esc(j.company);
+      var panel = '<div class="wbrief__panel" id="wb-' + i + '" hidden>' +
+        '<p class="wbrief__meta">' + co + (j.location ? " · " + esc(j.location) : "") + "</p>" +
+        "<ul>" + (j.points || []).map(function (pt) { return "<li>" + linkify(pt) + "</li>"; }).join("") + "</ul>" +
+        (up ? '<div class="stepup"><p class="stepup__tag"><span aria-hidden="true">↑</span> Step up · ' + esc(up.period) + '</p><h4 class="stepup__role">' + esc(up.role) + ", " + esc(up.company) + "</h4><ul>" +
+          (up.points || []).map(function (pt) { return "<li>" + linkify(pt) + "</li>"; }).join("") + "</ul>" + tags(up.tags) + "</div>" : "") +
+        tags(j.tags) + "</div>";
+      return '<li class="wbrief__item reveal' + (j.current ? " is-now" : "") + '">' +
+        '<button type="button" class="wbrief__row" aria-expanded="false" aria-controls="wb-' + i + '">' +
         '<span class="wbrief__n">' + String(i + 1).padStart(2, "0") + "</span>" +
-        '<span class="wbrief__who"><b>' + esc(j.company.split(" — ")[0]) + "</b><span>" + esc(j.role) + "</span>" + up + "</span>" +
+        '<span class="wbrief__who"><b>' + esc(j.company.split(" — ")[0]) + "</b><span>" + esc(j.role) + "</span>" +
+          (up ? '<span class="wbrief__up">+ ' + esc(up.role) + ", " + esc(up.company.split(" — ")[0]) + "</span>" : "") + "</span>" +
         '<span class="wbrief__win">' + esc(j.win || "") + "</span>" +
-        '<span class="wbrief__when">' + esc(j.period) + "</span></li>";
+        '<span class="wbrief__when">' + esc(j.period) + '</span><span class="wbrief__plus" aria-hidden="true">+</span></button>' + panel + "</li>";
     }).join("") + "</ol>" + moreLink(w.more) + "</div>";
   };
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest && ev.target.closest(".wbrief__row"); if (!b) return;
+    var open = b.getAttribute("aria-expanded") !== "true";
+    b.setAttribute("aria-expanded", open ? "true" : "false");
+    document.getElementById(b.getAttribute("aria-controls")).hidden = !open;
+    b.parentNode.classList.toggle("open", open);
+  });
+
   R.projectBrief = function (b) {
     var pr = S.projects; if (!pr) return "";
-    var first = function (t) { var m = String(t || "").match(/^.*?[.:](\s|$)/); return m ? m[0].replace(/[:]\s*$/, ".") : t; };
-    return '<div class="wrap">' + head(b) + '<div class="pbrief">' + pr.items.slice(0, b.count || 3).map(function (it) {
-      var open = it.url ? '<a class="pbrief__card reveal" href="' + esc(it.url) + '"' + ext(it.url) + ">" : '<div class="pbrief__card reveal">';
-      return open + '<span class="tag">' + esc(it.kind) + "</span><b>" + esc(it.name) + "</b><span>" + esc(first(it.text)) + "</span>" +
-        (it.stack ? '<small>' + it.stack.slice(0, 4).map(esc).join(" · ") + "</small>" : "") + (it.url ? "</a>" : "</div>");
+    var host2 = function (u) { try { var x = new URL(u, location.href); return /^https?:/.test(u) ? x.hostname.replace(/^www\./, "") + x.pathname.replace(/\/$/, "") : location.hostname + x.pathname.replace(/\/$/, ""); } catch (e) { return ""; } };
+    return '<div class="wrap">' + head(b, filterBar()) + '<div class="lap-grid">' + pr.items.slice(0, b.count || 8).map(function (it) {
+      var tag = it.url ? "a" : "div";
+      return "<" + tag + ' class="lap reveal"' + topicAttr(it.topic) + (it.url ? ' href="' + esc(it.url) + '"' + ext(it.url) : "") + ">" +
+        '<span class="lap__screen"><span class="lap__bar"><i></i><i></i><i></i><em>' + esc(it.url ? host2(it.url) : it.name) + "</em></span>" +
+          (it.image ? '<img src="' + esc(it.image) + '" alt="Preview of ' + esc(it.name) + '" loading="lazy" width="1200" height="630" />' : '<span class="lap__blank">' + esc(it.name) + "</span>") +
+        "</span>" +
+        '<span class="lap__base" aria-hidden="true"></span>' +
+        '<span class="lap__name">' + esc(it.name) + "</span>" +
+        '<span class="lap__kind">' + esc(it.kind) + "</span></" + tag + ">";
     }).join("") + "</div>" + moreLink(b.more ? { label: b.more.label + " (" + pr.items.length + ")", href: b.more.href } : null) + "</div>";
   };
 
@@ -274,7 +297,8 @@
   /* ---------- Projects: big cards, then a rotating ring with a Quick Look panel ---------- */
   function projCard(it) {
     var tagOpen = it.url ? '<a class="card project reveal"' + topicAttr(it.topic) + ' href="' + esc(it.url) + '"' + ext(it.url) + ">" : '<div class="card project reveal"' + topicAttr(it.topic) + ">";
-    return tagOpen + '<span class="tag project__kind">' + esc(it.kind) + "</span><h3>" + esc(it.name) + "</h3><p>" + esc(it.text) + "</p>" + stackHtml(it) +
+    return tagOpen + (it.image ? '<span class="project__shot"><img src="' + esc(it.image) + '" alt="Preview of ' + esc(it.name) + '" loading="lazy" width="1200" height="630" /></span>' : "") +
+      '<span class="tag project__kind">' + esc(it.kind) + "</span><h3>" + esc(it.name) + "</h3><p>" + esc(it.text) + "</p>" + stackHtml(it) +
       (it.url ? '<span class="project__go">View ↗</span>' : "") + (it.url ? "</a>" : "</div>");
   }
   function stackHtml(it) {
@@ -338,6 +362,7 @@
       var it = rest[k];
       document.getElementById("qlFile").textContent = it.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") + ".project";
       document.getElementById("qlBody").innerHTML =
+        (it.image ? '<span class="project__shot"><img src="' + esc(it.image) + '" alt="Preview of ' + esc(it.name) + '" loading="lazy" /></span>' : "") +
         '<span class="tag">' + esc(it.kind) + "</span>" +
         "<h4>" + esc(it.name) + "</h4><p>" + esc(it.text) + "</p>" + stackHtml(it) +
         '<dl><div><dt>Area</dt><dd>' + esc(({ web2: "Web2", web3: "Web3", ai: "AI & ML" })[it.topic] || "—") + "</dd></div>" +
@@ -773,8 +798,24 @@
     });
   } else { var rs = document.querySelector('[data-fill="reason"]'); if (rs) rs.remove(); var ds = document.querySelector('[data-fill="doors"]'); if (ds) ds.remove(); }
   document.querySelectorAll('[data-fill="email"]').forEach(function (a) { a.href = "mailto:" + p.email; a.textContent = p.email; });
+  // social links as icon buttons (simple generic icons, drawn here)
+  var ICON = {
+    chat: '<path d="M4 5h16v11H9l-5 4z"/>',
+    case: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 13h18"/>',
+    code: '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
+    play: '<rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/>',
+    pen: '<path d="M4 20l4-1 11-11-3-3L5 16zM14 6l3 3"/>',
+    plane: '<path d="M21 3L3 11l7 2 2 7z M10 13l11-10"/>',
+    link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+  };
+  function iconFor(n) {
+    n = n.toLowerCase();
+    var k = /x \/|twitter/.test(n) ? "chat" : /linkedin/.test(n) ? "case" : /github/.test(n) ? "code" : /youtube/.test(n) ? "play" : /medium|blog/.test(n) ? "pen" : /telegram/.test(n) ? "plane" : /mail/.test(n) ? "mail" : "link";
+    return '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICON[k] + "</svg>";
+  }
   fill("socials", S.socials.map(function (s) {
-    return '<li><a href="' + esc(s.url) + '"' + ext(s.url) + "><span>" + esc(s.name) + "</span><small>" + esc(s.handle) + "</small></a></li>";
+    return '<li><a href="' + esc(s.url) + '"' + ext(s.url) + ' title="' + esc(s.handle) + '">' + iconFor(s.name) + "<span>" + esc(s.name.replace(" / Twitter", "")) + "</span></a></li>";
   }).join(""));
   fill("footerName", esc(p.firstName) + "<br><span>" + esc(p.lastName) + '</span><i class="footer__dot" aria-hidden="true">.</i>');
   fill("footerLinks", S.socials.map(function (s) { return '<li><a href="' + esc(s.url) + '"' + ext(s.url) + ">" + esc(s.name) + "</a></li>"; }).join(""));
