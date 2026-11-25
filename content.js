@@ -60,18 +60,40 @@ window.SITE = {
      menu  = the top menu. "#work" jumps to a home section, "talks/" opens a page.
      pages = the extra pages: what each one shows ("sections") and what
              Google, link previews and AI assistants see (title, description,
-             ogImage = the 1200×630 picture shown when that page's link is shared).
+             ogImage = the 1200×630 picture shown when that page's link is shared,
+                       and as the page's preview in "Keep exploring" on the home page).
              After changing pages, the build step regenerates the page files
              (it runs on every deploy).                                      */
   menu: [
-    { label: "About", href: "#about" },
-    { label: "Work", href: "#work" },
-    { label: "Projects", href: "#projects" },
+    { label: "About", href: "about/" },
+    { label: "Work", href: "work/" },
+    { label: "Projects", href: "projects/" },
     { label: "Talks", href: "talks/" },
     { label: "Writing", href: "writing/" },
     { label: "Story", href: "story/" },
   ],
   pages: [
+    {
+      id: "about", path: "about/", label: "About", sections: ["about", "playbook"], ogImage: "assets/img/og-about.jpg",
+      title: "About Simarpreet Singh — Developer Advocate, DevRel Lead & Software Developer",
+      description: "Who Simarpreet Singh is, what he brings to developer teams (onboarding, education, developer programs, feedback loops, events, content) and the full toolkit across Web2, AI and Web3.",
+      teaser: "Who I am, what I bring to a dev team, and the full toolkit.",
+      cta: "Meet me",
+    },
+    {
+      id: "work", path: "work/", label: "Work", sections: ["experience", "testimonials"], ogImage: "assets/img/og-work.jpg",
+      title: "Work — Simarpreet Singh: DevRel at Tezos India & Etherlink, PizzaDAO, Web3Panjab",
+      description: "Full work history of Simarpreet Singh: Lead Developer Relations at Tezos India and Etherlink, PizzaDAO India Lead, founder of Web3Panjab, SOULVERSE and DRDO, with results and links.",
+      teaser: "Every role in full, with the numbers and links.",
+      cta: "See the full work",
+    },
+    {
+      id: "projects", path: "projects/", label: "Projects", sections: ["projects"], ogImage: "assets/img/og-projects.jpg",
+      title: "Projects — Simarpreet Singh: QuestPass, Thermo, makereel, shipcrate and more",
+      description: "Things Simarpreet Singh has built: QuestPass, Thermo for Mac, makereel, shipcrate, Model Shelf, SuiSips, Miden SDK Simulator and more, with tech stacks and links.",
+      teaser: "Every side quest, with tech stacks and links.",
+      cta: "Browse projects",
+    },
     {
       id: "talks", path: "talks/", label: "Talks", sections: ["videos"], ogImage: "assets/img/og-talks.jpg",
       title: "Talks & Workshops — Simarpreet Singh, Developer Advocate",
@@ -182,6 +204,23 @@ window.SITE = {
     title: "There's *more* where that came from.",
   },
 
+  /* ✏️ EDIT: HOME — the short versions of Work and Projects on the home page.
+     The full sections live on the Work and Projects pages.
+     Each job's  win  (in ✏️ EDIT: WORK) is the one line shown here.        */
+  workBrief: {
+    show: true,
+    label: "[ THE WORK, SHORT ]",
+    title: "Where I've *shipped*.",
+    more: { label: "See every role in full", href: "work/" },
+  },
+  projectBrief: {
+    show: true,
+    label: "[ SIDE QUESTS ]",
+    title: "Things I've *built*.",
+    count: 8, // how many projects from the top of the projects list (each shows its  image  on a little laptop)
+    more: { label: "All projects", href: "projects/" },
+  },
+
   /* ✏️ EDIT: ABOUT -----------------------------------------------------
      paragraphs: one string per paragraph.
      photo: a local file ("assets/img/…") or a full image URL.
@@ -253,6 +292,7 @@ window.SITE = {
     items: [
       {
         company: "SOULVERSE",
+        win: "Partnerships for identity, credentials and settlement infrastructure.", // one line for the home page
         url: "https://soulverse.us",
         role: "Partnership & Ecosystem Lead",
         period: "Jul 2026 — Oct 2026",
@@ -265,6 +305,7 @@ window.SITE = {
       },
       {
         company: "PizzaDAO",
+        win: "40+ Bitcoin Pizza Day events across India on a single day.", // one line for the home page
         url: "https://x.com/Pizza_DAO",
         role: "India Lead · Underboss",
         compact: true, // slim row: first bullet only, the rest behind "Show more"
@@ -279,6 +320,7 @@ window.SITE = {
       },
       {
         company: "Tezos India",
+        win: "Grew engaged developers 3K → 12K+ and the TezAsia hackathon 1.5K → 13K+.", // one line for the home page
         url: "https://in.linkedin.com/company/tezos-india-foundation",
         role: "Lead Developer Relations",
         period: "Oct 2022 — Apr 2025",
@@ -310,6 +352,7 @@ window.SITE = {
       },
       {
         company: "Web3Panjab",
+        win: "Grassroots Web3 community; shipped two paid client products.", // one line for the home page
         url: "https://x.com/web3panjab",
         role: "Founder & Independent Consultant",
         period: "Jul 2022 — Present",
@@ -326,6 +369,7 @@ window.SITE = {
       },
       {
         company: "DRDO — Scientific Analysis Group",
+        win: "Researched secure data transmission with reversible data hiding.", // one line for the home page
         role: "Research Trainee",
         compact: true,
         period: "Feb 2022 — Jul 2022",
@@ -408,6 +452,7 @@ window.SITE = {
   /* ✏️ EDIT: PROJECTS --------------------------------------------------
      One line per project: { name, topic, kind (small label), text, url }.
      stack: optional list of tools, shown as small chips: stack: ["Next.js", "Supabase"]
+     image: optional 1200×630 preview picture (assets/img/projects/…), shown on the card
      topic: "web2", "web3" or "ai" — used by the All / Web2 / Web3 / AI & ML filter.
      The first `featured` projects are big cards; the rest sit on a
      rotating ring with a Quick Look preview. Put your best projects first. */
@@ -418,11 +463,19 @@ window.SITE = {
     title: "Things I've *built*.",
     featured: 4, // how many big cards before the ring
     items: [
-      { name: "QuestPass", topic: "web3", kind: "Founder · full-stack · Devcon 8", text: "An event engagement platform launched at Devcon 8 Mumbai: 65+ attendee passes from 30+ cities and 138 side events and stamp spots. QR connect with consent-based contact sharing, a filterable People directory, organiser event submissions with Luma and CSV imports, and an NFC stamp hunt with a leaderboard.", url: "https://questpass.live",
+      { name: "QuestPass", image: "assets/img/projects/questpass.jpg", topic: "web3", kind: "Founder · full-stack · Devcon 8", text: "An event engagement platform launched at Devcon 8 Mumbai: 65+ attendee passes from 30+ cities and 138 side events and stamp spots. QR connect with consent-based contact sharing, a filterable People directory, organiser event submissions with Luma and CSV imports, and an NFC stamp hunt with a leaderboard. Its photo booth has since been integrated and used by PizzaDAO at its events.", url: "https://questpass.live",
         stack: ["TypeScript", "Docker", "Google Cloud", "Cloudflare Tunnel", "NFC", "Claude Code"] },
-      { name: "SuiSips", topic: "web3", kind: "Next.js · Client build", text: "A production SIP tracker and community platform for the Sui ecosystem: proposals synced from GitHub, discussions, articles, videos and a curated tweet wall. Built with Next.js, React Markdown and Tailwind CSS.", url: "https://suisips.com" },
-      { name: "Miden SDK Simulator", topic: "web3", kind: "React · Miden SDK", text: "An interactive demo of anonymous, privacy-preserving voting on Miden's ZK rollup SDK. Scoped, built and shipped with no prior Miden experience, to show how any new SDK becomes learnable through a working demo.", url: "https://sim-miden-demo-main.vercel.app/" },
-      { name: "JSON API Visualizer", topic: "web2", kind: "Next.js · Live tool", text: "Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0.", url: "https://json-visual.vercel.app" },
+      { name: "Thermo", image: "assets/img/projects/thermo.jpg", topic: "web2", kind: "macOS app · Open source", text: "A free Mac app that shows CPU, GPU, SSD and battery temperatures around the notch and tells you which app is heating your Mac, what's slowing down and what to close. Memory, battery-health and 24-hour history tabs, smart alerts, and no sudo or kernel extensions.", url: "https://simarpreetsingh-019.github.io/Thermo/",
+        stack: ["Swift", "macOS", "Homebrew", "AI-agent API"] },
+      { name: "shipcrate", image: "assets/img/projects/shipcrate.jpg", topic: "web2", kind: "Open source · Release tooling", text: "Release and update tooling in one command: a quality gate with git hooks and CI, GitHub releases with SHA-256 checksums and provenance, a Homebrew formula, a verifying installer and update notices. Extracted from Thermo, with a Claude Code plugin and an MCP server for AI agents.", url: "https://simarpreetsingh-019.github.io/shipcrate/",
+        stack: ["POSIX shell", "GitHub Actions", "Homebrew", "MCP"] },
+      { name: "makereel", image: "assets/img/projects/makereel.jpg", topic: "ai", kind: "Open source · Video", text: "Turns live streams and long videos into captioned 9:16 reels on your own computer: clips YouTube, Twitch and Kick streams live from loudness and chat spikes, word-by-word Hindi, English and Hinglish captions, speaker framing and creator credits. No account or API key needed.", url: "https://simarpreetsingh-019.github.io/makereel/",
+        stack: ["Python", "FFmpeg", "yt-dlp", "faster-whisper"] },
+      { name: "Model Shelf (msh)", image: "assets/img/projects/modelshelf.jpg", topic: "ai", kind: "Rust CLI · In progress", text: "One local library for every AI model on a Mac: finds duplicate model files across Ollama, LM Studio and Hugging Face by SHA-256 and links them instead of copying, with undo.", url: "modelshelf/",
+        stack: ["Rust", "CLI", "Ollama", "LM Studio", "Hugging Face"] },
+      { name: "SuiSips", image: "assets/img/projects/suisips.jpg", topic: "web3", kind: "Next.js · Client build", text: "A production SIP tracker and community platform for the Sui ecosystem: proposals synced from GitHub, discussions, articles, videos and a curated tweet wall. Built with Next.js, React Markdown and Tailwind CSS.", url: "https://suisips.com" },
+      { name: "Miden SDK Simulator", image: "assets/img/projects/miden.jpg", topic: "web3", kind: "React · Miden SDK", text: "An interactive demo of anonymous, privacy-preserving voting on Miden's ZK rollup SDK. Scoped, built and shipped with no prior Miden experience, to show how any new SDK becomes learnable through a working demo.", url: "https://sim-miden-demo-main.vercel.app/" },
+      { name: "JSON API Visualizer", image: "assets/img/projects/jsonviz.jpg", topic: "web2", kind: "Next.js · Live tool", text: "Fetch any public REST API and explore the response as an interactive graph and tree. Built with Next.js, Tailwind CSS and v0.", url: "https://json-visual.vercel.app" },
       { name: "Etherlink Project Showcase", topic: "web3", kind: "Etherlink · GitHub", text: "A showcase repo spotlighting dApps built on Tezos and Etherlink after hackathons, alongside demo apps for workshop attendees.", url: "https://github.com/simarpreetsingh-019/TIProjects" },
       { name: "Gitfund", topic: "web3", kind: "Web3 · OSS", text: "Auto-pays open-source contributors for merged PRs using programmable smart-contract logic.", url: "https://github.com/simarpreetsingh-019/TIProjects/tree/main/Gitfund" },
       { name: "OverWatch TS", topic: "web2", kind: "Open source", text: "Built the initial example template for overwatch-ts, a lightweight state-management library for Next.js.", url: "https://github.com/simarpreetsingh-019/overwatch/tree/main" },

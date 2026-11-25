@@ -65,6 +65,8 @@ PRE.videos = (v) => `<div class="wrap pre"><h2>Videos and talks</h2><p>${esc(v.t
   `<h3>${esc(c.name)}</h3><ul>${c.items.map((it) => `<li><a href="https://www.youtube.com/watch?v=${esc(it.id)}">${esc(it.title)}</a>${it.by ? " (" + esc(it.by) + ")" : ""}</li>`).join("")}</ul>`).join("")}</div>`;
 PRE.posts = (x) => `<div class="wrap pre"><h2>Posts on X</h2><ul>${x.items.map((t) =>
   `<li><a href="${esc(t.url)}">${esc(t.date || "Post")}</a>${t.text ? ": " + esc(t.text) : ""}</li>`).join("")}</ul></div>`;
+PRE.workBrief = (w) => `<div class="wrap pre"><h2>${esc(plain(w.title))}</h2><ul>${S.experience.items.map((j) => `<li><strong>${esc(j.role)}, ${esc(j.company)}</strong> (${esc(j.period)})${j.win ? ": " + esc(j.win) : ""}</li>`).join("")}</ul><p><a href="${esc(w.more ? w.more.href : "work/")}">Full work history</a></p></div>`;
+PRE.projectBrief = (b) => `<div class="wrap pre"><h2>${esc(plain(b.title))}</h2><ul>${S.projects.items.slice(0, b.count || 3).map((it) => `<li><h3>${it.url ? `<a href="${esc(it.url)}">${esc(it.name)}</a>` : esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join("")}</ul><p><a href="${esc(b.more ? b.more.href : "projects/")}">All projects</a></p></div>`;
 PRE.explore = () => `<div class="wrap pre"><h2>More on other pages</h2><ul>${PAGES.map((pg) => `<li><a href="${esc(pg.path)}">${esc(pg.label)}</a>: ${esc(pg.teaser || pg.description)}</li>`).join("")}</ul></div>`;
 PRE.testimonials = (t) => (t.items || []).filter((q) => q.quote).length ? `<div class="wrap pre"><h2>Testimonials</h2>${t.items.filter((q) => q.quote).map((q) => `<blockquote><p>${esc(q.quote)}</p><footer>${esc(q.name)}${q.role ? ", " + esc(q.role) : ""}</footer></blockquote>`).join("")}</div>` : "";
 PRE.skills = (s) => `<div class="wrap pre"><h2>Skills</h2>${s.groups.map((g) => `<h3>${esc(g.name)}</h3><p>${g.items.map(esc).join(", ")}</p>`).join("")}</div>`;
@@ -270,7 +272,7 @@ ${jobs(S.experience).map((j) => `### ${j.role} — ${j.company}\n${j.period}${j.
 ${S.lore.items.map((it) => `- ${it.when ? it.when + " " : ""}${it.year} — ${it.title}: ${it.text}${it.url ? " (" + it.url + ")" : ""}`).join("\n")}
 
 ## Projects
-${S.projects.items.map((p) => `- **${p.name}** (${p.kind}) — ${p.text}${p.stack ? " Built with: " + p.stack.join(", ") + "." : ""}${p.url ? " " + p.url : ""}`).join("\n")}
+${S.projects.items.map((p) => `- **${p.name}** (${p.kind}) — ${p.text}${p.stack ? " Built with: " + p.stack.join(", ") + "." : ""}${p.url ? " " + abs(p.url) : ""}`).join("\n")}
 
 ## Articles
 ${S.articles.items.map((a) => `- [${a.title}](${a.url}) — ${a.kicker}, ${a.date}`).join("\n")}
@@ -297,7 +299,7 @@ const resume = {
   work: jobs(S.experience).map((j) => ({ name: j.company, position: j.role, url: j.url, ...parsePeriod(j.period), highlights: (j.points || []).map(plain) })),
   education: [{ institution: "Guru Tegh Bahadur Institute of Technology, GGSIP University", area: "Computer Science and Engineering", studyType: "B.Tech", startDate: "2018-08", endDate: "2022-08" }],
   skills: S.skills.groups.map((g) => ({ name: g.name, keywords: g.items })),
-  projects: S.projects.items.map((p) => ({ name: p.name, description: p.text, url: p.url, keywords: [p.kind].concat(p.stack || []) })),
+  projects: S.projects.items.map((p) => ({ name: p.name, description: p.text, url: p.url && abs(p.url), keywords: [p.kind].concat(p.stack || []) })),
   publications: S.articles.items.map((a) => ({ name: a.title, url: a.url, releaseDate: a.date })),
   meta: { lastModified: TODAY },
 };
@@ -307,6 +309,7 @@ write("profile.json", JSON.stringify(resume, null, 2) + "\n");
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${SITE_URL}/</loc><lastmod>${TODAY}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+${(S.projects.items || []).filter((x) => x.url && !/^https?:/.test(x.url)).map((x) => `  <url><loc>${SITE_URL}/${x.url}</loc><lastmod>${TODAY}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`).join("\n")}
 ${PAGES.map((pg) => `  <url><loc>${SITE_URL}/${pg.path}</loc><lastmod>${TODAY}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`).join("\n")}
   <url><loc>${SITE_URL}/llms.txt</loc><lastmod>${TODAY}</lastmod><priority>0.6</priority></url>
   <url><loc>${SITE_URL}/llms-full.txt</loc><lastmod>${TODAY}</lastmod><priority>0.6</priority></url>

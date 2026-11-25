@@ -224,7 +224,7 @@
   "projects": [
     {
       "name": "QuestPass",
-      "description": "An event engagement platform launched at Devcon 8 Mumbai: 65+ attendee passes from 30+ cities and 138 side events and stamp spots. QR connect with consent-based contact sharing, a filterable People directory, organiser event submissions with Luma and CSV imports, and an NFC stamp hunt with a leaderboard.",
+      "description": "An event engagement platform launched at Devcon 8 Mumbai: 65+ attendee passes from 30+ cities and 138 side events and stamp spots. QR connect with consent-based contact sharing, a filterable People directory, organiser event submissions with Luma and CSV imports, and an NFC stamp hunt with a leaderboard. Its photo booth has since been integrated and used by PizzaDAO at its events.",
       "url": "https://questpass.live",
       "keywords": [
         "Founder · full-stack · Devcon 8",
@@ -234,6 +234,55 @@
         "Cloudflare Tunnel",
         "NFC",
         "Claude Code"
+      ]
+    },
+    {
+      "name": "Thermo",
+      "description": "A free Mac app that shows CPU, GPU, SSD and battery temperatures around the notch and tells you which app is heating your Mac, what's slowing down and what to close. Memory, battery-health and 24-hour history tabs, smart alerts, and no sudo or kernel extensions.",
+      "url": "https://simarpreetsingh-019.github.io/Thermo/",
+      "keywords": [
+        "macOS app · Open source",
+        "Swift",
+        "macOS",
+        "Homebrew",
+        "AI-agent API"
+      ]
+    },
+    {
+      "name": "shipcrate",
+      "description": "Release and update tooling in one command: a quality gate with git hooks and CI, GitHub releases with SHA-256 checksums and provenance, a Homebrew formula, a verifying installer and update notices. Extracted from Thermo, with a Claude Code plugin and an MCP server for AI agents.",
+      "url": "https://simarpreetsingh-019.github.io/shipcrate/",
+      "keywords": [
+        "Open source · Release tooling",
+        "POSIX shell",
+        "GitHub Actions",
+        "Homebrew",
+        "MCP"
+      ]
+    },
+    {
+      "name": "makereel",
+      "description": "Turns live streams and long videos into captioned 9:16 reels on your own computer: clips YouTube, Twitch and Kick streams live from loudness and chat spikes, word-by-word Hindi, English and Hinglish captions, speaker framing and creator credits. No account or API key needed.",
+      "url": "https://simarpreetsingh-019.github.io/makereel/",
+      "keywords": [
+        "Open source · Video",
+        "Python",
+        "FFmpeg",
+        "yt-dlp",
+        "faster-whisper"
+      ]
+    },
+    {
+      "name": "Model Shelf (msh)",
+      "description": "One local library for every AI model on a Mac: finds duplicate model files across Ollama, LM Studio and Hugging Face by SHA-256 and links them instead of copying, with undo.",
+      "url": "https://simarpreetsingh-019.github.io/modelshelf/",
+      "keywords": [
+        "Rust CLI · In progress",
+        "Rust",
+        "CLI",
+        "Ollama",
+        "LM Studio",
+        "Hugging Face"
       ]
     },
     {
@@ -357,6 +406,6 @@
     }
   ],
   "meta": {
-    "lastModified": "2026-11-11"
+    "lastModified": "2026-11-25"
   }
 }
